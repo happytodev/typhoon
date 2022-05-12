@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace happytodev\FlatCms\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class FlatCmsCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'flat-cms';
 
     public $description = 'My command';
 
