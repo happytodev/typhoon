@@ -1,6 +1,6 @@
 <?php
 
-namespace happytodev\FlatCms\Facades;
+namespace HappyToDev\FlatCms\Facades;
 
 use Illuminate\Support\Facades\Facade;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace happytodev\FlatCms\Database\Factories;
+namespace HappyToDev\FlatCms\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 

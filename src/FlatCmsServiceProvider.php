@@ -1,10 +1,10 @@
 <?php
 
-namespace happytodev\FlatCms;
+namespace HappyToDev\FlatCms;
 
 use Spatie\LaravelPackageTools\Package;
-use happytodev\FlatCms\Commands\FlatCmsCommand;
-use happytodev\FlatCms\Console\InstallFlatPackage;
+use HappyToDev\FlatCms\Commands\FlatCmsCommand;
+use HappyToDev\FlatCms\Console\InstallFlatPackage;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
 class FlatCmsServiceProvider extends PackageServiceProvider
@@ -17,7 +17,8 @@ class FlatCmsServiceProvider extends PackageServiceProvider
             // if (! class_exists('User')) {
                 $this->publishes([
                     __DIR__ . '/Models/User.php' => 'app/Models/User.php',
-                ], 'models');
+                    __DIR__ . '/Models/Post.php' => 'app/Models/Post.php',
+                ], 'flatcms-models');
             // }
 
             // Install flat-cms command
@@ -25,6 +26,12 @@ class FlatCmsServiceProvider extends PackageServiceProvider
                 InstallFlatPackage::class,
             ]);
         }
+
+        // Load routes
+        $this->loadRoutesFrom(__DIR__ . '/../routes/web.php');
+
+        // Load views
+        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'flat-cms');
     }
 
     public function configurePackage(Package $package): void

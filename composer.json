@@ -35,13 +35,13 @@
     },
     "autoload": {
         "psr-4": {
-            "happytodev\\FlatCms\\": "src",
-            "happytodev\\FlatCms\\Database\\Factories\\": "database/factories"
+            "HappyToDev\\FlatCms\\": "src",
+            "HappyToDev\\FlatCms\\Database\\Factories\\": "database/factories"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "happytodev\\FlatCms\\Tests\\": "tests"
+            "HappyToDev\\FlatCms\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -59,10 +59,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "happytodev\\FlatCms\\FlatCmsServiceProvider"
+                "HappyToDev\\FlatCms\\FlatCmsServiceProvider"
             ],
             "aliases": {
-                "FlatCms": "happytodev\\FlatCms\\Facades\\FlatCms"
+                "FlatCms": "HappyToDev\\FlatCms\\Facades\\FlatCms"
             }
         }
     },

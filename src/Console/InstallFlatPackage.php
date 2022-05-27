@@ -1,6 +1,6 @@
 <?php
 
-namespace happytodev\FlatCms\Console;
+namespace HappyToDev\FlatCms\Console;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
@@ -81,8 +81,8 @@ class InstallFlatPackage extends Command
     private function publishModels($forcePublish = false)
     {
         $params = [
-            '--provider' => "happytodev\FlatCms\FlatCmsServiceProvider",
-            '--tag' => "models"
+            '--provider' => "HappyToDev\FlatCms\FlatCmsServiceProvider",
+            '--tag' => "flatcms-models"
         ];
 
         if ($forcePublish === true) {

@@ -1,6 +1,6 @@
 <?php
 
-namespace happytodev\FlatCms;
+namespace HappyToDev\FlatCms;
 
 class FlatCms
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace happytodev\FlatCms\Commands;
+namespace HappyToDev\FlatCms\Commands;
 
 use Illuminate\Console\Command;
 
