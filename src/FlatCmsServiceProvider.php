@@ -21,6 +21,10 @@ class FlatCmsServiceProvider extends PackageServiceProvider
                 ], 'flatcms-models');
             // }
 
+                $this->publishes([
+                    __DIR__ . '/App/Filament/Resources' => 'app/Filament/Resources',
+                ], 'flatcms-filament-resources');
+
             // Install flat-cms command
             $this->commands([
                 InstallFlatPackage::class,
@@ -30,8 +34,9 @@ class FlatCmsServiceProvider extends PackageServiceProvider
         // Load routes
         $this->loadRoutesFrom(__DIR__ . '/../routes/web.php');
 
-        // Load views
+        // Load views and defining key to call them (flat-cms)
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'flat-cms');
+
     }
 
     public function configurePackage(Package $package): void

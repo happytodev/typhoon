@@ -1,15 +1,10 @@
 <?php
 
-namespace HappyToDev\FlatCms\Models;
+namespace App\Models;
 
 use Orbit\Concerns\Orbital;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
 
 class Post extends Model
 {
@@ -33,7 +28,8 @@ class Post extends Model
     protected $fillable = [
         'title',
         'tldr',
-        'content'
+        'content',
+        'slug'
     ];
 
     /**
@@ -53,6 +49,11 @@ class Post extends Model
     ];
 
 
+    /**
+     * Find user associated with this post
+     *
+     * @return User
+     */
     public function user()
     {
         return $this->belongsTo(User::class);

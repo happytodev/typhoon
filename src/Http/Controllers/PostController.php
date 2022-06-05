@@ -2,14 +2,14 @@
 
 namespace HappyToDev\FlatCms\Http\Controllers;
 
-use HappyToDev\FlatCms\Models\Post;
+use App\Models\Post;
 
 class PostController extends Controller
 {
     public function index()
     {
         $posts = Post::all();
-        return view('flat-cms::posts.index', compact('posts'));
+        return view('flat-cms::' . config('flat-cms.template') . '.posts.index', compact('posts'));
     }
 
 

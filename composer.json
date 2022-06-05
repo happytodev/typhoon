@@ -17,6 +17,8 @@
     ],
     "require": {
         "php": "^8.1",
+        "doctrine/dbal": "^3.3",
+        "filament/filament": "^2.0",
         "illuminate/contracts": "^9.0",
         "ryangjchandler/orbit": "^1.1",
         "spatie/laravel-package-tools": "^1.9.2"
@@ -66,6 +68,9 @@
             }
         }
     },
+    "post-update-cmd": [
+        "@php artisan filament:upgrade"
+    ],
     "minimum-stability": "dev",
     "prefer-stable": true
 }

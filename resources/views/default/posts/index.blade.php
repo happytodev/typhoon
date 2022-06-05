@@ -1,3 +1,7 @@
+@extends('flat-cms::' . config('flat-cms.template') . '.layouts.default')
+
+@section('content')
+
 <h1>Showing all Posts</h1>
 
 @forelse ($posts as $post)
@@ -8,3 +12,5 @@
 @empty
     <p> 'No posts yet' </p>
 @endforelse
+
+@endsection

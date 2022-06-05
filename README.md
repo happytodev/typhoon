@@ -17,44 +17,92 @@ Why Flat ? Because he doesn't use database. It uses Orbit.
 
 ## Installation
 
+Start with a fresh install of Laravel :
+
+```bash
+laravel new your-awesome-project-name
+```
+
+or 
+
+```bash
+composer create-project laravel/laravel your-awesome-project-name
+```
+
+Enter in your project directory : 
+
+```bash
+cd your-awesome-project-name
+```
+
+Warning : Until FlatCms is published on Packagist, you have to clone this repo somewhere on your machine and update your composer.json by adding the following under the scripts section :
+
+```json
+    "repositories": [
+        {
+          "type": "path",
+          "url": "../../Packages/flat-cms"
+        }
+    ],
+```
+
+Obviously, above repositories.url depends where did you install this package. Take care of adapting the path.
+
 You can install the package via composer:
 
 ```bash
 composer require happytodev/flat-cms
 ```
 
-You can publish and run the migrations with:
+You can now run the install script via Artisan :
 
 ```bash
-php artisan vendor:publish --tag="flat-cms-migrations"
-php artisan migrate
+php artisan flat-cms:install
 ```
 
-You can publish the config file with:
+When the script ask you `User model file already exists. Do you want to overwrite it? (yes/no) [no]:` you can answer yes. It will modify the default User model to adapt it to use Orbit instead classic database like for example MySQL.
+
+Now you have to create the first user :
 
 ```bash
-php artisan vendor:publish --tag="flat-cms-config"
+php artisan make:filament-user
 ```
 
-This is the contents of the published config file:
+Last thing, go to the `content\users`folders and edit with your favorite editor the first user, usually it is the file `1.md`:
 
-```php
-return [
-];
+```md
+---
+id: 1
+name: 'John Doe'
+email: john@doe.com
+password: $2y$10$0wdxKSl7ksxk8yrTgU8!K90oLmMq2eJ20pwUBSu0ICMWpc959DpTqm
+is_admin: 0
+created_at: 2022-05-27T18:39:22+00:00
+updated_at: 2022-05-28T09:04:57+00:00
+---
 ```
 
-Optionally, you can publish the views using
+modify this line `is_admin: 0` to this one `is_admin: 1` :
 
-```bash
-php artisan vendor:publish --tag="flat-cms-views"
+```md
+---
+id: 1
+name: 'John Doe'
+email: john@doe.com
+password: $2y$10$0wdxKSl7ksxk8yrTgU8!K90oLmMq2eJ20pwUBSu0ICMWpc959DpTqm
+is_admin: 1
+created_at: 2022-05-27T18:39:22+00:00
+updated_at: 2022-05-28T09:04:57+00:00
+---
 ```
 
-## Usage
+Now you can connect to the backoffice, via the url of your project and adding to it `/admin`
 
-```php
-$flatCms = new happytodev\FlatCms();
-echo $flatCms->echoPhrase('Hello, happytodev!');
-```
+Out of the box, you have this entities :
+
+- users
+- posts
+
 
 ## Testing
 

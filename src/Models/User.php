@@ -1,14 +1,19 @@
 <?php
 
-namespace HappyToDev\FlatCms\Models;
+namespace App\Models;
 
 use Orbit\Concerns\Orbital;
-use Illuminate\Database\Eloquent\Model;
+use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Filament\Models\Contracts\FilamentUser;
 
-class User extends Model
+class User extends Authenticatable implements FilamentUser
 {
     use Orbital;
+    use HasApiTokens, HasFactory, Notifiable;
 
     public static function schema(Blueprint $table)
     {
@@ -17,6 +22,7 @@ class User extends Model
         $table->string('email')->unique();
         $table->timestamp('email_verified_at')->nullable();
         $table->string('password');
+        $table->boolean('is_admin')->default(false);
         $table->rememberToken();
     }
 
@@ -57,5 +63,11 @@ class User extends Model
     public function posts()
     {
         return $this->hasMany(Post::class);
+    }
+
+    // Implements necessary function to run with Filament
+    public function canAccessFilament(): bool
+    {
+        return (bool) $this->is_admin;
     }
 }

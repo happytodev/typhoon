@@ -17,6 +17,7 @@ class InstallFlatPackage extends Command
 
         $this->info('Publishing configuration...');
 
+        // Asking user if he wants to overwrite original user model
         if ($this->shouldOverwriteModels()) {
             $this->info('Overwriting User model file...');
             $this->publishModels($force = true);
@@ -24,19 +25,8 @@ class InstallFlatPackage extends Command
         } else {
             $this->info('Existing User model was not overwritten');
         }
-        // $this->info('Publishing configuration...');
 
-        // if (! $this->configExists('blogpackage.php')) {
-        //     $this->publishConfiguration();
-        //     $this->info('Published configuration');
-        // } else {
-        //     if ($this->shouldOverwriteConfig()) {
-        //         $this->info('Overwriting configuration file...');
-        //         $this->publishConfiguration($force = true);
-        //     } else {
-        //         $this->info('Existing configuration was not overwritten');
-        //     }
-        // }
+        $this->creatingResources();
 
         $this->info('Installed Flat CMS');
     }
@@ -88,6 +78,20 @@ class InstallFlatPackage extends Command
         if ($forcePublish === true) {
             $params['--force'] = true;
         }
+
+        $this->call('vendor:publish', $params);
+    }
+
+    // Installing resources needed to manage default models provided after
+    // install in Flat-Cms
+    public function creatingResources()
+    {
+        $this->info('Creating resources...');
+
+        $params = [
+            '--provider' => "HappyToDev\FlatCms\FlatCmsServiceProvider",
+            '--tag' => "flatcms-filament-resources"
+        ];
 
         $this->call('vendor:publish', $params);
     }
