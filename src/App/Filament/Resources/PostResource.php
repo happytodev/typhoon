@@ -23,6 +23,7 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\Filter;
 use Filament\Tables\Filters\SelectFilter;
 use Illuminate\Database\Eloquent\Builder;
+use Filament\Forms\Components\FileUpload;
 
 class PostResource extends Resource
 {
@@ -83,12 +84,21 @@ class PostResource extends Resource
                         ->columnSpan(2)
                         ->nullable(),
                     BelongsToSelect::make('user_id')
-                        ->relationship('user', 'name'),
+                        ->relationship('user', 'name')
+                        ->required(),
+                    BelongsToSelect::make('category_id')
+                        ->relationship('category', 'name')
+                        ->required(),
                     // DatePicker::make('published_at')
                     //     ->nullable()
                     //     ->helperText('If in the past, the post will go live immediately.'),
                 ])
-                    ->columns(2)
+                    ->columns(2),
+                Card::make([
+                    FileUpload::make('main_image')
+                    ->nullable(),
+                ])
+                ->columns(1),
             ]);
     }
     
@@ -96,6 +106,7 @@ class PostResource extends Resource
     {
         return [
             //
+            RelationManagers\TagsRelationManager::class,
         ];
     }
     

@@ -1,11 +1,11 @@
 <?php
 
-namespace HappyToDev\FlatCms\Http\Controllers;
+namespace HappyToDev\Typhoon\Http\Controllers;
 
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-use HappyToDev\FlatCms\Models\Post;
-use HappyToDev\FlatCms\Models\User;
+use HappyToDev\Typhoon\Models\Post;
+use HappyToDev\Typhoon\Models\User;
 use Illuminate\Support\Facades\Hash;
 
 

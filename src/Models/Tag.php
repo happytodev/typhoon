@@ -1,25 +1,26 @@
 <?php
 
-namespace HappyToDev\Typhoon\Models;
+namespace App\Models;
 
 use Orbit\Concerns\Orbital;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Filament\Models\Contracts\FilamentUser;
+use Illuminate\Database\Eloquent\Model;
 
-class Picture extends Model
+class Tag extends Model
 {
     use Orbital;
 
     public static function schema(Blueprint $table)
     {
         $table->id();
-        $table->string('title');
-        $table->string('path');
+        $table->string('name');
+        $table->string('slug')->nullable();
+        $table->string('description')->nullable();
     }
 
     /**
@@ -28,8 +29,9 @@ class Picture extends Model
      * @var string[]
      */
     protected $fillable = [
-        'title',
-        'path',
+        'name',
+        'slug',
+        'description',
     ];
 
     /**
@@ -49,5 +51,9 @@ class Picture extends Model
     ];
 
 
-
+    // Get posts from this user
+    public function posts()
+    {
+        return $this->belongsToMany(Post::class)->withPivot('id')->using(PostTag::class);
+    }
 }

@@ -1,12 +1,12 @@
 {
-    "name": "happytodev/flat-cms",
-    "description": "Content Management with flat database, using TALL Stack",
+    "name": "happytodev/typhoon",
+    "description": "Content Management with typhoon database, using TALL Stack",
     "keywords": [
         "happytodev",
         "laravel",
-        "flat-cms"
+        "typhoon"
     ],
-    "homepage": "https://github.com/happytodev/flat-cms",
+    "homepage": "https://github.com/happytodev/typhoon",
     "license": "MIT",
     "authors": [
         {
@@ -37,13 +37,13 @@
     },
     "autoload": {
         "psr-4": {
-            "HappyToDev\\FlatCms\\": "src",
-            "HappyToDev\\FlatCms\\Database\\Factories\\": "database/factories"
+            "HappyToDev\\Typhoon\\": "src",
+            "HappyToDev\\Typhoon\\Database\\Factories\\": "database/factories"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "HappyToDev\\FlatCms\\Tests\\": "tests"
+            "HappyToDev\\Typhoon\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -61,10 +61,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "HappyToDev\\FlatCms\\FlatCmsServiceProvider"
+                "HappyToDev\\Typhoon\\TyphoonServiceProvider"
             ],
             "aliases": {
-                "FlatCms": "HappyToDev\\FlatCms\\Facades\\FlatCms"
+                "Typhoon": "HappyToDev\\Typhoon\\Facades\\Typhoon"
             }
         }
     },

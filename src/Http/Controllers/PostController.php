@@ -1,6 +1,6 @@
 <?php
 
-namespace HappyToDev\FlatCms\Http\Controllers;
+namespace HappyToDev\Typhoon\Http\Controllers;
 
 use App\Models\Post;
 
@@ -8,15 +8,16 @@ class PostController extends Controller
 {
     public function index()
     {
-        $posts = Post::all();
-        return view('flat-cms::' . config('flat-cms.template') . '.posts.index', compact('posts'));
+        
+        $posts = Post::orderBy('created_at', 'desc')->get();
+        return view('typhoon::' . config('typhoon.template') . '.posts.index', compact('posts'));
     }
 
 
-    public function show($postId)
+    public function show($slug)
     {
-        $post = Post::where('id', $postId)->first();
+        $post = Post::where('slug', $slug)->first();
         // dd($post);
-        return view('flat-cms::posts.show', compact('post'));
+        return view('typhoon::posts.show', compact('post'));
     }
 }

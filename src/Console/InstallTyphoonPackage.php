@@ -1,34 +1,53 @@
 <?php
 
-namespace HappyToDev\FlatCms\Console;
+namespace HappyToDev\Typhoon\Console;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
 
-class InstallFlatPackage extends Command
+class InstallTyphoonPackage extends Command
 {
-    protected $signature = 'flat-cms:install';
+    protected $signature = 'typhoon:install';
 
-    protected $description = 'Install the Flat CMS';
+    protected $description = 'Install the Typhoon CMS';
 
     public function handle()
     {
-        $this->info('Installing FlatCMS Package...');
+        $this->info('Installing TyphoonCMS Package...');
 
-        $this->info('Publishing configuration...');
+        $this->info('>>> Publishing configuration...');
 
         // Asking user if he wants to overwrite original user model
         if ($this->shouldOverwriteModels()) {
-            $this->info('Overwriting User model file...');
+            $this->info('>>> Overwriting User model file...');
             $this->publishModels($force = true);
-            $this->info('User model updated...');
+            $this->info('>>> User model updated...');
         } else {
             $this->info('Existing User model was not overwritten');
         }
 
         $this->creatingResources();
 
-        $this->info('Installed Flat CMS');
+        // Create first user
+        $this->info('>>> Creating first user...');
+        $this->createFirstUser();
+
+        // Write CSS
+        $this->info('>>> Writing CSS...');
+        $this->writeCss();
+
+        // Installation done with success
+        $this->info('TyphoonCMS Package installed successfully.');
+        $this->info('You can now edit `content/users/1.md`');
+        $this->info('And change `is_admin: 0` to `is_admin: 1`');
+        $this->info('to be authorized to access the admin panel.');
+    }
+
+    private function createFirstUser()
+    {
+        $this->call('make:filament-user');
+        $this->info('First user created successfully.');
+
     }
 
     private function configExists($fileName)
@@ -71,8 +90,8 @@ class InstallFlatPackage extends Command
     private function publishModels($forcePublish = false)
     {
         $params = [
-            '--provider' => "HappyToDev\FlatCms\FlatCmsServiceProvider",
-            '--tag' => "flatcms-models"
+            '--provider' => "HappyToDev\Typhoon\TyphoonServiceProvider",
+            '--tag' => "typhoon-models"
         ];
 
         if ($forcePublish === true) {
@@ -83,14 +102,27 @@ class InstallFlatPackage extends Command
     }
 
     // Installing resources needed to manage default models provided after
-    // install in Flat-Cms
+    // install in typhoon
     public function creatingResources()
     {
         $this->info('Creating resources...');
 
         $params = [
-            '--provider' => "HappyToDev\FlatCms\FlatCmsServiceProvider",
-            '--tag' => "flatcms-filament-resources"
+            '--provider' => "HappyToDev\Typhoon\TyphoonServiceProvider",
+            '--tag' => "typhoon-filament-resources"
+        ];
+
+        $this->call('vendor:publish', $params);
+    }
+
+    private function writeCss()
+    {
+        $this->info('Writing CSS...');
+
+        $params = [
+            '--provider' => "HappyToDev\Typhoon\TyphoonServiceProvider",
+            '--tag' => "typhoon-css",
+            '--force' => true
         ];
 
         $this->call('vendor:publish', $params);

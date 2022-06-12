@@ -1,6 +1,6 @@
 <?php
 
-namespace HappyToDev\FlatCms\Http\Controllers;
+namespace HappyToDev\Typhoon\Http\Controllers;
 
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
