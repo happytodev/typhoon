@@ -1,5 +1,4 @@
 
-[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/support-ukraine.svg?t=1" />](https://supportukrainenow.org)
 
 # Content Management with flat database, using TALL Stack
 
@@ -149,7 +148,7 @@ Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed re
 
 ## Contributing
 
-Please see [CONTRIBUTING](https://github.com/spatie/.github/blob/main/CONTRIBUTING.md) for details.
+Please see [CONTRIBUTING](https://github.com/happytodev/.github/blob/main/CONTRIBUTING.md) for details.
 
 ## Security Vulnerabilities
 
