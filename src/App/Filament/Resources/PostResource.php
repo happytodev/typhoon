@@ -5,25 +5,26 @@ namespace App\Filament\Resources;
 use Filament\Forms;
 use App\Models\Post;
 use Filament\Tables;
+use Illuminate\Support\Str;
 use Filament\Resources\Form;
 use Filament\Resources\Table;
 use Filament\Resources\Resource;
+use Filament\Forms\Components\Card;
+use Filament\Tables\Filters\Filter;
+
+use Filament\Forms\Components\Toggle;
+use Filament\Tables\Actions\LinkAction;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\DatePicker;
+use Filament\Forms\Components\FileUpload;
+use Filament\Tables\Filters\SelectFilter;
+use Illuminate\Database\Eloquent\Builder;
+use Filament\Forms\Components\DateTimePicker;
+use Filament\Forms\Components\MarkdownEditor;
 use App\Filament\Resources\PostResource\Pages;
 use Filament\Forms\Components\BelongsToSelect;
 use App\Filament\Resources\PostResource\RelationManagers;
-
-use Illuminate\Support\Str;
-use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\Card;
-use Filament\Forms\Components\DatePicker;
-use Filament\Forms\Components\DateTimePicker;
-use Filament\Forms\Components\MarkdownEditor;
-use Filament\Tables\Actions\LinkAction;
-use Filament\Tables\Columns\TextColumn;
-use Filament\Tables\Filters\Filter;
-use Filament\Tables\Filters\SelectFilter;
-use Illuminate\Database\Eloquent\Builder;
-use Filament\Forms\Components\FileUpload;
 
 class PostResource extends Resource
 {
@@ -89,6 +90,9 @@ class PostResource extends Resource
                     BelongsToSelect::make('category_id')
                         ->relationship('category', 'name')
                         ->required(),
+                    Toggle::make('featured')
+                        ->label('Featured')
+                        ->default(false),
                     // DatePicker::make('published_at')
                     //     ->nullable()
                     //     ->helperText('If in the past, the post will go live immediately.'),

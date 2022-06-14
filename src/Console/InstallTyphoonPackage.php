@@ -28,6 +28,10 @@ class InstallTyphoonPackage extends Command
 
         $this->creatingResources();
 
+        // Deploying Typhoon Components
+        $this->info('>>> Publishing components...');
+        $this->publishComponents();
+
         // Create first user
         $this->info('>>> Creating first user...');
         $this->createFirstUser();
@@ -36,6 +40,10 @@ class InstallTyphoonPackage extends Command
         $this->info('>>> Writing CSS...');
         $this->writeCss();
 
+        //Update config file
+        $this->info('>>> Updating config file...');
+        $this->updateConfigFile();
+
         // Installation done with success
         $this->info('TyphoonCMS Package installed successfully.');
         $this->info('You can now edit `content/users/1.md`');
@@ -43,11 +51,30 @@ class InstallTyphoonPackage extends Command
         $this->info('to be authorized to access the admin panel.');
     }
 
+    private function publishComponents()
+    {
+        $params = [
+            '--provider' => "HappyToDev\Typhoon\TyphoonServiceProvider",
+            '--tag' => "typhoon-components"
+        ];
+
+        $this->call('vendor:publish', $params);
+    }
+
+    private function updateConfigFile()
+    {
+        $params = [
+            '--provider' => "HappyToDev\Typhoon\TyphoonServiceProvider",
+            '--tag' => "typhoon-filament-config"
+        ];
+
+        $this->call('vendor:publish', $params);
+    }
+
     private function createFirstUser()
     {
         $this->call('make:filament-user');
         $this->info('First user created successfully.');
-
     }
 
     private function configExists($fileName)

@@ -11,9 +11,9 @@ class HomeController extends Controller
     {
         $featuredPosts = $this->getFeaturedPosts();
 
-        $posts = Post::all();
+        $allPosts = Post::all();
 
-        return view('typhoon::' . config('typhoon.template') . '.home.index', compact('featuredPosts', 'posts'));
+        return view('typhoon::' . config('typhoon.template') . '.home.index', compact('featuredPosts', 'allPosts'));
     }
 
 

@@ -15,7 +15,7 @@
             </div>
             <div class="flex flex-wrap -m-4">
                 @forelse ($posts as $post)
-                <div class="xl:w-1/4 md:w-1/2 p-4
+                {{-- <div class="xl:w-1/4 md:w-1/2 p-4
                 transition ease-in-out delay-150 
                 hover:-translate-y-1 hover:scale-110 duration-300">
                     <div class="{{ $post->category->bg_color }} rounded-3xl">
@@ -42,7 +42,8 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
+                <x-typhoon-post :post=$post />
                 @empty
                 <p> 'No posts yet' </p>
                 @endforelse

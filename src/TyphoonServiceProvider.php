@@ -2,6 +2,8 @@
 
 namespace HappyToDev\Typhoon;
 
+use App\View\Components\TyphoonHero;
+use Illuminate\Support\Facades\Blade;
 use Spatie\LaravelPackageTools\Package;
 use HappyToDev\Typhoon\Commands\TyphoonCommand;
 use HappyToDev\Typhoon\Console\InstallTyphoonPackage;
@@ -24,6 +26,10 @@ class TyphoonServiceProvider extends PackageServiceProvider
             ], 'typhoon-models');
 
             $this->publishes([
+                __DIR__ . '/../config/filament.php' => config_path('filament.php'),
+            ], 'typhoon-filament-config');
+
+            $this->publishes([
                 __DIR__ . '/App/Filament/Resources' => 'app/Filament/Resources',
             ], 'typhoon-filament-resources');
 
@@ -38,6 +44,15 @@ class TyphoonServiceProvider extends PackageServiceProvider
             $this->commands([
                 InstallTyphoonPackage::class,
             ]);
+
+            // Load Blade components
+            $this->publishes([
+                __DIR__ . '/App/View/Components' => app_path('View/Components'),
+                __DIR__ . '/../resources/views/components' => resource_path('views/components'),
+            ], 'typhoon-components');
+
+            Blade::component('typhoon-hero', TyphoonHero::class);
+            Blade::component('typhoon-post', TyphoonPost::class);
         }
 
         // Load routes
