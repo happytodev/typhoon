@@ -1,0 +1,1 @@
+<x-typhoon.page.footer />

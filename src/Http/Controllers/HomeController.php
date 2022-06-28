@@ -3,10 +3,19 @@
 namespace HappyToDev\Typhoon\Http\Controllers;
 
 use App\Models\Post;
+use App\Interfaces\PostRepositoryInterface;
 use Illuminate\Database\Eloquent\Collection;
 
 class HomeController extends Controller
 {
+    private PostRepositoryInterface $postRepository;
+
+    public function __construct(PostRepositoryInterface $postRepository)
+    {
+        $this->postRepository = $postRepository;
+    }
+
+
     public function index()
     {
         $featuredPosts = $this->getFeaturedPosts();
@@ -26,9 +35,6 @@ class HomeController extends Controller
      */
     protected function getFeaturedPosts(int $limit = 6): Collection
     {
-        return Post::where('featured', true)
-            ->orderBy('created_at', 'desc')
-            ->limit($limit)
-            ->get();
+        return $this->postRepository->getFeaturedPosts();
     }
 }

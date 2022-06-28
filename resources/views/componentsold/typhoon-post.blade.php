@@ -1,5 +1,5 @@
 <div
-    class="xl:col-span-3 md:col-span-6 col-span-12 p-4
+    class="xl:w-1/4 md:w-1/2 p-4
                 transition ease-in-out delay-150 
                 hover:-translate-y-1 hover:scale-110 duration-300">
     <div class="{{ $post->category->bg_color }} rounded-3xl">

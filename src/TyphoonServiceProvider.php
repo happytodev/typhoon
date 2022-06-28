@@ -18,11 +18,13 @@ class TyphoonServiceProvider extends PackageServiceProvider
             // @todo Find a better way to do this
             // if (! class_exists('User')) {
             $this->publishes([
-                __DIR__ . '/Models/User.php' => 'app/Models/User.php',
-                __DIR__ . '/Models/Post.php' => 'app/Models/Post.php',
                 __DIR__ . '/Models/Category.php' => 'app/Models/Category.php',
-                __DIR__ . '/Models/Tag.php' => 'app/Models/Tag.php',
+                __DIR__ . '/Models/Configuration.php' => 'app/Models/Configuration.php',
+                __DIR__ . '/Models/Page.php' => 'app/Models/Page.php',
+                __DIR__ . '/Models/Post.php' => 'app/Models/Post.php',
                 __DIR__ . '/Models/PostTag.php' => 'app/Models/PostTag.php',
+                __DIR__ . '/Models/Tag.php' => 'app/Models/Tag.php',
+                __DIR__ . '/Models/User.php' => 'app/Models/User.php',
             ], 'typhoon-models');
 
             $this->publishes([

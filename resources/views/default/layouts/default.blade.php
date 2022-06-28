@@ -13,12 +13,16 @@
         <link rel="stylesheet" href="/css/app.css">
 
     </head>
-    <body class="antialiased">
+    <body class="flex flex-col min-h-screen antialiased ext-webkit ext-chrome ext-mac">
         {{-- Add header --}}
         @include('typhoon::' . config('typhoon.template') . '.partials.header')
-
-        <div class="container mx-auto px-5 py-24">
+        
+        {{-- <div class="container mx-auto px-5 py-24"> --}}
+        <div class="bg-gray-50 flex flex-col flex-grow">
             @yield('content')
         </div>
+    
+        @include('typhoon::' . config('typhoon.template') . '.partials.footer')
+    
     </body>
 </html>
