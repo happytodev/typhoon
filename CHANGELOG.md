@@ -3,7 +3,7 @@
 All notable changes to `typhoon` will be documented in this file.
 
 
-## WIP
+## v0.1.0 - 2022-07-17
 
 ### What's changed
 - Adding filamentphp to the package
