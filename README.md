@@ -34,18 +34,19 @@ Enter in your project directory :
 cd your-awesome-project-name
 ```
 
-Warning : Until Typhoon is published on Packagist, you have to clone this repo somewhere on your machine and update your composer.json by adding the following under the scripts section :
+Warning : Until Typhoon is published on Packagist, you have to VCS config instead:
 
 ```json
     "repositories": [
         {
-          "type": "path",
-          "url": "../../Packages/typhoon"
+          "type": "vcs",
+          "url": "https://github.com/happytodev/typhoon"
         }
     ],
+    "require": {
+      "happytodev/typhoon": "dev-main"
+    }
 ```
-
-Obviously, above repositories.url depends where did you install this package. Take care of adapting the path.
 
 You can install the package via composer:
 
