@@ -1,6 +1,6 @@
 <?php
 
-namespace HappyToDev\FlatCms\Database\Factories;
+namespace HappyToDev\Typhoon\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 

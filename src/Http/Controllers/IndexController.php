@@ -1,11 +1,13 @@
 <?php
 
-namespace HappyToDev\FlatCms\Http\Controllers;
+namespace HappyToDev\Typhoon\Http\Controllers;
 
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-use HappyToDev\FlatCms\Models\Post;
-use HappyToDev\FlatCms\Models\User;
+use HappyToDev\Typhoon\Models\Post;
+use HappyToDev\Typhoon\Models\User;
+use Illuminate\Support\Facades\Hash;
+
 
 class IndexController extends Controller
 {
@@ -16,7 +18,7 @@ class IndexController extends Controller
      */
     public function index()
     {
-        $rd1 = rand(1, 5);
+        $rd1 = rand(1, 500);
 
         // $user = new User();
         // $user->name = "John Doe";
@@ -25,8 +27,9 @@ class IndexController extends Controller
 
         try {
             //code...
+            $userPassword = Hash::make('password');
             $user = User::firstOrCreate(
-                ['name' => 'John Doe', 'email' => "jdoe$rd1@gmail.com", 'password' => 'secret']
+                ['name' => 'John Doe', 'email' => "jdoe$rd1@gmail.com", 'password' => $userPassword]
             );
 
             $post = new Post;

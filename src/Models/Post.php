@@ -1,15 +1,10 @@
 <?php
 
-namespace HappyToDev\FlatCms\Models;
+namespace App\Models;
 
 use Orbit\Concerns\Orbital;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
 
 class Post extends Model
 {
@@ -20,9 +15,12 @@ class Post extends Model
         $table->id();
         $table->string('title');
         $table->string('tldr')->nullable();
-        $table->string('slug')->nullable();
+        $table->string('slug')->unique();
         $table->text('content')->nullable();
+        $table->boolean('featured')->default(false);
         $table->unsignedBigInteger('user_id');
+        $table->unsignedBigInteger('category_id');
+        $table->string('main_image')->nullable();
     }
 
     /**
@@ -33,7 +31,12 @@ class Post extends Model
     protected $fillable = [
         'title',
         'tldr',
-        'content'
+        'slug',
+        'content',
+        'featured',
+        'user_id',
+        'category_id',
+        'main_image'
     ];
 
     /**
@@ -52,11 +55,37 @@ class Post extends Model
     protected $casts = [
     ];
 
+    // gitflow.path.hooks=/Users/happytodev/Packages/flat-cms/.git/hooks
 
+
+    /**
+     * Find user associated with this post
+     *
+     * @return User
+     */
     public function user()
     {
         return $this->belongsTo(User::class);
     }
+
+    /**
+     * Find category associated with this post
+     *
+     * @return Category
+     *
+     */
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+
+    // Get posts from this user
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class)->withPivot('id')->using(PostTag::class);
+    }
+
+
 
 
     // Get picture 
