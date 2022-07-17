@@ -1,12 +1,12 @@
 <?php
 
-namespace HappyToDev\FlatCms\Commands;
+namespace HappyToDev\Typhoon\Commands;
 
 use Illuminate\Console\Command;
 
-class FlatCmsCommand extends Command
+class TyphoonCommand extends Command
 {
-    public $signature = 'flat-cms';
+    public $signature = 'typhoon';
 
     public $description = 'My command';
 

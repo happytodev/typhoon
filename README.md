@@ -1,15 +1,14 @@
 
-[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/support-ukraine.svg?t=1" />](https://supportukrainenow.org)
 
 # Content Management with flat database, using TALL Stack
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/happytodev/flat-cms.svg?style=flat-square)](https://packagist.org/packages/happytodev/flat-cms)
-[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/happytodev/flat-cms/run-tests?label=tests)](https://github.com/happytodev/flat-cms/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/happytodev/flat-cms/Check%20&%20fix%20styling?label=code%20style)](https://github.com/happytodev/flat-cms/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amain)
-[![Total Downloads](https://img.shields.io/packagist/dt/happytodev/flat-cms.svg?style=flat-square)](https://packagist.org/packages/happytodev/flat-cms)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/happytodev/typhoon.svg?style=typhoon-square)](https://packagist.org/packages/happytodev/typhoon)
+[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/happytodev/typhoon/run-tests?label=tests)](https://github.com/happytodev/typhoon/actions?query=workflow%3Arun-tests+branch%3Amain)
+[![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/happytodev/typhoon/Check%20&%20fix%20styling?label=code%20style)](https://github.com/happytodev/typhoon/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amain)
+[![Total Downloads](https://img.shields.io/packagist/dt/happytodev/typhoon.svg?style=typhoon-square)](https://packagist.org/packages/happytodev/typhoon)
 
-Flat-Cms is a way to manage your content as you want.
-Why Flat ? Because he doesn't use database. It uses Orbit.
+Typhoon is a way to manage your content as you want.
+Why Typhoon ? Because he doesn't use database. It uses Orbit.
 
 ## Support us
 
@@ -35,13 +34,13 @@ Enter in your project directory :
 cd your-awesome-project-name
 ```
 
-Warning : Until FlatCms is published on Packagist, you have to clone this repo somewhere on your machine and update your composer.json by adding the following under the scripts section :
+Warning : Until Typhoon is published on Packagist, you have to clone this repo somewhere on your machine and update your composer.json by adding the following under the scripts section :
 
 ```json
     "repositories": [
         {
           "type": "path",
-          "url": "../../Packages/flat-cms"
+          "url": "../../Packages/typhoon"
         }
     ],
 ```
@@ -51,21 +50,26 @@ Obviously, above repositories.url depends where did you install this package. Ta
 You can install the package via composer:
 
 ```bash
-composer require happytodev/flat-cms
+composer require happytodev/typhoon
 ```
 
 You can now run the install script via Artisan :
 
 ```bash
-php artisan flat-cms:install
+php artisan typhoon:install
 ```
 
 When the script ask you `User model file already exists. Do you want to overwrite it? (yes/no) [no]:` you can answer yes. It will modify the default User model to adapt it to use Orbit instead classic database like for example MySQL.
 
-Now you have to create the first user :
 
-```bash
-php artisan make:filament-user
+
+By default, a fresh installation of Laravel provides one route in routes/web.php to the root of your website.
+If you want the homepage of typhoon project instead, you have to remove or comment the default route in routes/web.php :
+
+```php
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 ```
 
 Last thing, go to the `content\users`folders and edit with your favorite editor the first user, usually it is the file `1.md`:
@@ -96,12 +100,40 @@ updated_at: 2022-05-28T09:04:57+00:00
 ---
 ```
 
+# Dev option
+
+Only if you need to adapt assets and compile them
+
+Install TailwindCSS :
+
+```bash
+npm install -D tailwindcss
+```
+
+Install Npm dependencies and compile assets :
+```bash
+npm install && npm run dev
+```
+
+compile tailwind asset
+```bash
+npx tailwindcss -i ./resources/css/app.css -o ./public/css/app.css
+```
+
+
+
+# How to connect
+  
 Now you can connect to the backoffice, via the url of your project and adding to it `/admin`
 
 Out of the box, you have this entities :
 
 - users
 - posts
+- categories
+- tags
+
+To create a post, a category is necessary. So, your first step is to create a category, before create a post.
 
 
 ## Testing
@@ -116,7 +148,7 @@ Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed re
 
 ## Contributing
 
-Please see [CONTRIBUTING](https://github.com/spatie/.github/blob/main/CONTRIBUTING.md) for details.
+Please see [CONTRIBUTING](https://github.com/happytodev/.github/blob/main/CONTRIBUTING.md) for details.
 
 ## Security Vulnerabilities
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace HappyToDev\FlatCms\Models;
+namespace HappyToDev\Typhoon\Models;
 
 use Orbit\Concerns\Orbital;
 use Illuminate\Database\Eloquent\Model;

@@ -1,6 +1,17 @@
 <?php
-// config for happytodev/FlatCms
+// config for happytodev/Typhoon
 return [
+
+    /*
+    |--------------------------------------------------------------------------
+    | Template name
+    |--------------------------------------------------------------------------
+    |
+    | This value is the name of your theme. A theme takes place in folder
+    | resources/views/{template-name}.
+    |
+    */
+    'name' => env('TYPHOONCMS_NAME', 'Typhoon Instance'),
 
     /*
     |--------------------------------------------------------------------------
@@ -22,6 +33,8 @@ return [
     | Possibles values are the main colours of tailwindcss.
     |
     */
-    'template_color' => 'indigo'
+    'template_color' => 'indigo',
+
+
 
 ];
