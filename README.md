@@ -48,10 +48,32 @@ Warning : Until Typhoon is published on Packagist, you have to VCS config instea
     }
 ```
 
-You can install the package via composer:
+If you don't add above require block in your `composer.json` file, you can install the package via composer:
 
 ```bash
-composer require happytodev/typhoon
+composer require happytodev/typhoon=dev-main
+```
+
+As Typhoon, use `filament-navigation` plugin from Ryan Chandler and as I adapted it (fork is here https://github.com/happytodev/filament-navigation) to be compliant with Orbit (also from Ryan) and as the PR is waiting approval from Ryan, you have to set an another settings before install Typhoon.
+
+Follow these steps :
+
+```json
+    "repositories": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/happytodev/filament-navigation"
+        }
+    ],
+    "require": {
+      "ryangjchandler/filament-navigation": "dev-main"
+    }
+```
+
+If you don't add above require block in your `composer.json` file, you can install the package via composer:
+
+```bash
+composer require ryangjchandler/filament-navigation=dev-main
 ```
 
 You can now run the install script via Artisan :
