@@ -18,6 +18,6 @@ class PostController extends Controller
     {
         $post = Post::where('slug', $slug)->first();
         // dd($post);
-        return view('typhoon::posts.show', compact('post'));
+        return view('typhoon::' . config('typhoon.template') . '.posts.show', compact('post'));
     }
 }

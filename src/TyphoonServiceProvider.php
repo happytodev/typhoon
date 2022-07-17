@@ -32,6 +32,10 @@ class TyphoonServiceProvider extends PackageServiceProvider
             ], 'typhoon-filament-config');
 
             $this->publishes([
+                __DIR__ . '/../config/typhoon.php' => config_path('typhoon.php'),
+            ], 'typhoon-config');
+
+            $this->publishes([
                 __DIR__ . '/App/Filament/Resources' => 'app/Filament/Resources',
             ], 'typhoon-filament-resources');
 
