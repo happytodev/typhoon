@@ -63,8 +63,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "HappyToDev\\Typhoon\\TyphoonServiceProvider",
-                "App\\Providers\\RepositoryServiceProvider"
+                "HappyToDev\\Typhoon\\TyphoonServiceProvider"
             ],
             "aliases": {
                 "Typhoon": "HappyToDev\\Typhoon\\Facades\\Typhoon"

@@ -65,7 +65,7 @@ composer require ryangjchandler/filament-navigation=dev-main
 To use Orbit with filament-navigation, you have to add a key to your .env file :
 
 ```env
-FILAMENT_NAVIGATION_DB_ENGINE=orbit
+  FILAMENT_NAVIGATION_DB_ENGINE=orbit
 ```
 
 
@@ -77,6 +77,28 @@ php artisan typhoon:install
 
 When the script ask you `User model file already exists. Do you want to overwrite it? (yes/no) [no]:` you can answer yes. It will modify the default User model to adapt it to use Orbit instead classic database like for example MySQL.
 
+You have to publish the typhoon config file :
+
+```bash
+php artisan vendor:publish --force --tag="typhoon-config"
+```
+
+You have to publish the typhoon interfaces files :
+
+```bash
+php artisan vendor:publish --force --tag="typhoon-interfaces"
+```
+You have to publish the typhoon repositories files :
+
+```bash
+php artisan vendor:publish --force --tag="typhoon-repositories"
+```
+
+To use filament-social-networks correctly, you have to publish the correct model using Orbit :
+
+```bash
+php artisan vendor:publish --tag="filament-social-networks-model-with-orbit"
+```
 
 
 By default, a fresh installation of Laravel provides one route in routes/web.php to the root of your website.

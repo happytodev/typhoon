@@ -3,7 +3,7 @@
 namespace App\View\Components\Typhoon\Page;
 
 use Illuminate\View\Component;
-use App\Interfaces\PostRepositoryInterface;
+use App\Repositories\PostRepository;
 
 class LastPosts extends Component
 {
@@ -28,7 +28,7 @@ class LastPosts extends Component
      * @return void
      */
     public function __construct(
-        PostRepositoryInterface $postRepository,
+        PostRepository $postRepository,
         $latestPostsTitle,
         $latestPostsNumber,
         $latestPostsDescription

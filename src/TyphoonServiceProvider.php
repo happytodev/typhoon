@@ -2,6 +2,7 @@
 
 namespace HappyToDev\Typhoon;
 
+//use App\Providers\RepositoryServiceProvider;
 use App\View\Components\TyphoonHero;
 use Illuminate\Support\Facades\Blade;
 use Spatie\LaravelPackageTools\Package;
@@ -62,6 +63,11 @@ class TyphoonServiceProvider extends PackageServiceProvider
                 __DIR__ . '/App/Interfaces' => app_path('Interfaces'),
             ], 'typhoon-interfaces');
 
+            // Loads repositories
+            $this->publishes([
+                __DIR__ . '/App/Repositories' => app_path('Repositories'),
+            ], 'typhoon-repositories');
+
             Blade::component('typhoon-hero', TyphoonHero::class);
             Blade::component('typhoon-post', TyphoonPost::class);
         }
@@ -71,8 +77,6 @@ class TyphoonServiceProvider extends PackageServiceProvider
 
         // Load views and defining key to call them (typhoon)
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'typhoon');
-
-
 
     }
 
