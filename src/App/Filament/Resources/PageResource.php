@@ -64,19 +64,83 @@ class PageResource extends Resource
                                         '6' => 'Half',
                                         '3' => '1/4'
                                     ])
-                                    ->default('12')
+                                    ->default('12'),
+                                Select::make('backgroundColor')
+                                    ->options([
+                                        'bg-white' => 'White',
+                                        'bg-amber-100' => 'Amber 100',
+                                        'bg-blue-100' => 'Blue 100', 
+                                        'bg-green-100' => 'Green 100',
+                                        'bg-indigo-100' => 'Indigo 100',
+                                        'bg-lime-100' => 'Lime 100',
+                                        'bg-orange-100' => 'Orange 100',
+                                        'bg-yellow-100' => 'Yellow 100',
+                                    ])
+                                    ->default('bg-white')
                             ]),
                         Builder\Block::make('featured-post')
                             ->schema([
-                                TextInput::make('featuredPostTitle')
+                                TextInput::make('featuredPostsTitle')
                                     ->label('Featured Post title')
                                     ->required(),
+                                MarkdownEditor::make('featuredPostsDescription')
+                                    ->label('Description of featured block')
+                                    ->required(),
+                                TextInput::make('featuredPostsNumber')
+                                    ->label('Featured Post limit to display'),
+                                Select::make('backgroundColor')
+                                    ->options([
+                                        'bg-white' => 'White',
+                                        'bg-amber-100' => 'Amber 100',
+                                        'bg-blue-100' => 'Blue 100', 
+                                        'bg-green-100' => 'Green 100',
+                                        'bg-indigo-100' => 'Indigo 100',
+                                        'bg-lime-100' => 'Lime 100',
+                                        'bg-orange-100' => 'Orange 100',
+                                        'bg-yellow-100' => 'Yellow 100',
+                                    ])
+                                    ->default('bg-white')
+                            ]),
+                        Builder\Block::make('latest-post')
+                            ->schema([
+                                TextInput::make('latestPostsTitle')
+                                    ->label('Latest Post title')
+                                    ->required(),
+                                MarkdownEditor::make('latestPostsDescription')
+                                    ->label('Description of latest block')
+                                    ->required(),
+                                TextInput::make('latestPostsNumber')
+                                    ->label('Latest Post limit to display'),
+                                Select::make('backgroundColor')
+                                    ->options([
+                                        'bg-white' => 'White',
+                                        'bg-amber-100' => 'Amber 100',
+                                        'bg-blue-100' => 'Blue 100', 
+                                        'bg-green-100' => 'Green 100',
+                                        'bg-indigo-100' => 'Indigo 100',
+                                        'bg-lime-100' => 'Lime 100',
+                                        'bg-orange-100' => 'Orange 100',
+                                        'bg-yellow-100' => 'Yellow 100',
+                                    ])
+                                    ->default('bg-white')
                             ]),
                         Builder\Block::make('paragraph')
                             ->schema([
                                 MarkdownEditor::make('content')
                                     ->label('Paragraph')
                                     ->required(),
+                                Select::make('backgroundColor')
+                                    ->options([
+                                        'bg-white' => 'White',
+                                        'bg-amber-100' => 'Amber 100',
+                                        'bg-blue-100' => 'Blue 100', 
+                                        'bg-green-100' => 'Green 100',
+                                        'bg-indigo-100' => 'Indigo 100',
+                                        'bg-lime-100' => 'Lime 100',
+                                        'bg-orange-100' => 'Orange 100',
+                                        'bg-yellow-100' => 'Yellow 100',
+                                    ])
+                                    ->default('bg-white')
                             ]),
                         Builder\Block::make('image')
                             ->schema([
@@ -87,6 +151,71 @@ class PageResource extends Resource
                                 TextInput::make('alt')
                                     ->label('Alt text')
                                     ->required(),
+                                Select::make('backgroundColor')
+                                    ->options([
+                                        'bg-white' => 'White',
+                                        'bg-amber-100' => 'Amber 100',
+                                        'bg-blue-100' => 'Blue 100', 
+                                        'bg-green-100' => 'Green 100',
+                                        'bg-indigo-100' => 'Indigo 100',
+                                        'bg-lime-100' => 'Lime 100',
+                                        'bg-orange-100' => 'Orange 100',
+                                        'bg-yellow-100' => 'Yellow 100',
+                                    ])
+                                    ->default('bg-white'),
+                                Select::make('width')
+                                    ->options([
+                                        'full' => 'Full',
+                                        'centered' => 'Centered'
+                                    ])
+                                    ->default('full')
+                            ]),
+                        Builder\Block::make('hero')
+                            ->schema([
+                                TextInput::make('heroTitle')
+                                    ->label('Title')
+                                    ->required(),
+                                MarkdownEditor::make('heroSubtitle')
+                                    ->label('Sub Title')
+                                    ->required(),
+                                MarkdownEditor::make('heroText')
+                                    ->label('Description text'),
+                                FileUpload::make('heroImage')
+                                    ->label('Image')
+                                    ->image()
+                                    ->required(),
+                                Select::make('heroImagePosition')
+                                    ->options([
+                                        'left' => 'Left',
+                                        'right' => 'Right'
+                                    ])
+                                    ->default('right'),
+                                Select::make('backgroundColor')
+                                    ->options([
+                                        'bg-white' => 'White',
+                                        'bg-amber-100' => 'Amber 100',
+                                        'bg-amber-300' => 'Amber 300',
+                                        'bg-amber-600' => 'Amber 600',
+                                        'bg-blue-100' => 'Blue 100',
+                                        'bg-blue-300' => 'Blue 300',
+                                        'bg-blue-600' => 'Blue 600',
+                                        'bg-green-100' => 'Green 100',
+                                        'bg-green-300' => 'Green 300',
+                                        'bg-green-600' => 'Green 600',
+                                        'bg-indigo-100' => 'Indigo 100',
+                                        'bg-indigo-300' => 'Indigo 300',
+                                        'bg-indigo-600' => 'Indigo 600',
+                                        'bg-lime-100' => 'Lime 100',
+                                        'bg-lime-300' => 'Lime 300',
+                                        'bg-lime-600' => 'Lime 600',
+                                        'bg-orange-100' => 'Orange 100',
+                                        'bg-orange-300' => 'Orange 300',
+                                        'bg-orange-600' => 'Orange 600',
+                                        'bg-yellow-100' => 'Yellow 100',
+                                        'bg-yellow-300' => 'Yellow 300',
+                                        'bg-yellow-600' => 'Yellow 600',
+                                    ])
+                                    ->default('bg-white')
                             ]),
                     ])
                 ])->columns(1)

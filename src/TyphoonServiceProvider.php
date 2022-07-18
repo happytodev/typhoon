@@ -57,6 +57,11 @@ class TyphoonServiceProvider extends PackageServiceProvider
                 __DIR__ . '/../resources/views/components' => resource_path('views/components'),
             ], 'typhoon-components');
 
+            // Loads interfaces
+            $this->publishes([
+                __DIR__ . '/App/Interfaces' => app_path('Interfaces'),
+            ], 'typhoon-interfaces');
+
             Blade::component('typhoon-hero', TyphoonHero::class);
             Blade::component('typhoon-post', TyphoonPost::class);
         }
@@ -66,6 +71,8 @@ class TyphoonServiceProvider extends PackageServiceProvider
 
         // Load views and defining key to call them (typhoon)
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'typhoon');
+
+
 
     }
 

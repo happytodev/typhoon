@@ -48,7 +48,7 @@
                 </a> --}}
                 
             </span>
-            <x-happytodev-filament-social-networks name="art"/>
+            <x-happytodev-filament-social-networks name="main"/>
         </div>
     </footer>
 </div>
