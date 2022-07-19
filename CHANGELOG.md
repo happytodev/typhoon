@@ -2,7 +2,11 @@
 
 All notable changes to `typhoon` will be documented in this file.
 
+## v0.1.6 - 2022-07-19
 
+### What's changed
+- Try to improve installation process
+- Integrate changes made on local dev project into the core project
 ## v0.1.0 - 2022-07-17
 
 ### What's changed
