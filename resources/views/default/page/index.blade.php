@@ -3,7 +3,7 @@
 
 @section('content')
     @foreach ($page->content as $content)
-        <section class="text-gray-600 body-font {{ $content['data']['backgroundColor'] }}">
+        <section class="text-gray-600 body-font {{ $content['data']['backgroundColor'] ?? 'bg-white' }}">
             <div class="md:pt-8 md:pb-8 md:grid-rows-1 max-w-screen-2xl grid grid-cols-12 md:mx-24 xl:mx-auto">
 
 

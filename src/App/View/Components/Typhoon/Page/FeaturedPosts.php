@@ -4,11 +4,11 @@ namespace App\View\Components\Typhoon\Page;
 
 use App\Models\Post;
 use Illuminate\View\Component;
-use App\Interfaces\PostRepositoryInterface;
+use App\Repositories\PostRepository;
 
 class FeaturedPosts extends Component
 {
-    private PostRepositoryInterface $postRepository;
+    private PostRepository $postRepository;
 
     /**
      * Number of featured posts to display
@@ -34,7 +34,7 @@ class FeaturedPosts extends Component
      * @return void
      */
     public function __construct(
-        PostRepositoryInterface $postRepository,
+        PostRepository $postRepository,
         $featuredPostsTitle,
         $featuredPostsNumber,
         $featuredPostsDescription
