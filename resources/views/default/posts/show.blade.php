@@ -6,7 +6,7 @@
         <div class="container px-5 py-24 mx-auto flex flex-col">
             <div class="lg:w-4/6 mx-auto">
                 <div class="rounded-lg h-full overflow-hidden">
-                    <img alt="content" class="object-cover object-center h-full w-full" src="/{{ $post->main_image }}">
+                    <img alt="content" class="object-cover object-center h-full w-full" src="{{ Storage::url($post->main_image) }}">
                 </div>
                 <div class="flex flex-col sm:flex-row mt-10">
                     <div class="sm:w-1/4 text-center sm:pr-8 sm:py-8">

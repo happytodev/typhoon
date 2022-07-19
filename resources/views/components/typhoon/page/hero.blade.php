@@ -3,7 +3,7 @@
         <div class="container mx-auto flex px-5 py-16 md:flex-row flex-col items-center">
         @if ($heroImagePosition == 'left')
             <div class="md:w-1/2 w-full">
-                <img class="object-cover object-center rounded" alt="hero" src="/{{ $heroImage }}">
+                <img class="object-cover object-center rounded" alt="hero" src="{{ Storage::url($heroImage) }}">
             </div>            
             <div class="lg:flex-grow md:w-1/2 w-full lg:py-8 md:py-16 flex flex-col md:text-left my-8 md:my-0 items-center text-center md:ml-16">
                 <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium">{{ $heroTitle }}</h1>
@@ -34,7 +34,7 @@
                 </div> --}}
             </div>
             <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
-                <img class="object-cover object-center rounded" alt="hero" src="/{{ $heroImage }}">
+                <img class="object-cover object-center rounded" alt="hero" src="{{ Storage::url($heroImage) }}">
             </div>
         @endif
         </div>
