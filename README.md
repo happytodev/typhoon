@@ -100,6 +100,18 @@ To use filament-social-networks correctly, you have to publish the correct model
 php artisan vendor:publish --tag="filament-social-networks-model-with-orbit"
 ```
 
+```bash
+php artisan vendor:publish --tag="filament-social-networka-assets"
+```
+
+
+Maybe you need also this :
+
+```bash
+php artisan storage:link
+```
+  
+
 
 By default, a fresh installation of Laravel provides one route in routes/web.php to the root of your website.
 If you want the homepage of typhoon project instead, you have to remove or comment the default route in routes/web.php :
@@ -138,7 +150,7 @@ updated_at: 2022-05-28T09:04:57+00:00
 ---
 ```
 
-# Dev option
+# Compile assets
 
 Only if you need to adapt assets and compile them
 
@@ -146,6 +158,10 @@ Install TailwindCSS :
 
 ```bash
 npm install -D tailwindcss
+```
+
+```bash
+npm install @tailwindcss/typography
 ```
 
 Install Npm dependencies and compile assets :
@@ -157,6 +173,8 @@ compile tailwind asset
 ```bash
 npx tailwindcss -i ./resources/css/app.css -o ./public/css/app.css
 ```
+
+
 
 
 
