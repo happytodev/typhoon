@@ -2,6 +2,9 @@
 
 All notable changes to `typhoon` will be documented in this file.
 
+## v0.1.7 - 2022-07-19
+- Use Storage::url() helper for every image to avoid 404 on Shared Hosts
+
 ## v0.1.6 - 2022-07-19
 
 ### What's changed
