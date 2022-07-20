@@ -2,6 +2,9 @@
 
 All notable changes to `typhoon` will be documented in this file.
 
+## v0.1.8 - 2022-07-20
+- Add the possibility to hide a page block via a toggle
+
 ## v0.1.7 - 2022-07-19
 - Use Storage::url() helper for every image to avoid 404 on Shared Hosts
 
