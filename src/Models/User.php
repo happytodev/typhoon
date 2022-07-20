@@ -24,7 +24,8 @@ class User extends Authenticatable implements FilamentUser
         $table->string('password');
         $table->boolean('is_admin')->default(false);
         $table->rememberToken();
-        $table->string('bio', 255)->nullable();
+        $table->string('bio', 1200)->nullable();
+        $table->string('picture')->nullable();
     }
 
     /**
@@ -36,7 +37,8 @@ class User extends Authenticatable implements FilamentUser
         'name',
         'email',
         'password',
-        'bio'
+        'bio',
+        'picture'
     ];
 
     /**

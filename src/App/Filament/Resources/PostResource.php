@@ -97,7 +97,7 @@ class PostResource extends Resource
                     //     ->nullable()
                     //     ->helperText('If in the past, the post will go live immediately.'),
                 ])
-                    ->columns(2),
+                ->columns(2),
                 Card::make([
                     FileUpload::make('main_image')
                     ->nullable(),
