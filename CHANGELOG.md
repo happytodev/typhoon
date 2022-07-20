@@ -2,6 +2,10 @@
 
 All notable changes to `typhoon` will be documented in this file.
 
+## v0.1.9 - 2022-07-20
+- Add bio description for user (1200 characters max)
+- Add picture field for user. If none provided, display a default avatar
+
 ## v0.1.8 - 2022-07-20
 - Add the possibility to hide a page block via a toggle
 
