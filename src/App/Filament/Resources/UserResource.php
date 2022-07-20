@@ -26,6 +26,11 @@ class UserResource extends Resource
                 Forms\Components\TextInput::make('email')
                     ->email()
                     ->required(),
+                Forms\Components\MarkdownEditor::make('bio')
+                    ->label('Edit bio (max 255 characters)')
+                    ->maxLength(255)
+                    ->nullable()
+                    ->columnSpan(2),
                 // Forms\Components\TextInput::make('password')
                 //     ->password()
                 //     ->required(),

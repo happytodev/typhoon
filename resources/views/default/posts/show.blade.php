@@ -21,7 +21,11 @@
                         <div class="flex flex-col items-center text-center justify-center">
                             <h2 class="font-medium title-font mt-4 text-gray-900 text-lg">{{ $post->user->name }}</h2>
                             <div class="w-12 h-1 bg-indigo-500 rounded mt-2 mb-4"></div>
-                            <p class="text-base">Author bio needs to be implemented.</p>
+                            <div class="prose leading-relaxed text-base text-justify mb-4">
+                                <x-markdown>
+                                    {{ $post->user->bio }}
+                                </x-markdown>
+                            </div>
                         </div>
                     </div>
                     <div
