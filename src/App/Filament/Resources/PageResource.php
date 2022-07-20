@@ -11,6 +11,7 @@ use Filament\Resources\Table;
 use Filament\Resources\Resource;
 use Filament\Forms\Components\Card;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Toggle;
 use Filament\Forms\Components\Builder;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\FileUpload;
@@ -76,7 +77,10 @@ class PageResource extends Resource
                                         'bg-orange-100' => 'Orange 100',
                                         'bg-yellow-100' => 'Yellow 100',
                                     ])
-                                    ->default('bg-white')
+                                    ->default('bg-white'),
+                                Toggle::make('visible')
+                                    ->label('Visible')
+                                    ->default(true)
                             ]),
                         Builder\Block::make('featured-post')
                             ->schema([
@@ -99,7 +103,10 @@ class PageResource extends Resource
                                         'bg-orange-100' => 'Orange 100',
                                         'bg-yellow-100' => 'Yellow 100',
                                     ])
-                                    ->default('bg-white')
+                                    ->default('bg-white'),
+                                Toggle::make('visible')
+                                    ->label('Visible')
+                                    ->default(true)
                             ]),
                         Builder\Block::make('latest-post')
                             ->schema([
@@ -122,7 +129,10 @@ class PageResource extends Resource
                                         'bg-orange-100' => 'Orange 100',
                                         'bg-yellow-100' => 'Yellow 100',
                                     ])
-                                    ->default('bg-white')
+                                    ->default('bg-white'),
+                                Toggle::make('visible')
+                                        ->label('Visible')
+                                        ->default(true)
                             ]),
                         Builder\Block::make('paragraph')
                             ->schema([
@@ -140,7 +150,10 @@ class PageResource extends Resource
                                         'bg-orange-100' => 'Orange 100',
                                         'bg-yellow-100' => 'Yellow 100',
                                     ])
-                                    ->default('bg-white')
+                                    ->default('bg-white'),
+                                Toggle::make('visible')
+                                        ->label('Visible')
+                                        ->default(true)
                             ]),
                         Builder\Block::make('image')
                             ->schema([
@@ -168,7 +181,10 @@ class PageResource extends Resource
                                         'full' => 'Full',
                                         'centered' => 'Centered'
                                     ])
-                                    ->default('full')
+                                    ->default('full'),
+                                Toggle::make('visible')
+                                        ->label('Visible')
+                                        ->default(true)
                             ]),
                         Builder\Block::make('hero')
                             ->schema([
@@ -215,7 +231,10 @@ class PageResource extends Resource
                                         'bg-yellow-300' => 'Yellow 300',
                                         'bg-yellow-600' => 'Yellow 600',
                                     ])
-                                    ->default('bg-white')
+                                    ->default('bg-white'),
+                                Toggle::make('visible')
+                                        ->label('Visible')
+                                        ->default(true)
                             ]),
                     ])
                 ])->columns(1)
