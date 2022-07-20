@@ -2,14 +2,16 @@
 
 namespace App\Filament\Resources;
 
+use Filament\Forms;
+use App\Models\User;
+use Filament\Tables;
+use Filament\Resources\Form;
+use Filament\Resources\Table;
+use Filament\Resources\Resource;
+use Filament\Forms\Components\Card;
+use Filament\Forms\Components\FileUpload;
 use App\Filament\Resources\UserResource\Pages;
 use App\Filament\Resources\UserResource\RelationManagers;
-use App\Models\User;
-use Filament\Forms;
-use Filament\Resources\Form;
-use Filament\Resources\Resource;
-use Filament\Resources\Table;
-use Filament\Tables;
 
 class UserResource extends Resource
 {
@@ -26,6 +28,16 @@ class UserResource extends Resource
                 Forms\Components\TextInput::make('email')
                     ->email()
                     ->required(),
+                Forms\Components\MarkdownEditor::make('bio')
+                    ->label('Edit bio (max 1200 characters)')
+                    ->maxLength(1200)
+                    ->nullable()
+                    ->columnSpan(2),
+                Card::make([
+                        FileUpload::make('picture')
+                        ->nullable(),
+                    ])
+                    ->columns(1),
                 // Forms\Components\TextInput::make('password')
                 //     ->password()
                 //     ->required(),
