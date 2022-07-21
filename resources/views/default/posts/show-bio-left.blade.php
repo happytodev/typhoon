@@ -8,25 +8,8 @@
                 <div class="rounded-lg h-full overflow-hidden">
                     <img alt="content" class="object-cover object-center h-full w-full" src="{{ Storage::url($post->main_image) }}">
                 </div>
-                <div class="flex flex-col mt-10">
-
-                    <div
-                        class="prose-xl sm:pl-8 sm:py-8 sm:border-l border-gray-200 sm:border-t-0 border-t mt-4 pt-4 sm:mt-0 text-center sm:text-left">
-                        <h2 class="text-4xl">{{ $post->title }}</h2>
-                        <p class="leading-relaxed text-lg mb-4">
-                            <x-markdown>
-                            {{ $post->content }}    
-                            </x-markdown>
-                        </p>
-                        <a class="text-indigo-500 inline-flex items-center">Learn More
-                            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
-                                <path d="M5 12h14M12 5l7 7-7 7"></path>
-                            </svg>
-                        </a>
-                    </div>
-                    {{-- User's Bio --}}
-                    <div class="text-center sm:pr-8 sm:py-8">
+                <div class="flex flex-col sm:flex-row mt-10">
+                    <div class="sm:w-1/4 text-center sm:pr-8 sm:py-8">
                         <div
                             class="w-20 h-20 rounded-full inline-flex items-center justify-center bg-gray-200 text-gray-400">
                             @if($post->user->picture)
@@ -48,6 +31,21 @@
                                 </x-markdown>
                             </div>
                         </div>
+                    </div>
+                    <div
+                        class="prose sm:w-3/4 sm:pl-8 sm:py-8 sm:border-l border-gray-200 sm:border-t-0 border-t mt-4 pt-4 sm:mt-0 text-center sm:text-left">
+                        <h2 class="text-4xl">{{ $post->title }}</h2>
+                        <p class="leading-relaxed text-lg mb-4">
+                            <x-markdown>
+                            {{ $post->content }}    
+                            </x-markdown>
+                        </p>
+                        <a class="text-indigo-500 inline-flex items-center">Learn More
+                            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
+                                <path d="M5 12h14M12 5l7 7-7 7"></path>
+                            </svg>
+                        </a>
                     </div>
                 </div>
             </div>

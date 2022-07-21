@@ -2,6 +2,10 @@
 
 All notable changes to `typhoon` will be documented in this file.
 
+## v0.1.10 - 2022-07-21
+- Move bio to the bottom of posts
+- Fix a displaying bug when embed video on post
+
 ## v0.1.9 - 2022-07-20
 - Add bio description for user (1200 characters max)
 - Add picture field for user. If none provided, display a default avatar
