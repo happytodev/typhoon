@@ -2,6 +2,9 @@
 
 All notable changes to `typhoon` will be documented in this file.
 
+## v0.1.12 - 2022-07-21
+- Downgrade composer PHP version required for compatibility with some shared hosts services
+
 ## v0.1.11 - 2022-07-21
 - Fix css issues with Youtube and twitter
 
