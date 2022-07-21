@@ -3,8 +3,26 @@
 @tailwind utilities;
 
 /* Tips found here : https://github.com/tailwindlabs/tailwindcss/discussions/7806 */
-@layer utilities {
+/* @layer utilities {
 	.prose :where(iframe):not(:where([class~="not-prose"] *)) {
 		@apply aspect-video w-full h-auto
 	}
+} */
+
+.twitter-tweet {
+    width: 100%;
+    padding: 5px;
+}
+
+.fitVids-wrapper {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+}
+.fitVids-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }

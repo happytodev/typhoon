@@ -2,6 +2,9 @@
 
 All notable changes to `typhoon` will be documented in this file.
 
+## v0.1.11 - 2022-07-21
+- Fix css issues with Youtube and twitter
+
 ## v0.1.10 - 2022-07-21
 - Move bio to the bottom of posts
 - Fix a displaying bug when embed video on post

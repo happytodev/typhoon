@@ -11,9 +11,9 @@
                 <div class="flex flex-col mt-10">
 
                     <div
-                        class="prose-xl sm:pl-8 sm:py-8 sm:border-l border-gray-200 sm:border-t-0 border-t mt-4 pt-4 sm:mt-0 text-center sm:text-left">
+                        class="prose-sm lg:prose-xl sm:pl-8 sm:py-8 sm:border-l border-gray-200 sm:border-t-0 border-t mt-4 pt-4 sm:mt-0 flex-initial">
                         <h2 class="text-4xl">{{ $post->title }}</h2>
-                        <p class="leading-relaxed text-lg mb-4">
+                        <p class="leading-relaxed lg:text-lg mb-4">
                             <x-markdown>
                             {{ $post->content }}    
                             </x-markdown>
@@ -90,5 +90,44 @@
         </p>
     @endif
     <a href="/posts">All posts in this blog</a> --}}
+
+
+{{-- Tips from https://css-tricks.com/fluid-width-video/ --}}
+<script>
+    (function(window, document, undefined) {
+  "use strict";
+
+  // List of Video Vendors embeds you want to support
+  var players = ['iframe[src*="youtube.com"]', 'iframe[src*="vimeo.com"]'];
+
+  // Select videos
+  var fitVids = document.querySelectorAll(players.join(","));
+
+  // If there are videos on the page...
+  if (fitVids.length) {
+    // Loop through videos
+    for (var i = 0; i < fitVids.length; i++) {
+      // Get Video Information
+      var fitVid = fitVids[i];
+      var width = fitVid.getAttribute("width");
+      var height = fitVid.getAttribute("height");
+      var aspectRatio = height / width;
+      var parentDiv = fitVid.parentNode;
+
+      // Wrap it in a DIV
+      var div = document.createElement("div");
+      div.className = "fitVids-wrapper";
+      div.style.paddingBottom = aspectRatio * 100 + "%";
+      parentDiv.insertBefore(div, fitVid);
+      fitVid.remove();
+      div.appendChild(fitVid);
+
+      // Clear height/width from fitVid
+      fitVid.removeAttribute("height");
+      fitVid.removeAttribute("width");
+    }
+  }
+})(window, document);
+</script>
 
 @endsection
