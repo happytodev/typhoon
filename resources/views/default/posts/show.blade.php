@@ -18,15 +18,16 @@
                             {{ $post->content }}    
                             </x-markdown>
                         </p>
-                        <a class="text-indigo-500 inline-flex items-center">Learn More
+                        {{-- <a class="text-indigo-500 inline-flex items-center">Learn More
                             <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                 stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
                                 <path d="M5 12h14M12 5l7 7-7 7"></path>
                             </svg>
-                        </a>
+                        </a> --}}
                     </div>
+                    
                     {{-- User's Bio --}}
-                    <div class="text-center sm:pr-8 sm:py-8">
+                    <div class="prose-sm lg:prose-xl text-center sm:pr-8 sm:py-8 border border-1 border-dashed p-4 shadow-2xl bg-gray-100 mt-4 rounded-xl">
                         <div
                             class="w-20 h-20 rounded-full inline-flex items-center justify-center bg-gray-200 text-gray-400">
                             @if($post->user->picture)
@@ -42,7 +43,7 @@
                         <div class="flex flex-col items-center text-center justify-center">
                             <h2 class="font-medium title-font mt-4 text-gray-900 text-lg">{{ $post->user->name }}</h2>
                             <div class="w-12 h-1 bg-indigo-500 rounded mt-2 mb-4"></div>
-                            <div class="prose leading-relaxed text-base text-justify mb-4">
+                            <div class="leading-relaxed text-base text-justify mb-4">
                                 <x-markdown>
                                     {{ $post->user->bio }}
                                 </x-markdown>
@@ -93,7 +94,7 @@
 
 
 {{-- Tips from https://css-tricks.com/fluid-width-video/ --}}
-<script>
+<script defer>
     (function(window, document, undefined) {
   "use strict";
 
