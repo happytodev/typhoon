@@ -4,10 +4,21 @@
 @section('content')
     @foreach ($page->content as $content)
         <section class="text-gray-600 body-font {{ $content['data']['backgroundColor'] ?? 'bg-white' }}">
-            <div class="md:pt-8 md:pb-8 md:grid-rows-1 max-w-screen-2xl grid grid-cols-12 md:mx-24 xl:mx-auto">
-
-
-                
+            
+            <div class="
+                md:grid-rows-1 
+                @if (isset($content['data']['width']) &&  $content['data']['width'] == 'full'))
+                    max-w-screen-7xl
+                @else
+                    md:pt-8 
+                    md:pb-8 
+                    max-w-screen-2xl
+                @endif
+                {{-- {{ $content['data']['width'] ?? 'max-w-screen-2xl' }}  --}}
+                grid grid-cols-12 
+                md:mx-24 xl:mx-auto">
+            
+            
                 @switch($content['type'])
                     @case('heading')
                     @if($content['data']['visible'])
@@ -45,8 +56,8 @@
                     @endif
                     @break
                 @endswitch
-
             </div>
+
         </section>
     @endforeach
 @endsection()
