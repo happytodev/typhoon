@@ -78,6 +78,12 @@ class TyphoonServiceProvider extends PackageServiceProvider
                 __DIR__ . '/../resources/views' => resource_path('views'),
             ], 'typhoon-views');
 
+            // Replace initial Laravel routes/web.php
+            // to avoid having base Laravel page mapped on '/'
+            $this->publishes([
+                __DIR__ . '/routes/web.php' => base_path('routes/web.php'),
+            ], 'typhoon-routes');
+
             Blade::component('typhoon-hero', TyphoonHero::class);
             Blade::component('typhoon-post', TyphoonPost::class);
         }

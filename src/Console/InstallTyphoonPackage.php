@@ -44,11 +44,71 @@ class InstallTyphoonPackage extends Command
         $this->info('>>> Updating config file...');
         $this->updateConfigFile();
 
+        // publish configuration file
+        $this->info('>>> Publishing configuration file...');
+        $this->publishConfiguration(true);
+        $this->info('>>> Publishing configuration : done');
+
+        // publish interface files
+        $this->info('>>> Publishing interfaces files...');
+        $this->publishInterfaces(true);
+        $this->info('>>> Publishing interfaces : done');
+
+        // publish repositories files
+        $this->info('>>> Publishing repositories files...');
+        $this->publishRepositories(true);
+        $this->info('>>> Publishing repositories : done');
+
+        // publish Langs files
+        $this->info('>>> Publishing Langs files...');
+        $this->publishLangs(true);
+        $this->info('>>> Publishing Langs : done');
+
+
+        // Launch optimize and link
+        $this->info('>>> Optimizing and linking ...');
+        $this->optimizeAndLink();
+        $this->info('>>> Optimizing and linking  : done');
+
+        // Installation of filament-comments package
+        $this->info('>>> Installing filament-comments package...');
+        $this->installFilamentComments();
+        $this->info('>>> Installing filament-comments : done');
+
+        // FilamentSocialNetworks with Orbit
+        $this->info('>>> Configure filament-social-networks with Orbit...');
+        $this->filamentSocialNetworksOrbit();
+        $this->info('>>> Configure filament-social-networks with Orbit : done');
+
+        // FilamentSocialNetworks Assets
+        $this->info('>>> Publishing filament-social-networks assets...');
+        $this->filamentSocialNetworksAssets();
+        $this->info('>>> Publishing filament-social-networks assets : done');
+
+        // Replace initial laravel routes/web.php
+        $this->info('>>> Replacing initial Laravel routes/web.php...');
+        $this->replaceInitialRouteWeb(true);
+        $this->info('>>> Replacing initial Laravel routes/web.php : done');
+
         // Installation done with success
         $this->info('TyphoonCMS Package installed successfully.');
         $this->info('You can now edit `content/users/1.md`');
         $this->info('And change `is_admin: 0` to `is_admin: 1`');
         $this->info('to be authorized to access the admin panel.');
+    }
+
+    private function replaceInitialRouteWeb($forcePublish = false)
+    {
+        $params = [
+            '--provider' => "HappyToDev\Typhoon\TyphoonServiceProvider",
+            '--tag' => "typhoon-routes"
+        ];
+
+        if ($forcePublish === true) {
+            $params['--force'] = true;
+        }
+
+        $this->call('vendor:publish', $params);
     }
 
     private function publishComponents()
@@ -59,6 +119,32 @@ class InstallTyphoonPackage extends Command
         ];
 
         $this->call('vendor:publish', $params);
+    }
+
+    private function filamentSocialNetworksOrbit()
+    {
+        $params = [
+            // '--provider' => "HappyToDev\FilamentSocialNetworks\FilamentSocialNetworksProvider",
+            '--tag' => "filament-social-networks-model-with-orbit"
+        ];
+
+        $this->call('vendor:publish', $params);
+    }
+
+    private function filamentSocialNetworksAssets()
+    {
+        $params = [
+            // '--provider' => "HappyToDev\FilamentSocialNetworks\FilamentSocialNetworksProvider",
+            '--tag' => "filament-social-networks-assets"
+        ];
+
+        $this->call('vendor:publish', $params);
+    }
+
+    private function optimizeAndLink()
+    {
+        $this->call('optimize:clear');
+        $this->call('storage:link');
     }
 
     private function updateConfigFile()
@@ -99,11 +185,53 @@ class InstallTyphoonPackage extends Command
         );
     }
 
+    private function publishLangs($forcePublish = false)
+    {
+        $params = [
+            '--provider' => "HappyToDev\Typhoon\TyphoonServiceProvider",
+            '--tag' => "typhoon-langs"
+        ];
+
+        if ($forcePublish === true) {
+            $params['--force'] = true;
+        }
+
+        $this->call('vendor:publish', $params);
+    }
+
+    private function publishRepositories($forcePublish = false)
+    {
+        $params = [
+            '--provider' => "HappyToDev\Typhoon\TyphoonServiceProvider",
+            '--tag' => "typhoon-repositories"
+        ];
+
+        if ($forcePublish === true) {
+            $params['--force'] = true;
+        }
+
+        $this->call('vendor:publish', $params);
+    }
+
+    private function publishInterfaces($forcePublish = false)
+    {
+        $params = [
+            '--provider' => "HappyToDev\Typhoon\TyphoonServiceProvider",
+            '--tag' => "typhoon-interfaces"
+        ];
+
+        if ($forcePublish === true) {
+            $params['--force'] = true;
+        }
+
+        $this->call('vendor:publish', $params);
+    }
+
     private function publishConfiguration($forcePublish = false)
     {
         $params = [
-            '--provider' => "JohnDoe\BlogPackage\BlogPackageServiceProvider",
-            '--tag' => "config"
+            '--provider' => "HappyToDev\Typhoon\TyphoonServiceProvider",
+            '--tag' => "typhoon-config"
         ];
 
         if ($forcePublish === true) {
@@ -153,5 +281,13 @@ class InstallTyphoonPackage extends Command
         ];
 
         $this->call('vendor:publish', $params);
+    }
+
+    /**
+     * Launch installation of filament-comments package
+     */
+    private function installFilamentComments()
+    {
+        $this->call('filament-comments:install');
     }
 }
