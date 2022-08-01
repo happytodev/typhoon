@@ -17,7 +17,7 @@ class ConfigurationResource extends Resource
 {
     protected static ?string $model = Configuration::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-collection';
+    protected static ?string $navigationIcon = 'heroicon-o-adjustments';
 
     public static function form(Form $form): Form
     {

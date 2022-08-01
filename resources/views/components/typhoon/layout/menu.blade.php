@@ -326,7 +326,7 @@
                                 d="m326.67 490c0-12.887 10.445-23.332 23.332-23.332h23.332c12.887 0 23.336 10.445 23.336 23.332s-10.449 23.332-23.336 23.332h-23.332c-12.887 0-23.332-10.445-23.332-23.332z" />
                         </g>
                     </svg> --}}
-                    <img src="{{ Storage::url("randonneur_w512.png") }}" alt="LaraWalks" class="w-12">
+                    <img src="{{ Storage::url("logo.png") }}" alt="{{ config('typhoon.name') }}" class="w-12">
                     <span class="ml-3 text-xl">{{ config('typhoon.name') }}</span>
                 </a>
                 {{-- <a class="
