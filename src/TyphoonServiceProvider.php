@@ -90,6 +90,7 @@ class TyphoonServiceProvider extends PackageServiceProvider
 
     }
 
+
     public function configurePackage(Package $package): void
     {
         /*
