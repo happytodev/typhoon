@@ -2,6 +2,11 @@
 
 All notable changes to `typhoon` will be documented in this file.
 
+
+## v0.1.14 - 2022-08-01
+- Add first version of comments in Typhoon with plugin filament-comments
+- Improve Author's Bio view
+
 ## v0.1.12 - 2022-07-21
 - Downgrade composer PHP version required for compatibility with some shared hosts services
 
