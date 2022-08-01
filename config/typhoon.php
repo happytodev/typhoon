@@ -34,7 +34,4 @@ return [
     |
     */
     'template_color' => 'indigo',
-
-
-
 ];
