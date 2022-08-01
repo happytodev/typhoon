@@ -68,6 +68,10 @@ To use Orbit with filament-navigation, you have to add a key to your .env file :
   FILAMENT_NAVIGATION_DB_ENGINE=orbit
 ```
 
+Give a name to your website by adding the following key to your .env file
+
+```env
+TYPHOONCMS_NAME="MyWebsite"
 
 You can now run the install script of Typhoon via Artisan :
 
@@ -77,62 +81,7 @@ php artisan typhoon:install
 
 When the script ask you `User model file already exists. Do you want to overwrite it? (yes/no) [no]:` you can answer yes. It will modify the default User model to adapt it to use Orbit instead classic database like for example MySQL.
 
-You have to publish the typhoon config file :
 
-```bash
-php artisan vendor:publish --force --tag="typhoon-config"
-```
-
-You have to publish the typhoon interfaces files :
-
-```bash
-php artisan vendor:publish --force --tag="typhoon-interfaces"
-```
-You have to publish the typhoon repositories files :
-
-```bash
-php artisan vendor:publish --force --tag="typhoon-repositories"
-```
-
-You have to publish the typhoon langs files :
-
-```bash
-php artisan vendor:publish --force --tag="typhoon-langs"
-```
-
-To use filament-social-networks correctly, you have to publish the correct model using Orbit :
-
-```bash
-php artisan vendor:publish --tag="filament-social-networks-model-with-orbit"
-```
-
-```bash
-php artisan vendor:publish --tag="filament-social-networka-assets"
-```
-
-You have to install filament-comments
-
-```bash
-php artisan filament-comments:install
-```
-
-
-Maybe you need also this :
-
-```bash
-php artisan storage:link
-```
-  
-
-
-By default, a fresh installation of Laravel provides one route in routes/web.php to the root of your website.
-If you want the homepage of typhoon project instead, you have to remove or comment the default route in routes/web.php :
-
-```php
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-```
 
 Last thing, go to the `content\users`folders and edit with your favorite editor the first user, usually it is the file `1.md`:
 
@@ -200,6 +149,9 @@ Out of the box, you have this entities :
 - posts
 - categories
 - tags
+- pages
+- navigation
+- social networks
 
 To create a post, a category is necessary. So, your first step is to create a category, before create a post.
 

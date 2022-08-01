@@ -23,7 +23,7 @@ class PageResource extends Resource
 {
     protected static ?string $model = Page::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-collection';
+    protected static ?string $navigationIcon = 'heroicon-o-document-text';
 
     public static function form(Form $form): Form
     {
@@ -70,7 +70,7 @@ class PageResource extends Resource
                                     ->options([
                                         'bg-white' => 'White',
                                         'bg-amber-100' => 'Amber 100',
-                                        'bg-blue-100' => 'Blue 100', 
+                                        'bg-blue-100' => 'Blue 100',
                                         'bg-green-100' => 'Green 100',
                                         'bg-indigo-100' => 'Indigo 100',
                                         'bg-lime-100' => 'Lime 100',
@@ -96,7 +96,7 @@ class PageResource extends Resource
                                     ->options([
                                         'bg-white' => 'White',
                                         'bg-amber-100' => 'Amber 100',
-                                        'bg-blue-100' => 'Blue 100', 
+                                        'bg-blue-100' => 'Blue 100',
                                         'bg-green-100' => 'Green 100',
                                         'bg-indigo-100' => 'Indigo 100',
                                         'bg-lime-100' => 'Lime 100',
@@ -122,7 +122,7 @@ class PageResource extends Resource
                                     ->options([
                                         'bg-white' => 'White',
                                         'bg-amber-100' => 'Amber 100',
-                                        'bg-blue-100' => 'Blue 100', 
+                                        'bg-blue-100' => 'Blue 100',
                                         'bg-green-100' => 'Green 100',
                                         'bg-indigo-100' => 'Indigo 100',
                                         'bg-lime-100' => 'Lime 100',
@@ -143,7 +143,7 @@ class PageResource extends Resource
                                     ->options([
                                         'bg-white' => 'White',
                                         'bg-amber-100' => 'Amber 100',
-                                        'bg-blue-100' => 'Blue 100', 
+                                        'bg-blue-100' => 'Blue 100',
                                         'bg-green-100' => 'Green 100',
                                         'bg-indigo-100' => 'Indigo 100',
                                         'bg-lime-100' => 'Lime 100',
@@ -168,7 +168,7 @@ class PageResource extends Resource
                                     ->options([
                                         'bg-white' => 'White',
                                         'bg-amber-100' => 'Amber 100',
-                                        'bg-blue-100' => 'Blue 100', 
+                                        'bg-blue-100' => 'Blue 100',
                                         'bg-green-100' => 'Green 100',
                                         'bg-indigo-100' => 'Indigo 100',
                                         'bg-lime-100' => 'Lime 100',
@@ -257,14 +257,14 @@ class PageResource extends Resource
                 //
             ]);
     }
-    
+
     public static function getRelations(): array
     {
         return [
             //
         ];
     }
-    
+
     public static function getPages(): array
     {
         return [
