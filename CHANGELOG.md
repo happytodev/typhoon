@@ -3,6 +3,13 @@
 All notable changes to `typhoon` will be documented in this file.
 
 
+## v0.1.15 - 2022-08-xx
+- If a post doesn't have `main_image` don't display the correspondant div block
+- Improve and simplify install from 14 steps to only 5. Now you can install Typhoon in a very short time
+- Improve image component for page by authorizing full image : max-w-screen-7xl and no y-padding
+- Adding demo content with user, post, comment, tag, home page, category
+- Improve footer
+
 ## v0.1.14 - 2022-08-01
 - Add first version of comments in Typhoon with plugin filament-comments
 - Improve Author's Bio view
