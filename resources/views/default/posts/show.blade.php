@@ -4,10 +4,12 @@
     <section class="text-gray-600 body-font">
         <div class="container px-5 py-24 mx-auto flex flex-col">
             <div class="lg:w-4/6 mx-auto">
+                @if ($post->main_image)
                 <div class="rounded-lg h-full overflow-hidden">
                     <img alt="content" class="object-cover object-center h-full w-full"
-                        src="{{ Storage::url($post->main_image) }}">
+                    src="{{ Storage::url($post->main_image) }}">
                 </div>
+                @endif
                 <div class="flex flex-col mt-10">
 
                     <div
@@ -22,7 +24,7 @@
 
                     {{-- User's Bio --}}
                     {{-- from https://tailwindtemplates.io/templates?category=profile --}}
-                    <div class="p-16">
+                    <div class="p-8 md:p-16">
                         <div class="p-8 bg-white shadow mt-24">
                             <div class="grid grid-cols-1 md:grid-cols-3">
                                 <div class="grid grid-cols-3 text-center order-last md:order-first mt-20 md:mt-0">
@@ -42,7 +44,7 @@
                                 </div>
                                 <div class="relative">
                                     <div
-                                        class="w-48 h-48 bg-indigo-100 mx-auto rounded-full shadow-2xl absolute inset-x-0 top-0 -mt-24 flex items-center justify-center text-indigo-500">
+                                        class="w-32 h-32 md:w-48 md:h-48 bg-indigo-100 mx-auto rounded-full shadow-2xl absolute inset-x-0 top-0 -mt-24 flex items-center justify-center text-indigo-500">
                                         @if ($post->user->picture)
                                         <img src="{{ Storage::url($post->user->picture) }}" alt="{{ $post->user->name }} picture"
                                             class="rounded-full w-48 h-48">
@@ -56,17 +58,19 @@
                                         @endif 
                                     </div>
                                 </div>
+                                {{-- Not used now --}}
+                                {{-- 
                                 <div class="space-x-8 flex justify-between mt-32 md:mt-0 md:justify-center">
-                                    {{-- Not used now
-                                    <button
+                                      
+                                        <button
                                         class="text-white py-2 px-4 uppercase rounded bg-blue-400 hover:bg-blue-500 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5">
                                         Connect
                                     </button> 
                                     <button
                                         class="text-white py-2 px-4 uppercase rounded bg-gray-700 hover:bg-gray-800 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5">
                                         Message
-                                    </button>  --}}
-                                </div>
+                                    </button>  
+                                </div>--}}
                             </div>
                             <div class="mt-20 text-center border-b pb-12">
                                 <h1 class="text-4xl font-medium text-gray-700">{{ $post->user->name }}</h1>
