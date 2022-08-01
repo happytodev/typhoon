@@ -110,6 +110,12 @@ php artisan vendor:publish --tag="filament-social-networks-model-with-orbit"
 php artisan vendor:publish --tag="filament-social-networka-assets"
 ```
 
+You have to install filament-comments
+
+```bash
+php artisan filament-comments:install
+```
+
 
 Maybe you need also this :
 
