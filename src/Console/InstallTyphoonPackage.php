@@ -90,11 +90,30 @@ class InstallTyphoonPackage extends Command
         $this->replaceInitialRouteWeb(true);
         $this->info('>>> Replacing initial Laravel routes/web.php : done');
 
+        // Install demo
+        $this->info('>>> Install demo datas...');
+        $this->installDemoDatas(true);
+        $this->info('>>> Install demo datas : done');
+
         // Installation done with success
         $this->info('TyphoonCMS Package installed successfully.');
         $this->info('You can now edit `content/users/1.md`');
         $this->info('And change `is_admin: 0` to `is_admin: 1`');
         $this->info('to be authorized to access the admin panel.');
+    }
+
+    private function installDemoDatas($forcePublish = false)
+    {
+        $params = [
+            '--provider' => "HappyToDev\Typhoon\TyphoonServiceProvider",
+            '--tag' => "typhoon-install-demo"
+        ];
+
+        if ($forcePublish === true) {
+            $params['--force'] = true;
+        }
+
+        $this->call('vendor:publish', $params);
     }
 
     private function replaceInitialRouteWeb($forcePublish = false)
