@@ -1,0 +1,57 @@
+{
+    "id": 1,
+    "name": "Home",
+    "slug": "home",
+    "content": [
+        {
+            "type": "hero",
+            "data": {
+                "heroImage": "9zQywNssLd479FjsjxibkPsVzIX0jH-metadHlwaG9vbi5zdmc=-.svg",
+                "heroImagePosition": "right",
+                "backgroundColor": "bg-amber-300",
+                "visible": true,
+                "heroTitle": "Typhoon home page exemple",
+                "heroSubtitle": "This is here all the magic begins",
+                "heroText": "Lorem ipsum"
+            }
+        },
+        {
+            "type": "heading",
+            "data": {
+                "level": "h1",
+                "width": "12",
+                "backgroundColor": "bg-blue-100",
+                "visible": true,
+                "content": "Typhoon Features"
+            }
+        },
+        {
+            "type": "paragraph",
+            "data": {
+                "backgroundColor": "bg-blue-100",
+                "visible": true,
+                "content": "## Welcome in Typhoon\n\nBelow the list of actual features of Typhoon\n\n- Basic user management\n- Pages management\n- Posts management\n- Tags and categories management\n- Menus management\n- Possibility to set Social Networks and display it easily\n- Posts can have comments\n\nTyphoon is very young, many features will come in future, and you know what ?\nYou can decide of Typhoon's future !\n\nYes, Typhoon is for the community, and I decide to let you the word.\n\nSo tell me !"
+            }
+        },
+        {
+            "type": "image",
+            "data": {
+                "url": "HHq3dRhp8bP07B68w90SHPN24fkv80-metaY29sb3JmdWwtNzI2ODg2N19yZXN1bHRhdC53ZWJw-.webp",
+                "backgroundColor": "bg-amber-100",
+                "width": "full",
+                "visible": true,
+                "alt": "Typhoon Therapy"
+            }
+        },
+        {
+            "type": "paragraph",
+            "data": {
+                "backgroundColor": "bg-amber-100",
+                "visible": true,
+                "content": "# FAQ\n\n## Where can I find Typhoon\n\nSimply go the [github project page](https:\/\/github.com\/happytodev\/typhoon) !\n\n## Is Typhoon free ?\n\nYes, Typhoon is free and always will be. Moreover, it is open source, so feel free to contribute !\n\nTo be honest, in the future, it will be possible some Typhoon plugins will be paid, but only for premium purpose and the core of Typhoon will be ever free.\n\n## Can I support Typhoon ?\n\nYes, of course and thank you !\n\nYou can do it from several manners :\n\n- by using it and submit new features, new PR\n- by alert me on a bug\n- help me writing documentation\n- help me with translations\n- and via my [Github sponsor account](https:\/\/github.com\/sponsors\/happytodev)\n\n\n"
+            }
+        }
+    ],
+    "created_at": "2022-08-01T13:13:49.000000Z",
+    "updated_at": "2022-08-01T16:06:28.000000Z"
+}

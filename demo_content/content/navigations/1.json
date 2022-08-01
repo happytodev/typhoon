@@ -1,0 +1,27 @@
+{
+    "id": 1,
+    "name": "main",
+    "handle": "main",
+    "items": {
+        "986ad562-6525-4d4c-8fd8-c46c7b193cf4": {
+            "label": "Home",
+            "type": "external-link",
+            "data": {
+                "target": null,
+                "url": "\/"
+            },
+            "children": []
+        },
+        "e5aa8013-d6de-4af5-b38f-bcbc3ee5fa39": {
+            "label": "Posts",
+            "type": "external-link",
+            "data": {
+                "target": null,
+                "url": "\/posts"
+            },
+            "children": []
+        }
+    },
+    "created_at": "2022-08-01T10:42:49.000000Z",
+    "updated_at": "2022-08-01T14:29:06.000000Z"
+}
