@@ -69,6 +69,12 @@ class User extends Authenticatable implements FilamentUser
         return $this->hasMany(Post::class);
     }
 
+    // Get posts from this user
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
     // Implements necessary function to run with Filament
     public function canAccessFilament(): bool
     {
