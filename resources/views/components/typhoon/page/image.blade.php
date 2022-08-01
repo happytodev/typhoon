@@ -1,4 +1,4 @@
-<div class="w-full col-span-12 py-12 min-h-fit">
+<div class="w-full col-span-12 min-h-fit">
     <section>
         <img
           src="{{ Storage::url($imageUrl) }}"
