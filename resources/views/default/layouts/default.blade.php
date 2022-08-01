@@ -31,6 +31,7 @@
     
     <!-- Styles -->
     <link rel="stylesheet" href="/css/app.css">
+    @livewireStyles
     
 </head>
 
@@ -48,6 +49,8 @@
     {{-- Tailwind-Elements PART 2 --}}
     <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
     {{-- Tailwind-Elements PART 2 --> END --}}
+
+    @livewireScripts
 </body>
 
 </html>

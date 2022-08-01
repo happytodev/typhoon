@@ -94,6 +94,12 @@ You have to publish the typhoon repositories files :
 php artisan vendor:publish --force --tag="typhoon-repositories"
 ```
 
+You have to publish the typhoon langs files :
+
+```bash
+php artisan vendor:publish --force --tag="typhoon-langs"
+```
+
 To use filament-social-networks correctly, you have to publish the correct model using Orbit :
 
 ```bash
@@ -102,6 +108,12 @@ php artisan vendor:publish --tag="filament-social-networks-model-with-orbit"
 
 ```bash
 php artisan vendor:publish --tag="filament-social-networka-assets"
+```
+
+You have to install filament-comments
+
+```bash
+php artisan filament-comments:install
 ```
 
 
