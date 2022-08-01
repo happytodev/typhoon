@@ -5,10 +5,13 @@ namespace App\Models;
 use Orbit\Concerns\Orbital;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Schema\Blueprint;
+use BeyondCode\Comments\Traits\HasComments;
 
 class Post extends Model
 {
     use Orbital;
+
+    use HasComments;
 
     public static function schema(Blueprint $table)
     {
