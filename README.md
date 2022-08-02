@@ -56,7 +56,9 @@ Follow these steps :
     }
 ```
 
-If you don't add above require block in your `composer.json` file, you can install the package via composer:
+Save the `composer.json` file and run `composer update`
+
+Alternatively, if you don't add above require block in your `composer.json` file, you can install the package via composer:
 
 ```bash
 composer require ryangjchandler/filament-navigation=dev-main
@@ -72,6 +74,7 @@ Give a name to your website by adding the following key to your .env file
 
 ```env
 TYPHOONCMS_NAME="MyWebsite"
+```
 
 You can now run the install script of Typhoon via Artisan :
 
@@ -143,6 +146,8 @@ npx tailwindcss -i ./resources/css/app.css -o ./public/css/app.css
   
 Now you can connect to the backoffice, via the url of your project and adding to it `/admin`
 
+# How to use 
+
 Out of the box, you have this entities :
 
 - users
@@ -155,12 +160,37 @@ Out of the box, you have this entities :
 
 To create a post, a category is necessary. So, your first step is to create a category, before create a post.
 
+After installation, you have demo content with :
+- an home page
+- your user and one more default user **john@doe.com** and password : **johndoesecret**
+- a category
+- a tag
+- a demo post : `yourTyphoonSite.test/posts/the-first-post-with-typhoon`
+- a menu
+- a social network group
+- a page listing all posts : `yourTyphoonSite.test/posts/`
+
+When you create a page, you can visit it with this url : 
+
+yourTyphoonSite.test/**page**/{slug_of_your_page}
+
+The home page is different and is plug directly to `yourTyphoonSite.test/`
+
+# Knowned limitations
+
+**Don't forget : this is a beta version, please do not use it in production unless you know what you do !**
+
+Currently there is some limitations :
+
+- In navigations, only one menu is usable with template provided and it name MUST be `main`
+- In Social Networks, the name of the group MUST also be `main`
 
 ## Testing
 
 ```bash
 composer test
 ```
+
 
 ## Changelog
 
