@@ -3,6 +3,9 @@
 All notable changes to `typhoon` will be documented in this file.
 
 
+## v0.1.17 - 2022-08-02
+- Fix issue [#19](https://github.com/happytodev/typhoon/issues/19) : The navigation in admin does not work correctly
+
 ## v0.1.16 - 2022-08-02
 - Improve documentation and add knowed limitations after feedback of the first user
 
