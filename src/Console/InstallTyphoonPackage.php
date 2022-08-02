@@ -85,6 +85,11 @@ class InstallTyphoonPackage extends Command
         $this->filamentSocialNetworksAssets();
         $this->info('>>> Publishing filament-social-networks assets : done');
 
+        // FilamentSocialNetworks Assets
+        $this->info('>>> Publishing filament-navigation assets...');
+        $this->publishFilamentNavigationAssets(true);
+        $this->info('>>> Publishing filament-navigation assets : done');
+
         // Replace initial laravel routes/web.php
         $this->info('>>> Replacing initial Laravel routes/web.php...');
         $this->replaceInitialRouteWeb(true);
@@ -107,6 +112,19 @@ class InstallTyphoonPackage extends Command
         $params = [
             '--provider' => "HappyToDev\Typhoon\TyphoonServiceProvider",
             '--tag' => "typhoon-install-demo"
+        ];
+
+        if ($forcePublish === true) {
+            $params['--force'] = true;
+        }
+
+        $this->call('vendor:publish', $params);
+    }
+
+    private function publishFilamentNavigationAssets($forcePublish = false)
+    {
+        $params = [
+            '--tag' => "filament-navigation-assets"
         ];
 
         if ($forcePublish === true) {
