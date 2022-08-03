@@ -83,6 +83,9 @@
     "post-update-cmd": [
         "@php artisan filament:upgrade"
     ],
+    "post-package-update": [
+        "@php artisan vendor:publish --force --tag='typhoon-filament-resources'"
+    ],
     "minimum-stability": "dev",
     "prefer-stable": true
 }
