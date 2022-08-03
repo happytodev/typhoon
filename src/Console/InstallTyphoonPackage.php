@@ -59,6 +59,11 @@ class InstallTyphoonPackage extends Command
         $this->publishRepositories(true);
         $this->info('>>> Publishing repositories : done');
 
+        // publish RepositoryServiceProvider.php file
+        $this->info('>>> Publishing RepositoryServiceProvider.php files...');
+        $this->publishRepositoryServiceProvider(true);
+        $this->info('>>> Publishing RepositoryServiceProvider.php : done');
+
         // publish Langs files
         $this->info('>>> Publishing Langs files...');
         $this->publishLangs(true);
@@ -85,7 +90,7 @@ class InstallTyphoonPackage extends Command
         $this->filamentSocialNetworksAssets();
         $this->info('>>> Publishing filament-social-networks assets : done');
 
-        // FilamentSocialNetworks Assets
+        // Filament Navigation Assets
         $this->info('>>> Publishing filament-navigation assets...');
         $this->publishFilamentNavigationAssets(true);
         $this->info('>>> Publishing filament-navigation assets : done');
@@ -241,6 +246,20 @@ class InstallTyphoonPackage extends Command
         $params = [
             '--provider' => "HappyToDev\Typhoon\TyphoonServiceProvider",
             '--tag' => "typhoon-repositories"
+        ];
+
+        if ($forcePublish === true) {
+            $params['--force'] = true;
+        }
+
+        $this->call('vendor:publish', $params);
+    }
+
+    private function publishRepositoryServiceProvider($forcePublish = false)
+    {
+        $params = [
+            '--provider' => "HappyToDev\Typhoon\TyphoonServiceProvider",
+            '--tag' => "typhoon-repository-service-provider"
         ];
 
         if ($forcePublish === true) {
