@@ -106,7 +106,8 @@ class InstallTyphoonPackage extends Command
         $this->info('>>> Install demo datas : done');
 
         // Installation done with success
-        $this->info('TyphoonCMS Package installed successfully.');
+        $this->info('TyphoonCMS Package installed successfully. 🚀');
+        $this->askForSomeLove();
         $this->info('You can now edit `content/users/1.md`');
         $this->info('And change `is_admin: 0` to `is_admin: 1`');
         $this->info('to be authorized to access the admin panel.');
@@ -345,5 +346,23 @@ class InstallTyphoonPackage extends Command
     private function installFilamentComments()
     {
         $this->call('filament-comments:install');
+    }
+
+    protected function askForSomeLove(): void
+    {
+ 
+        if ($this->confirm('Would you like to show some love to Typhoon by starring the repo 🙏 ?', true)) {
+            if (PHP_OS_FAMILY === 'Darwin') {
+                exec('open https://github.com/happytodev/typhoon');
+            }
+            if (PHP_OS_FAMILY === 'Linux') {
+                exec('xdg-open https://github.com/happytodev/typhoon');
+            }
+            if (PHP_OS_FAMILY === 'Windows') {
+                exec('start https://github.com/happytodev/typhoon');
+            }
+
+            $this->line('Thank you!');
+        }
     }
 }
