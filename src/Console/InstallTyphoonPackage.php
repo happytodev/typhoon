@@ -59,6 +59,11 @@ class InstallTyphoonPackage extends Command
         $this->publishRepositories(true);
         $this->info('>>> Publishing repositories : done');
 
+        // publish RepositoryServiceProvider.php file
+        $this->info('>>> Publishing RepositoryServiceProvider.php files...');
+        $this->publishRepositoryServiceProvider(true);
+        $this->info('>>> Publishing RepositoryServiceProvider.php : done');
+
         // publish Langs files
         $this->info('>>> Publishing Langs files...');
         $this->publishLangs(true);
@@ -85,7 +90,7 @@ class InstallTyphoonPackage extends Command
         $this->filamentSocialNetworksAssets();
         $this->info('>>> Publishing filament-social-networks assets : done');
 
-        // FilamentSocialNetworks Assets
+        // Filament Navigation Assets
         $this->info('>>> Publishing filament-navigation assets...');
         $this->publishFilamentNavigationAssets(true);
         $this->info('>>> Publishing filament-navigation assets : done');
@@ -101,7 +106,8 @@ class InstallTyphoonPackage extends Command
         $this->info('>>> Install demo datas : done');
 
         // Installation done with success
-        $this->info('TyphoonCMS Package installed successfully.');
+        $this->info('TyphoonCMS Package installed successfully. 🚀');
+        $this->askForSomeLove();
         $this->info('You can now edit `content/users/1.md`');
         $this->info('And change `is_admin: 0` to `is_admin: 1`');
         $this->info('to be authorized to access the admin panel.');
@@ -250,6 +256,20 @@ class InstallTyphoonPackage extends Command
         $this->call('vendor:publish', $params);
     }
 
+    private function publishRepositoryServiceProvider($forcePublish = false)
+    {
+        $params = [
+            '--provider' => "HappyToDev\Typhoon\TyphoonServiceProvider",
+            '--tag' => "typhoon-repository-service-provider"
+        ];
+
+        if ($forcePublish === true) {
+            $params['--force'] = true;
+        }
+
+        $this->call('vendor:publish', $params);
+    }
+
     private function publishInterfaces($forcePublish = false)
     {
         $params = [
@@ -326,5 +346,23 @@ class InstallTyphoonPackage extends Command
     private function installFilamentComments()
     {
         $this->call('filament-comments:install');
+    }
+
+    protected function askForSomeLove(): void
+    {
+ 
+        if ($this->confirm('Would you like to show some love to Typhoon by starring the repo 🙏 ?', true)) {
+            if (PHP_OS_FAMILY === 'Darwin') {
+                exec('open https://github.com/happytodev/typhoon');
+            }
+            if (PHP_OS_FAMILY === 'Linux') {
+                exec('xdg-open https://github.com/happytodev/typhoon');
+            }
+            if (PHP_OS_FAMILY === 'Windows') {
+                exec('start https://github.com/happytodev/typhoon');
+            }
+
+            $this->line('Thank you!');
+        }
     }
 }

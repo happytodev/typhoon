@@ -68,6 +68,11 @@ class TyphoonServiceProvider extends PackageServiceProvider
                 __DIR__ . '/App/Repositories' => app_path('Repositories'),
             ], 'typhoon-repositories');
 
+            // Loads RepositoryServiceProvider
+            $this->publishes([
+                __DIR__ . '/App/Providers/RepositoryServiceProvider.php' => app_path('Providers/RepositoryServiceProvider.php'),
+            ], 'typhoon-repository-service-provider');
+
             // Loads langs
             $this->publishes([
                 __DIR__ . '/Lang' => base_path('lang'),

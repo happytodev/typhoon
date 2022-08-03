@@ -3,6 +3,11 @@
 All notable changes to `typhoon` will be documented in this file.
 
 
+## v0.1.18 - 2022-08-03
+- Fix issue [#20](https://github.com/happytodev/typhoon/issues/20) : Tag slug is not automatically generated 
+- Fix issue [#22](https://github.com/happytodev/typhoon/issues/22) : Error when launch php artisan route:list command
+- Now you can give some support to Typhoon by starring it in his github repository during installation :-)
+
 ## v0.1.17 - 2022-08-02
 - Fix issue [#19](https://github.com/happytodev/typhoon/issues/19) : The navigation in admin does not work correctly
 

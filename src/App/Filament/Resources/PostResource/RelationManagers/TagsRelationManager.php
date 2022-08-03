@@ -3,10 +3,11 @@
 namespace App\Filament\Resources\PostResource\RelationManagers;
 
 use Filament\Forms;
-use Filament\Resources\Form;
-use Filament\Resources\RelationManagers\BelongsToManyRelationManager;
-use Filament\Resources\Table;
 use Filament\Tables;
+use Illuminate\Support\Str;
+use Filament\Resources\Form;
+use Filament\Resources\Table;
+use Filament\Resources\RelationManagers\BelongsToManyRelationManager;
 
 class TagsRelationManager extends BelongsToManyRelationManager
 {
@@ -21,7 +22,11 @@ class TagsRelationManager extends BelongsToManyRelationManager
         return $form
             ->schema([
                 Forms\Components\TextInput::make('name')
-                    ->required(),
+                ->reactive()
+                ->required()
+                ->afterStateUpdated(function ($set, ?string $state) {
+                    $set('slug', Str::slug($state));
+                }),
                 Forms\Components\TextInput::make('slug'),
                 Forms\Components\TextInput::make('description'),
                 // Forms\Components\Textarea::make('content'),
