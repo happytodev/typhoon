@@ -7,6 +7,7 @@ use Filament\Tables;
 use Illuminate\Support\Str;
 use Filament\Resources\Form;
 use Filament\Resources\Table;
+use MartinRo\FilamentCharcountField\Components\CharcountedTextInput;
 use Filament\Resources\RelationManagers\BelongsToManyRelationManager;
 
 class TagsRelationManager extends BelongsToManyRelationManager
@@ -21,15 +22,22 @@ class TagsRelationManager extends BelongsToManyRelationManager
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('name')
-                ->reactive()
-                ->required()
-                ->afterStateUpdated(function ($set, ?string $state) {
-                    $set('slug', Str::slug($state));
-                }),
+                CharcountedTextInput::make('name')
+                    ->reactive()
+                    ->required()
+                    ->minLength(3)
+                    ->maxLength(30)
+                    ->minCharacters(3)
+                    ->maxCharacters(30)
+                    ->afterStateUpdated(function ($set, ?string $state) {
+                        $set('slug', Str::slug($state));
+                    }),
                 Forms\Components\TextInput::make('slug'),
-                Forms\Components\TextInput::make('description'),
-                // Forms\Components\Textarea::make('content'),
+                CharcountedTextInput::make('description')
+                    ->minLength(3)
+                    ->maxLength(255)
+                    ->minCharacters(3)
+                    ->maxCharacters(255),
             ]);
     }
 

@@ -2,6 +2,8 @@
 
 All notable changes to `typhoon` will be documented in this file.
 
+## v0.1.19 - 2022-08-xx
+- Fix feature [#25](https://github.com/happytodev/typhoon/issues/25) : Add counter on fields with limited characters
 
 ## v0.1.18 - 2022-08-03
 - Fix issue [#20](https://github.com/happytodev/typhoon/issues/20) : Tag slug is not automatically generated 
