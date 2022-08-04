@@ -23,6 +23,7 @@ class Category extends Model
         $table->string('description')->nullable();
         $table->string('color')->nullable();
         $table->string('bg_color')->nullable();
+        $table->string('pill_color')->nullable();
     }
 
     /**
@@ -35,7 +36,8 @@ class Category extends Model
         'slug',
         'description',
         'color',
-        'bg_color'
+        'bg_color',
+        'pill_color'
     ];
 
     /**
