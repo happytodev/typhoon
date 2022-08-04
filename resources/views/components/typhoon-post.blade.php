@@ -6,10 +6,26 @@
                 src="{{ $post->main_image ? Storage::url($post->main_image) : 'https://dummyimage.com/720x400?dummy' }}"
                 alt="content">
         </a>
-        <div class="p-6 prose">
-            <p class="text-xs">{{ $post->created_at->diffForHumans() }}</p>
-            <h3 class="tracking-widest {{ $post->category->color }} text-base font-extrabold font-sans">
-                {{ $post->category->name }}</h3>
+        <div class="px-6 pb-6 prose">
+            <div class="flex flex-row">
+                <p class="tracking-widest text-black text-xs font-bold">
+                    In <span class="
+                        inline-flex 
+                        items-center 
+                        px-3 
+                        py-0.5 
+                        rounded-full 
+                        text-xs 
+                        font-bold 
+                        leading-5 
+                        text-white 
+                        font-display 
+                        mr-2 
+                        capitalize 
+                        {{ $post->category->pill_color }}">{{ $post->category->name }}</span>
+                </p>
+                <p class="tracking-widest text-black text-xs italic py-0.5 leading-5">{{ $post->created_at->diffForHumans() }}</p>
+            </div>
             <a href="/posts/{{ $post->slug }}" class="no-underline hover:underline">
                 <h1 class="text-gray-900 title-font mb-4">{{ $post->title }}</h1>
             </a>
@@ -19,6 +35,7 @@
                 </x-markdown>
             </div>
             <div class="mt-2">
+                <h3 class="text-xl font-bold">Tags</h3>
                 @forelse ($post->tags()->get() as $tag)
                     <span
                         class="text-xs inline-flex items-center font-bold leading-sm uppercase px-3 py-1 bg-blue-200 text-blue-700 rounded-full">

@@ -13,6 +13,7 @@ use Filament\Forms\Components\Select;
 use Filament\Forms\Components\ColorPicker;
 use App\Filament\Resources\CategoryResource\Pages;
 use App\Filament\Resources\CategoryResource\RelationManagers;
+use MartinRo\FilamentCharcountField\Components\CharcountedTextInput;
 
 class CategoryResource extends Resource
 {
@@ -24,9 +25,13 @@ class CategoryResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('name')
-                    ->required()
+                CharcountedTextInput::make('name')
                     ->reactive()
+                    ->required()
+                    ->minLength(3)
+                    ->maxLength(30)
+                    ->minCharacters(3)
+                    ->maxCharacters(30)
                     ->afterStateUpdated(function ($set, ?string $state) {
                         $set('slug', Str::slug($state));
                     }),
@@ -54,6 +59,35 @@ class CategoryResource extends Resource
                         'bg-lime-100' => 'Lime 100',
                         'bg-orange-100' => 'Orange 100',
                         'bg-yellow-100' => 'Yellow 100',
+                    ])
+                    ->searchable(),
+                Select::make('pill_color')
+                    ->label('Pill background color')
+                    ->options([
+                        'bg-gray-500' => 'Gray 500',
+                        'bg-gray-700' => 'Gray 700',
+                        'bg-gray-900' => 'Gray 900',
+                        'bg-red-500' => 'red 500',
+                        'bg-red-700' => 'red 700',
+                        'bg-red-900' => 'red 900',
+                        'bg-yellow-500' => 'yellow 500',
+                        'bg-yellow-700' => 'yellow 700',
+                        'bg-yellow-900' => 'yellow 900',
+                        'bg-green-500' => 'green 500',
+                        'bg-green-700' => 'green 700',
+                        'bg-green-900' => 'green 900',
+                        'bg-blue-500' => 'blue 500',
+                        'bg-blue-700' => 'blue 700',
+                        'bg-blue-900' => 'blue 900',
+                        'bg-indigo-500' => 'indigo 500',
+                        'bg-indigo-700' => 'indigo 700',
+                        'bg-indigo-900' => 'indigo 900',
+                        'bg-purple-500' => 'purple 500',
+                        'bg-purple-700' => 'purple 700',
+                        'bg-purple-900' => 'purple 900',
+                        'bg-pink-500' => 'pink 500',
+                        'bg-pink-700' => 'pink 700',
+                        'bg-pink-900' => 'pink 900',
                     ])
                     ->searchable()
                 // Forms\Components\Textarea::make('content'),

@@ -2,6 +2,10 @@
 
 All notable changes to `typhoon` will be documented in this file.
 
+## v0.2.0 - 2022-08-04
+- Fix feature [#25](https://github.com/happytodev/typhoon/issues/25) : Add counter on fields with limited characters
+- Fix [#21](https://github.com/happytodev/typhoon/issues/21) [#28](https://github.com/happytodev/typhoon/issues/28) [#31](https://github.com/happytodev/typhoon/issues/31) [#32](https://github.com/happytodev/typhoon/issues/32) [#33](https://github.com/happytodev/typhoon/issues/33) [#34](https://github.com/happytodev/typhoon/issues/34) : Add label before tags and show category for posts
+- Fix [#2](https://github.com/happytodev/typhoon/issues/2) : Add tl;dr to post
 
 ## v0.1.18 - 2022-08-03
 - Fix issue [#20](https://github.com/happytodev/typhoon/issues/20) : Tag slug is not automatically generated 
