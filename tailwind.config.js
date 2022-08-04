@@ -1,6 +1,7 @@
 module.exports = {
   content: [
     "./resources/views/**/*.blade.php",
+    "./src/App/Filament/Resources/**/*.php",
     "typhoon::*",
     "vendor/happytodev/typhoon/resources/views/**/*.blade.php",
   ],
