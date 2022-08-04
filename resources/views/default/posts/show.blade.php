@@ -10,8 +10,26 @@
                     src="{{ Storage::url($post->main_image) }}">
                 </div>
                 @endif
-                <div class="flex flex-col mt-10">
-
+                <div class="flex flex-col">
+                    <div class="flex flex-row my-10">
+                        <p class="tracking-widest text-black text-xs font-bold">
+                            In the category <span class="
+                                inline-flex 
+                                items-center 
+                                px-3 
+                                py-0.5 
+                                rounded-full 
+                                text-xs 
+                                font-bold 
+                                leading-5 
+                                text-white 
+                                font-display 
+                                mr-1 
+                                capitalize 
+                                {{ $post->category->pill_color }}">{{ $post->category->name }}</span>
+                        </p>
+                        <p class="tracking-widest text-black text-xs italic py-0.5 leading-5">, {{ $post->created_at->diffForHumans() }}</p>
+                    </div>
                     <div
                         class="prose-sm lg:prose-xl sm:pl-8 sm:py-8 sm:border-l border-gray-200 sm:border-t-0 border-t mt-4 pt-4 sm:mt-0 flex-initial">
                         <h2 class="text-4xl">{{ $post->title }}</h2>
@@ -20,6 +38,21 @@
                                 {{ $post->content }}
                             </x-markdown>
                         </p>
+                    </div>
+
+                    <div class="mt-4">
+                        <h3 class="text-xl font-bold py-4">Tags</h3>
+                        @forelse ($post->tags()->get() as $tag)
+                            <span
+                                class="text-xs inline-flex items-center font-bold leading-sm uppercase px-3 py-1 bg-blue-200 text-blue-700 rounded-full">
+                                {{ $tag->name }}
+                            </span>
+                        @empty
+                            <span
+                                class="text-xs inline-flex items-center font-bold leading-sm uppercase px-3 py-1 bg-gray-700 text-gray-200 rounded-full">
+                                No tag
+                            </span>
+                        @endforelse
                     </div>
 
                     {{-- User's Bio --}}

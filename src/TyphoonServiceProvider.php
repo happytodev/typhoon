@@ -42,7 +42,7 @@ class TyphoonServiceProvider extends PackageServiceProvider
 
             // publish compilated css from Tailwindcss
             $this->publishes([
-                __DIR__ . '/../public/css' => public_path('css'),
+                __DIR__ . '/../public/css/app.css' => public_path('css/app.css'),
                 __DIR__ . '/../resources/css' => resource_path('css'),
                 __DIR__ . '/../tailwind.config.js' => base_path('tailwind.config.js'),
             ], 'typhoon-css');
