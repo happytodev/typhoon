@@ -12,6 +12,7 @@ use Filament\Resources\Resource;
 use App\Filament\Resources\TagResource\Pages;
 use App\Filament\Resources\TagResource\RelationManagers;
 use Filament\Resources\RelationManagers\RelationManager;
+use MartinRo\FilamentCharcountField\Components\CharcountedTextInput;
 
 class TagResource extends Resource
 {
@@ -23,14 +24,22 @@ class TagResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('name')
+                CharcountedTextInput::make('name')
                     ->reactive()
                     ->required()
+                    ->minLength(3)
+                    ->maxLength(30)
+                    ->minCharacters(3)
+                    ->maxCharacters(30)
                     ->afterStateUpdated(function ($set, ?string $state) {
                         $set('slug', Str::slug($state));
                     }),
                 Forms\Components\TextInput::make('slug'),
-                Forms\Components\TextInput::make('description'),
+                CharcountedTextInput::make('description')
+                    ->minLength(3)
+                    ->maxLength(255)
+                    ->minCharacters(3)
+                    ->maxCharacters(255),
             ]);
     }
 

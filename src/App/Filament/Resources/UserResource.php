@@ -12,6 +12,8 @@ use Filament\Forms\Components\Card;
 use Filament\Forms\Components\FileUpload;
 use App\Filament\Resources\UserResource\Pages;
 use App\Filament\Resources\UserResource\RelationManagers;
+use MartinRo\FilamentCharcountField\Components\CharcountedTextInput;
+use MartinRo\FilamentCharcountField\Components\CharcountedMarkdownEditor;
 
 class UserResource extends Resource
 {
@@ -25,9 +27,11 @@ class UserResource extends Resource
             ->schema([
                 Forms\Components\TextInput::make('name')
                     ->required(),
-                Forms\Components\TextInput::make('email')
+                CharcountedTextInput::make('email')
                     ->email()
-                    ->required(),
+                    ->required()
+                    ->minCharacters(10)
+                    ->maxCharacters(255),
                 Forms\Components\MarkdownEditor::make('bio')
                     ->label('Edit bio (max 1200 characters)')
                     ->maxLength(1200)

@@ -13,6 +13,7 @@ use Filament\Forms\Components\Select;
 use Filament\Forms\Components\ColorPicker;
 use App\Filament\Resources\CategoryResource\Pages;
 use App\Filament\Resources\CategoryResource\RelationManagers;
+use MartinRo\FilamentCharcountField\Components\CharcountedTextInput;
 
 class CategoryResource extends Resource
 {
@@ -24,9 +25,13 @@ class CategoryResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('name')
-                    ->required()
+                CharcountedTextInput::make('name')
                     ->reactive()
+                    ->required()
+                    ->minLength(3)
+                    ->maxLength(30)
+                    ->minCharacters(3)
+                    ->maxCharacters(30)
                     ->afterStateUpdated(function ($set, ?string $state) {
                         $set('slug', Str::slug($state));
                     }),
