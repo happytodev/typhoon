@@ -62,6 +62,9 @@ class PostResource extends Resource
                         }),
                     TextInput::make('slug')
                         ->unique(ignorable: fn ($record) => $record),
+                    MarkdownEditor::make('tldr')
+                        ->columnSpan(2)
+                        ->nullable(),
                     MarkdownEditor::make('content')
                         ->columnSpan(2)
                         ->nullable(),

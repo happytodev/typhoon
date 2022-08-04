@@ -30,14 +30,26 @@
                         </p>
                         <p class="tracking-widest text-black text-xs italic py-0.5 leading-5">, {{ $post->created_at->diffForHumans() }}</p>
                     </div>
+
+                    
                     <div
                         class="prose-sm lg:prose-xl sm:pl-8 sm:py-8 sm:border-l border-gray-200 sm:border-t-0 border-t mt-4 pt-4 sm:mt-0 flex-initial">
-                        <h2 class="text-4xl">{{ $post->title }}</h2>
-                        <p class="leading-relaxed lg:text-lg mb-4">
+                        <h2 class="text-4xl font-extrabold">{{ $post->title }}</h2>
+                        @if ( ! empty($post->tldr))
+                        <div class="bg-white text-black italic rounded-lg border-2 border-dotted border-gray-300 prose lg:prose-xl p-4">
+                            <h3 class="text-xl font-normal">tl;dr</h3>
+                            <p class="leading-relaxed mb-4 font-extralight">
+                                <x-markdown>
+                                    {{ $post->tldr }}
+                                </x-markdown>
+                            </p>
+                        </div>
+                        @endif
+                        <div class="leading-relaxed mb-4 prose lg:prose-2xl">
                             <x-markdown>
                                 {{ $post->content }}
                             </x-markdown>
-                        </p>
+                        </div>
                     </div>
 
                     <div class="mt-4">
