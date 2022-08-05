@@ -2,6 +2,9 @@
 
 All notable changes to `typhoon` will be documented in this file.
 
+## v0.2.3 - 2022-08-05
+- Fix a little glitch on display
+
 ## v0.2.2 - 2022-08-05
 - Display optimization for code using the Prism library
 
