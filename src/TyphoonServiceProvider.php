@@ -43,9 +43,15 @@ class TyphoonServiceProvider extends PackageServiceProvider
             // publish compilated css from Tailwindcss
             $this->publishes([
                 __DIR__ . '/../public/css/app.css' => public_path('css/app.css'),
+                __DIR__ . '/../public/css/prism.css' => public_path('css/prism.css'),
                 __DIR__ . '/../resources/css' => resource_path('css'),
                 __DIR__ . '/../tailwind.config.js' => base_path('tailwind.config.js'),
             ], 'typhoon-css');
+
+            // publish prism js
+            $this->publishes([
+                __DIR__ . '/../public/js/prism.js' => public_path('js/prism.js'),
+            ], 'typhoon-js');
 
             // Install typhoon command
             $this->commands([
