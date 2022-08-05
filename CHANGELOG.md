@@ -2,6 +2,15 @@
 
 All notable changes to `typhoon` will be documented in this file.
 
+## v0.2.2 - 2022-08-05
+- Display optimization for code using the Prism library
+
+After `composer update`, please launch :
+
+```
+php artisan vendor:publish --force --tag="typhoon-css"
+```
+
 ## v0.2.1 - 2022-08-05
 - Fix [#35](https://github.com/happytodev/typhoon/issues/35) : After release of v0.2 'code' blocks are not correctly displayed
 - Add Prism to highlight code (html, css, js, php, twig, json) and some plugins : Line Highlight, Line Numbers, Show language, Toolbar, Copy to clipboard button
