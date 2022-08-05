@@ -35,7 +35,7 @@
 
                     
                     <div
-                        class="sm:pl-8 sm:py-8 sm:border-l border-gray-200 sm:border-t-0 border-t mt-4 pt-4 sm:mt-0 max-w-min">
+                        class="sm:pl-8 sm:py-8 sm:border-l border-gray-200 sm:border-t-0 border-t mt-4 pt-4 sm:mt-0">
                         <h2 class="font-extrabold text-3xl md:text-6xl pb-12 text-justify">{{ $post->title }}</h2>
                         @if ( ! empty($post->tldr))
                         <div class="bg-white text-black italic rounded-lg border-2 border-dotted border-gray-300 p-4 mb-8">
