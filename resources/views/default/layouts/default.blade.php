@@ -41,7 +41,7 @@
     @include('typhoon::' . config('typhoon.template') . '.partials.header')
     
     {{-- <div class="container mx-auto px-5 py-24"> --}}
-        <div class="bg-gray-50 flex flex-col flex-grow">
+        <div class="bg-gray-50 flex flex-col grow-0">
             @yield('content')
         </div>
         

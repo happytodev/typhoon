@@ -3,7 +3,7 @@
 @section('content')
     <section class="text-gray-600 body-font">
         <div class="container px-5 py-24 mx-auto flex flex-col">
-            <div class="lg:w-4/6 mx-auto">
+            <div class="w-11/12 lg:w-4/6 mx-auto">
                 @if ($post->main_image)
                 <div class="rounded-lg h-full overflow-hidden">
                     <img alt="content" class="object-cover object-center h-full w-full"
@@ -11,7 +11,7 @@
                 </div>
                 @endif
                 <div class="flex flex-col">
-                    <div class="flex flex-row my-10">
+                    <div class="flex flex-col md:flex-row my-10">
                         <p class="tracking-widest text-black text-xs font-bold">
                             In the category <span class="
                                 inline-flex 
@@ -28,13 +28,15 @@
                                 capitalize 
                                 {{ $post->category->pill_color }}">{{ $post->category->name }}</span>
                         </p>
-                        <p class="tracking-widest text-black text-xs italic py-0.5 leading-5">, {{ $post->created_at->diffForHumans() }}</p>
+                        <p class="tracking-widest text-black text-xs italic py-0.5 leading-5">
+                            {{ $post->created_at->diffForHumans() }}
+                        </p>
                     </div>
 
                     
                     <div
-                        class=" sm:pl-8 sm:py-8 sm:border-l border-gray-200 sm:border-t-0 border-t mt-4 pt-4 sm:mt-0 flex-initial">
-                        <h2 class="font-extrabold text-6xl pb-12">{{ $post->title }}</h2>
+                        class="sm:pl-8 sm:py-8 sm:border-l border-gray-200 sm:border-t-0 border-t mt-4 pt-4 sm:mt-0 max-w-min">
+                        <h2 class="font-extrabold text-3xl md:text-6xl pb-12 text-justify">{{ $post->title }}</h2>
                         @if ( ! empty($post->tldr))
                         <div class="bg-white text-black italic rounded-lg border-2 border-dotted border-gray-300 p-4 mb-8">
                             <h3 class="text-xl font-normal">tl;dr</h3>
@@ -70,7 +72,7 @@
 
                     {{-- User's Bio --}}
                     {{-- from https://tailwindtemplates.io/templates?category=profile --}}
-                    <div class="p-8 md:p-16">
+                    <div class="p-1 md:p-16">
                         <div class="p-8 bg-white shadow mt-24">
                             <div class="grid grid-cols-1 md:grid-cols-3">
                                 <div class="grid grid-cols-3 text-center order-last md:order-first mt-20 md:mt-0">
@@ -93,7 +95,7 @@
                                         class="w-32 h-32 md:w-48 md:h-48 bg-indigo-100 mx-auto rounded-full shadow-2xl absolute inset-x-0 top-0 -mt-24 flex items-center justify-center text-indigo-500">
                                         @if ($post->user->picture)
                                         <img src="{{ Storage::url($post->user->picture) }}" alt="{{ $post->user->name }} picture"
-                                            class="rounded-full w-48 h-48">
+                                            class="rounded-full w-32 h-32 md:w-48 md:h-48">
                                         @else
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-24 w-24" viewBox="0 0 20 20"
                                             fill="currentColor">
