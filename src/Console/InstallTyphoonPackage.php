@@ -40,6 +40,10 @@ class InstallTyphoonPackage extends Command
         $this->info('>>> Writing CSS...');
         $this->writeCss();
 
+        // Write JS
+        $this->info('>>> Writing Js...');
+        $this->writeJs();
+
         //Update config file
         $this->info('>>> Updating config file...');
         $this->updateConfigFile();
@@ -334,6 +338,19 @@ class InstallTyphoonPackage extends Command
         $params = [
             '--provider' => "HappyToDev\Typhoon\TyphoonServiceProvider",
             '--tag' => "typhoon-css",
+            '--force' => true
+        ];
+
+        $this->call('vendor:publish', $params);
+    }
+
+    private function writeJs()
+    {
+        $this->info('Writing JS...');
+
+        $params = [
+            '--provider' => "HappyToDev\Typhoon\TyphoonServiceProvider",
+            '--tag' => "typhoon-js",
             '--force' => true
         ];
 
