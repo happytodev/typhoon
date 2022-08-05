@@ -2,6 +2,18 @@
 
 All notable changes to `typhoon` will be documented in this file.
 
+## v0.2.1 - 2022-08-05
+- Fix [#35](https://github.com/happytodev/typhoon/issues/35) : After release of v0.2 'code' blocks are not correctly displayed
+- Add Prism to highlight code (html, css, js, php, twig, json) and some plugins : Line Highlight, Line Numbers, Show language, Toolbar, Copy to clipboard button
+- Improve detections of tailwindcss instructions to compile CSS by integrating other happytodev plugins in discover parameters
+
+After `composer update`, please launch :
+
+```
+php artisan vendor:publish --force --tag="typhoon-css"
+php artisan vendor:publish --force --tag="typhoon-js"
+```
+
 ## v0.2.0 - 2022-08-04
 - Fix feature [#25](https://github.com/happytodev/typhoon/issues/25) : Add counter on fields with limited characters
 - Fix [#21](https://github.com/happytodev/typhoon/issues/21) [#28](https://github.com/happytodev/typhoon/issues/28) [#31](https://github.com/happytodev/typhoon/issues/31) [#32](https://github.com/happytodev/typhoon/issues/32) [#33](https://github.com/happytodev/typhoon/issues/33) [#34](https://github.com/happytodev/typhoon/issues/34) : Add label before tags and show category for posts
