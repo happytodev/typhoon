@@ -33,23 +33,24 @@
 
                     
                     <div
-                        class="prose-sm lg:prose-xl sm:pl-8 sm:py-8 sm:border-l border-gray-200 sm:border-t-0 border-t mt-4 pt-4 sm:mt-0 flex-initial">
-                        <h2 class="text-4xl font-extrabold">{{ $post->title }}</h2>
+                        class=" sm:pl-8 sm:py-8 sm:border-l border-gray-200 sm:border-t-0 border-t mt-4 pt-4 sm:mt-0 flex-initial">
+                        <h2 class="font-extrabold text-6xl pb-12">{{ $post->title }}</h2>
                         @if ( ! empty($post->tldr))
-                        <div class="bg-white text-black italic rounded-lg border-2 border-dotted border-gray-300 prose lg:prose-xl p-4">
+                        <div class="bg-white text-black italic rounded-lg border-2 border-dotted border-gray-300 p-4 mb-8">
                             <h3 class="text-xl font-normal">tl;dr</h3>
-                            <p class="leading-relaxed mb-4 font-extralight">
+                            <p class="leading-relaxed mb-4 font-extralight prose lg:prose-2xl">
                                 <x-markdown>
                                     {{ $post->tldr }}
                                 </x-markdown>
                             </p>
                         </div>
                         @endif
-                        <div class="leading-relaxed mb-4 prose lg:prose-2xl">
-                            <x-markdown>
-                                {{ $post->content }}
-                            </x-markdown>
-                        </div>
+                        <article class="leading-relaxed mb-4 prose lg:prose-2xl">
+                            {!! $markdown !!}
+                            {{-- <x-markdown> --}}
+                                {{-- {{ $post->content }} --}}
+                            {{-- </x-markdown> --}}
+                        </article>
                     </div>
 
                     <div class="mt-4">
