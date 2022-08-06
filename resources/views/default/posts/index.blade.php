@@ -4,7 +4,7 @@
     <div class="col-span-12">
 
         <section class="text-grey-900 body-font">
-            <div class="container mx-auto flex px-5 lg:py-16 md:flex-row flex-col items-center">
+            <div class="container mx-auto flex px-5 lg:pt-8 md:flex-row flex-col items-center">
                 <div class="col-span-12 lg:col-span-6 w-full lg:mb-6 mt-4 lg:mt-0 lg:mb-0 px-4 lg:px-0">
                     <h1 class="sm:text-3xl text-2xl font-medium title-font mb-2 text-red-600">
                         {{ __('posts.showing_all_posts') }}</h1>
@@ -17,7 +17,7 @@
                 </article>
             </div>
             <div class="col-span-12">
-                <div class="container mx-auto px-5 lg:py-16 grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="container mx-auto px-5 lg:pt-8 lg:pb-16 grid grid-cols-1 md:grid-cols-3 gap-4">
                     @forelse ($posts as $post)
                         <x-typhoon-post :post=$post />
                     @empty
@@ -28,12 +28,6 @@
             <div class="container mx-auto pb-8 px-8">
                 {{ $posts->links() }}
             </div>
-            {{-- <div class="grid grid-cols-6 gap-4">
-            <div class="col-start-2 col-span-4">
-                {{ $posts->links() }}
-            </div>
-            </div> --}}
-
         </section>
     </div>
 @endsection
