@@ -15,7 +15,7 @@ class PostController extends Controller
         // return view('typhoon::' . config('typhoon.template') . '.posts.index', compact('posts'));
 
         return view('typhoon::' . config('typhoon.template') . '.posts.index', [
-            'posts' => Post::orderBy('created_at', 'desc')->paginate(3)
+            'posts' => Post::orderBy('created_at', 'desc')->paginate(setting('posts.perpage'))
         ]);
 
 
