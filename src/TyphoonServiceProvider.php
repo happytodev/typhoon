@@ -24,7 +24,7 @@ class TyphoonServiceProvider extends PackageServiceProvider
                 __DIR__ . '/Models/Page.php' => 'app/Models/Page.php',
                 __DIR__ . '/Models/Post.php' => 'app/Models/Post.php',
                 __DIR__ . '/Models/PostTag.php' => 'app/Models/PostTag.php',
-                __DIR__ . '/Models/Tag.php' => 'app/Models/Setting.php',
+                __DIR__ . '/Models/Setting.php' => 'app/Models/Setting.php',
                 __DIR__ . '/Models/Tag.php' => 'app/Models/Tag.php',
                 __DIR__ . '/Models/User.php' => 'app/Models/User.php',
             ], 'typhoon-models');
