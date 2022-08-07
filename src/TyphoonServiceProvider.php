@@ -30,6 +30,10 @@ class TyphoonServiceProvider extends PackageServiceProvider
             ], 'typhoon-models');
 
             $this->publishes([
+                __DIR__ . '/Models/Setting.php' => 'app/Models/Setting.php',
+            ], 'typhoon-models-setting');
+
+            $this->publishes([
                 __DIR__ . '/../config/filament.php' => config_path('filament.php'),
             ], 'typhoon-filament-config');
 
@@ -103,6 +107,11 @@ class TyphoonServiceProvider extends PackageServiceProvider
                 __DIR__ . '/../demo_content/sqlite' => base_path('storage/framework/cache'),
                 __DIR__ . '/../demo_content/public_image' => base_path('storage/app/public'),
             ], 'typhoon-install-demo');
+
+            // Install demo content for setting model
+            $this->publishes([
+                __DIR__ . '/../demo_content/content/settings' => base_path('content/settings'),
+            ], 'typhoon-install-demo-for-setting-model');
 
             Blade::component('typhoon-hero', TyphoonHero::class);
             Blade::component('typhoon-post', TyphoonPost::class);

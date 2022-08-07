@@ -108,9 +108,40 @@ class UpdateTyphoonPackage extends Command
                 $this->info('Configurations elements still on your installation');
 
             }
+
+
+            $this->v023Tov030AddSettingModel();
+
+            $this->v023To030InstallDemoForSettingModel();
         }
         $this->info('TyphoonCMS Package updated. 🚀');
         $this->askForSomeLove();
+    }
+
+    private function v023Tov030AddSettingModel()
+    {
+        $this->info('Adding Setting model...');
+
+        $params = [
+            '--provider' => "HappyToDev\Typhoon\TyphoonServiceProvider",
+            '--tag' => "typhoon-models-setting",
+            '--force' => true
+        ];
+
+        $this->call('vendor:publish', $params);
+    }
+
+    private function v023To030InstallDemoForSettingModel()
+    {
+        $this->info('Adding Setting model...');
+
+        $params = [
+            '--provider' => "HappyToDev\Typhoon\TyphoonServiceProvider",
+            '--tag' => "typhoon-install-demo-for-setting-model",
+            '--force' => true
+        ];
+
+        $this->call('vendor:publish', $params);
     }
 
     /**
