@@ -99,6 +99,9 @@ class InstallTyphoonPackage extends Command
         $this->publishFilamentNavigationAssets(true);
         $this->info('>>> Publishing filament-navigation assets : done');
 
+        // Filament Akaunting FilamentSetting config file
+        $this->publishAkauntingFilamentSettingConfigFile();
+
         // Replace initial laravel routes/web.php
         $this->info('>>> Replacing initial Laravel routes/web.php...');
         $this->replaceInitialRouteWeb(true);
@@ -338,6 +341,18 @@ class InstallTyphoonPackage extends Command
         $params = [
             '--provider' => "HappyToDev\Typhoon\TyphoonServiceProvider",
             '--tag' => "typhoon-css",
+            '--force' => true
+        ];
+
+        $this->call('vendor:publish', $params);
+    }
+
+    private function publishAkauntingFilamentSettingConfigFile()
+    {
+        $this->info('Publishing Akaunting FilamentSetting config file...');
+
+        $params = [
+            '--tag' => "setting",
             '--force' => true
         ];
 
