@@ -2,6 +2,9 @@
 
 All notable changes to `typhoon` will be documented in this file.
 
+## v0.3.3 - 2022-08-07
+- Improve typhoon update script to add `setting` resources
+
 ## v0.3.2 - 2022-08-07
 - Improve typhoon update script to add `setting` model and content
 
