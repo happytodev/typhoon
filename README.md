@@ -138,7 +138,11 @@ compile tailwind asset
 npx tailwindcss -i ./resources/css/app.css -o ./public/css/app.css
 ```
 
+## Updating
 
+After you update TyhoonCms with `composer update` you can launch `php artisan typhoon:update`.
+
+The script will ask you wich version you come from and adapt the update in consequence.
 
 
 
