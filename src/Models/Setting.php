@@ -6,20 +6,15 @@ use Orbit\Concerns\Orbital;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Eloquent\Model;
 
-class Configuration extends Model
+class Setting extends Model
 {
     use Orbital;
-
-    public static $driver = 'json';
-
 
     public static function schema(Blueprint $table)
     {
         $table->id();
-        // $table->string('name')->required();
-        // $table->string('description')->nullable();
-        // $table->string('value')->required();
-        $table->json('content')->nullable();
+        $table->string('key');
+        $table->text('value')->nullable();
     }
 
     /**
@@ -28,10 +23,8 @@ class Configuration extends Model
      * @var string[]
      */
     protected $fillable = [
-        // 'name',
-        // 'description',
-        // 'value',
-        'content'
+        'key',
+        'value',
     ];
 
     /**
@@ -48,8 +41,6 @@ class Configuration extends Model
      * @var array
      */
     protected $casts = [
-        'content' => 'array',
     ];
-
 
 }

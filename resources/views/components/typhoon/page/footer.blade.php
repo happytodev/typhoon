@@ -12,8 +12,9 @@
                 <a href="https://twitter.com/typhoon" class="text-gray-600" rel="noopener noreferrer"
                     target="_blank">@typhoon</a> — 2022
             </p>
-
+            @if (setting('disableAllSocialNetworks') == 0)
             <x-happytodev-filament-social-networks name="main"/>
+            @endif
         </div>
     </footer>
 </div>

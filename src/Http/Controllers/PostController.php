@@ -10,9 +10,18 @@ class PostController extends Controller
     public function index()
     {
 
-        $posts = Post::orderBy('created_at', 'desc')->get();
+        // $posts = Post::orderBy('created_at', 'desc')->get();
 
-        return view('typhoon::' . config('typhoon.template') . '.posts.index', compact('posts'));
+        // return view('typhoon::' . config('typhoon.template') . '.posts.index', compact('posts'));
+
+        return view('typhoon::' . config('typhoon.template') . '.posts.index', [
+            'posts' => Post::orderBy('created_at', 'desc')->paginate(setting('posts.perpage'))
+        ]);
+
+
+        // return view('user.index', [
+        //     'users' => DB::table('users')->paginate(15)
+        // ]);
     }
 
 

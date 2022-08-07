@@ -88,13 +88,4 @@ class Post extends Model
         return $this->belongsToMany(Tag::class)->withPivot('id')->using(PostTag::class);
     }
 
-
-
-
-    // Get picture 
-    // public function posts()
-    // {
-    //     return $this->hasMany(Post::class);
-    // }
-
 }

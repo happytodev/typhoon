@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Blade;
 use Spatie\LaravelPackageTools\Package;
 use HappyToDev\Typhoon\Commands\TyphoonCommand;
 use HappyToDev\Typhoon\Console\InstallTyphoonPackage;
+use HappyToDev\Typhoon\Console\UpdateTyphoonPackage;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
 class TyphoonServiceProvider extends PackageServiceProvider
@@ -56,6 +57,7 @@ class TyphoonServiceProvider extends PackageServiceProvider
             // Install typhoon command
             $this->commands([
                 InstallTyphoonPackage::class,
+                UpdateTyphoonPackage::class,
             ]);
 
             // Load Blade components
