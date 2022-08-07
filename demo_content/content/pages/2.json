@@ -1,0 +1,28 @@
+{
+    "id": 2,
+    "name": "Arts credits",
+    "description": "To thanks to the artist contribution for Typhoon",
+    "slug": "arts-credits",
+    "content": [
+        {
+            "type": "heading",
+            "data": {
+                "level": "h1",
+                "width": "12",
+                "backgroundColor": "bg-white",
+                "visible": true,
+                "content": "Arts credits"
+            }
+        },
+        {
+            "type": "paragraph",
+            "data": {
+                "backgroundColor": "bg-white",
+                "visible": true,
+                "content": "A very little thank to the artist who contributes to this site with their creations :\n\n![](https:\/\/typhooncms.itanea.fr\/storage\/rhgSUhPmPlDyaspKUqJhcR3VyMjzli63jPW0enE9.webp)\n\nImage par [kevin kevin](https:\/\/pixabay.com\/fr\/users\/darkmanth-27519368\/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=7268867) de [Pixabay](https:\/\/pixabay.com\/fr\/\/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=7268867)\n\nhttps:\/\/pixabay.com\/fr\/illustrations\/color%c3%a9-jaune-mauve-orange-7268867\/"
+            }
+        }
+    ],
+    "created_at": "2022-08-02T20:02:38.000000Z",
+    "updated_at": "2022-08-02T20:27:21.000000Z"
+}

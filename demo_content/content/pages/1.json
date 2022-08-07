@@ -10,9 +10,9 @@
                 "heroImagePosition": "right",
                 "backgroundColor": "bg-amber-300",
                 "visible": true,
-                "heroTitle": "Typhoon home page exemple",
+                "heroTitle": "Typhoon CMS",
                 "heroSubtitle": "This is here all the magic begins",
-                "heroText": "Lorem ipsum"
+                "heroText": "Database-less Cms based on the TALL stack, FilamentPhp and Orbit"
             }
         },
         {
@@ -30,7 +30,7 @@
             "data": {
                 "backgroundColor": "bg-blue-100",
                 "visible": true,
-                "content": "## Welcome in Typhoon\n\nBelow the list of actual features of Typhoon\n\n- Basic user management\n- Pages management\n- Posts management\n- Tags and categories management\n- Menus management\n- Possibility to set Social Networks and display it easily\n- Posts can have comments\n\nTyphoon is very young, many features will come in future, and you know what ?\nYou can decide of Typhoon's future !\n\nYes, Typhoon is for the community, and I decide to let you the word.\n\nSo tell me !"
+                "content": "## Welcome in Typhoon\n\nBelow the list of actual features of Typhoon\n\n- Basic user management\n- Pages management\n- Posts management\n- Tags and categories management\n- Menus management\n- Possibility to set Social Networks and display it easily\n- Posts can have comments\n- Typhoon supports webp image format ;-)\n\nTyphoon is very young, many features will come in future, and you know what ?\nYou can decide of Typhoon's future !\n\nYes, Typhoon is for the community, and I decide to let you the word.\n\nSo tell me !"
             }
         },
         {
@@ -53,5 +53,5 @@
         }
     ],
     "created_at": "2022-08-01T13:13:49.000000Z",
-    "updated_at": "2022-08-01T16:06:28.000000Z"
+    "updated_at": "2022-08-02T15:03:47.000000Z"
 }

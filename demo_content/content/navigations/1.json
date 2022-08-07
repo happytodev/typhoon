@@ -20,8 +20,17 @@
                 "url": "\/posts"
             },
             "children": []
+        },
+        "88b3f2e1-6269-4c2a-bd7a-af29592a33cb": {
+            "label": "Credits",
+            "type": "external-link",
+            "data": {
+                "target": null,
+                "url": "page\/arts-credits"
+            },
+            "children": []
         }
     },
     "created_at": "2022-08-01T10:42:49.000000Z",
-    "updated_at": "2022-08-01T14:29:06.000000Z"
+    "updated_at": "2022-08-02T21:25:29.000000Z"
 }
