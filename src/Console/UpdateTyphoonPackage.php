@@ -113,6 +113,8 @@ class UpdateTyphoonPackage extends Command
             $this->v023Tov030AddSettingModel();
 
             $this->v023To030InstallDemoForSettingModel();
+
+            $this->creatingResources();
         }
         $this->info('TyphoonCMS Package updated. 🚀');
         $this->askForSomeLove();
@@ -412,7 +414,8 @@ class UpdateTyphoonPackage extends Command
 
         $params = [
             '--provider' => "HappyToDev\Typhoon\TyphoonServiceProvider",
-            '--tag' => "typhoon-filament-resources"
+            '--tag' => "typhoon-filament-resources",
+            '--force' => true
         ];
 
         $this->call('vendor:publish', $params);
