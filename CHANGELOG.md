@@ -2,6 +2,9 @@
 
 All notable changes to `typhoon` will be documented in this file.
 
+## v0.3.1 - 2022-08-07
+- Fix some errors after installation
+
 ## v0.3.0 - 2022-08-07
 - Fix [#37](https://github.com/happytodev/typhoon/issues/37) :  Add pagination to posts page list
 - Add typhoon:update command to help updating TyphoonCms after launch `composer update`
