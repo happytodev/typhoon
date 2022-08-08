@@ -123,7 +123,14 @@ class UpdateTyphoonPackage extends Command
             $this->publishModels(true);
         }
 
+        // from v0.4.0 to 0.4.999
+        if($typhoonVersionNumber == '0.4.0')
+        {
+            $this->publishModels(true);
+        }
+
         $this->info('TyphoonCMS Package updated. 🚀');
+        
         $this->askForSomeLove();
     }
 
@@ -221,7 +228,8 @@ class UpdateTyphoonPackage extends Command
                 '0.2.1',
                 '0.2.2',
                 '0.2.3',
-                '0.3.x'
+                '0.3.x',
+                '0.4.0'
             ]
         );
     }
