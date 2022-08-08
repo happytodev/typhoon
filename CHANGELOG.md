@@ -2,6 +2,10 @@
 
 All notable changes to `typhoon` will be documented in this file.
 
+## v0.4.0 - 2022-08-08
+- Improve settings to be of multiple types (string, boolean, image, textarea, richtext)
+- Introduce settings in footer and menu components
+
 ## v0.3.3 - 2022-08-07
 - Improve typhoon update script to add `setting` resources
 
