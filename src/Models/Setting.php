@@ -14,6 +14,7 @@ class Setting extends Model
     {
         $table->id();
         $table->string('key');
+        $table->string('type');
         $table->text('value')->nullable();
     }
 
@@ -24,6 +25,7 @@ class Setting extends Model
      */
     protected $fillable = [
         'key',
+        'type',
         'value',
     ];
 
