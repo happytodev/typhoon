@@ -2,6 +2,11 @@
 
 All notable changes to `typhoon` will be documented in this file.
 
+## v0.4.1 - 2022-08-09
+- Fix few bugs
+- Display videos and twitter from markdown file works now in posts and pages
+- Fix problems with settings in admin due to add column type in content file but not in sqlite DB
+
 ## v0.4.0 - 2022-08-08
 - Improve settings to be of multiple types (string, boolean, image, textarea, richtext)
 - Introduce settings in footer and menu components
