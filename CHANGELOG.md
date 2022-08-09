@@ -2,6 +2,9 @@
 
 All notable changes to `typhoon` will be documented in this file.
 
+## v0.4.2 - 2022-08-09
+- Error with composer.json config
+
 ## v0.4.1 - 2022-08-09
 - Fix few bugs
 - Display videos and twitter from markdown file works now in posts and pages
