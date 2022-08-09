@@ -34,4 +34,17 @@ return [
     |
     */
     'template_color' => 'indigo',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Typhoon version number
+    |--------------------------------------------------------------------------
+    |
+    | This value is the colour you want for your theme.
+    | Possibles values are the main colours of tailwindcss.
+    |
+    */
+    'version' => 'v0.4.1',
+
+
 ];

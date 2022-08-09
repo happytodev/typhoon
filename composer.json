@@ -21,12 +21,20 @@
             "role": "Developer"
         }
     ],
+    "repositories": [
+        { 
+            "type": "path",
+            "url": "../../Packages/filament-comments"
+        }
+    ],
     "require": {
         "php": "^8.1",
+        "league/commonmark": "^2.3",
+        "embed/embed": "^4.4",        
         "akaunting/laravel-setting": "^1.2",
         "doctrine/dbal": "^3.3",
         "filament/filament": "^2.0",
-        "happytodev/filament-comments": "^0.1",
+        "happytodev/filament-comments": "dev-develop",
         "happytodev/filament-social-networks": "^0.2",
         "illuminate/contracts": "^9.0",
         "jeffgreco13/filament-breezy": "^1.3",
