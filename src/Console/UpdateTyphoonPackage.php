@@ -121,13 +121,10 @@ class UpdateTyphoonPackage extends Command
         if($typhoonVersionNumber == '0.3.x')
         {
             $this->publishModels(true);
+            $this->publishViews(true);
+            $this->updateConfigFileMarkdown(true);
         }
 
-        // from v0.4.0 to 0.4.999
-        if($typhoonVersionNumber == '0.4.0')
-        {
-            $this->publishModels(true);
-        }
 
         $this->info('TyphoonCMS Package updated. 🚀');
         
@@ -337,6 +334,20 @@ class UpdateTyphoonPackage extends Command
         );
     }
 
+    private function publishViews($forcePublish = false)
+    {
+        $params = [
+            '--provider' => "HappyToDev\Typhoon\TyphoonServiceProvider",
+            '--tag' => "typhoon-views"
+        ];
+
+        if ($forcePublish === true) {
+            $params['--force'] = true;
+        }
+
+        $this->call('vendor:publish', $params);
+    }
+
     private function publishLangs($forcePublish = false)
     {
         $params = [
@@ -487,5 +498,19 @@ class UpdateTyphoonPackage extends Command
 
             $this->line('Thank you!');
         }
+    }
+
+    private function updateConfigFileMarkdown($forcePublish = false)
+    {
+        $params = [
+            '--provider' => "HappyToDev\Typhoon\TyphoonServiceProvider",
+            '--tag' => "typhoon-markdown-config"
+        ];
+
+        if ($forcePublish === true) {
+            $params['--force'] = true;
+        }
+
+        $this->call('vendor:publish', $params);
     }
 }

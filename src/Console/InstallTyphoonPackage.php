@@ -47,6 +47,7 @@ class InstallTyphoonPackage extends Command
         //Update config file
         $this->info('>>> Updating config file...');
         $this->updateConfigFile();
+        $this->updateConfigFileMarkdown(true);
 
         // publish configuration file
         $this->info('>>> Publishing configuration file...');
@@ -203,6 +204,20 @@ class InstallTyphoonPackage extends Command
             '--provider' => "HappyToDev\Typhoon\TyphoonServiceProvider",
             '--tag' => "typhoon-filament-config"
         ];
+
+        $this->call('vendor:publish', $params);
+    }
+
+    private function updateConfigFileMarkdown($forcePublish = false)
+    {
+        $params = [
+            '--provider' => "HappyToDev\Typhoon\TyphoonServiceProvider",
+            '--tag' => "typhoon-markdown-config"
+        ];
+
+        if ($forcePublish === true) {
+            $params['--force'] = true;
+        }
 
         $this->call('vendor:publish', $params);
     }

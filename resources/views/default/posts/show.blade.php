@@ -13,7 +13,7 @@
                 <div class="flex flex-col">
                     <div class="flex flex-col md:flex-row my-10">
                         <p class="tracking-widest text-black text-xs font-bold">
-                            In the category <span class="
+                            In ABCDE the category <span class="
                                 inline-flex 
                                 items-center 
                                 px-3 
@@ -48,10 +48,9 @@
                         </div>
                         @endif
                         <article class="leading-relaxed mb-4 prose lg:prose-2xl">
-                            {!! $markdown !!}
-                            {{-- <x-markdown> --}}
-                                {{-- {{ $post->content }} --}}
-                            {{-- </x-markdown> --}}
+                            <x-markdown>
+                                {!! $post->content !!}
+                            </x-markdown>
                         </article>
                     </div>
 

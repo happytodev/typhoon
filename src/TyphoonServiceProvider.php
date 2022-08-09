@@ -38,6 +38,10 @@ class TyphoonServiceProvider extends PackageServiceProvider
             ], 'typhoon-filament-config');
 
             $this->publishes([
+                __DIR__ . '/../config/markdown.php' => config_path('markdown.php'),
+            ], 'typhoon-markdown-config');
+
+            $this->publishes([
                 __DIR__ . '/../config/typhoon.php' => config_path('typhoon.php'),
             ], 'typhoon-config');
 
