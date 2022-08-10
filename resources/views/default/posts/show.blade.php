@@ -13,7 +13,7 @@
                 <div class="flex flex-col">
                     <div class="flex flex-col md:flex-row my-10">
                         <p class="tracking-widest text-black text-xs font-bold">
-                            In ABCDE the category <span class="
+                            In the category <span class="
                                 inline-flex 
                                 items-center 
                                 px-3 
