@@ -123,6 +123,8 @@ class UpdateTyphoonPackage extends Command
             $this->publishModels(true);
             $this->publishViews(true);
             $this->updateConfigFileMarkdown(true);
+            $this->creatingResources(true);
+            $this->v023To030InstallDemoForSettingModel();
         }
 
 
