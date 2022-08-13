@@ -3,12 +3,14 @@
 namespace HappyToDev\Typhoon;
 
 //use App\Providers\RepositoryServiceProvider;
+use App\Models\Post;
 use App\View\Components\TyphoonHero;
 use Illuminate\Support\Facades\Blade;
 use Spatie\LaravelPackageTools\Package;
+use Illuminate\Console\Scheduling\Schedule;
 use HappyToDev\Typhoon\Commands\TyphoonCommand;
-use HappyToDev\Typhoon\Console\InstallTyphoonPackage;
 use HappyToDev\Typhoon\Console\UpdateTyphoonPackage;
+use HappyToDev\Typhoon\Console\InstallTyphoonPackage;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
 class TyphoonServiceProvider extends PackageServiceProvider
@@ -119,6 +121,17 @@ class TyphoonServiceProvider extends PackageServiceProvider
 
             Blade::component('typhoon-hero', TyphoonHero::class);
             Blade::component('typhoon-post', TyphoonPost::class);
+
+            // Declare scheduling
+            // Need the crontab to be set
+            $this->app->afterResolving(Schedule::class, function (Schedule $schedule) {
+                $schedule->call(function () {
+                    Post::updatePostToBePublished();
+                    Post::updatePostToBeUnpublished();
+                })
+                ->everyMinute()
+                ->appendOutputTo(base_path('storage/logs/schedules.log'));
+            });
         }
 
         // Load routes

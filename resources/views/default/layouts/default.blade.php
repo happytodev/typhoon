@@ -33,6 +33,9 @@
     <link rel="stylesheet" href="/css/app.css">
     <link rel="stylesheet" href="/css/prism.css" />
     @livewireStyles
+
+    {{-- AlpineJS --}}
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     
 </head>
 
@@ -44,7 +47,10 @@
         <div class="bg-gray-50 flex flex-col grow-0">
             @yield('content')
         </div>
-        
+     
+
+        <x-flash />
+
     @include('typhoon::' . config('typhoon.template') . '.partials.footer')
     
     {{-- Tailwind-Elements PART 2 --}}

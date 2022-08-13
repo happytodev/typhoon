@@ -55,6 +55,13 @@
                         <x-typhoon.page.image :imageUrl="$content['data']['url']" :imageAlt="$content['data']['alt']" :imageBackgroundColor="$content['data']['backgroundColor']" :imageWidth="$content['data']['width']" />
                     @endif
                     @break
+
+                    @case('plugins')
+                    @if($content['data']['visible'])
+                        @php $componentName = 'typhoon.page.' . $content['data']['type'] . '-block'; @endphp
+                        <x-dynamic-component :component="$componentName" :id="$content['data']['id']" />
+                    @endif
+                    @break
                 @endswitch
             </div>
 
