@@ -2,6 +2,13 @@
 
 All notable changes to `typhoon` will be documented in this file.
 
+## v0.5.0 - 2022-08-14
+- Add posts shedule / unschedule feature (need crontab edit). Fix [#41]((https://github.com/happytodev/typhoon/issues/37))
+- First implementation of a plugin system in Typhoon
+- Update the update script to this new version
+- Increase background color in page constructor (based on Tailwind color palette)
+- clean the code
+
 ## v0.4.2 - 2022-08-09
 - Error with composer.json config
 
