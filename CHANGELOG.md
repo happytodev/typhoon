@@ -2,6 +2,9 @@
 
 All notable changes to `typhoon` will be documented in this file.
 
+## v0.5.1 - 2022-08-14
+- Missing flash component
+
 ## v0.5.0 - 2022-08-14
 - Add posts shedule / unschedule feature (need crontab edit). Fix [#41]((https://github.com/happytodev/typhoon/issues/37))
 - First implementation of a plugin system in Typhoon
