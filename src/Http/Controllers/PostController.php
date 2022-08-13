@@ -11,18 +11,24 @@ class PostController extends Controller
     {
 
         return view('typhoon::' . config('typhoon.template') . '.posts.index', [
-            'posts' => Post::orderBy('created_at', 'desc')->paginate(setting('posts.perpage'))
+            'posts' => Post::where('status', 'published')
+                                ->orderBy('created_at', 'desc')
+                                ->paginate(setting('posts.perpage'))
         ]);
-
     }
 
 
     public function show($slug)
     {
-        $post = Post::where('slug', $slug)->first();
+        $post = Post::where('slug', $slug)
+                        ->where('status', 'published')
+                        ->firstOrFail();
 
-        $markdown = Str::markdown($post->content);
+        if ($post->status == 'published') {
+            $markdown = Str::markdown($post->content);
 
-        return view('typhoon::' . config('typhoon.template') . '.posts.show', compact('post', 'markdown'));
+            return view('typhoon::' . config('typhoon.template') . '.posts.show', compact('post', 'markdown'));
+        }
+
     }
 }
