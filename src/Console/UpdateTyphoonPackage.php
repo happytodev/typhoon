@@ -97,40 +97,67 @@ class UpdateTyphoonPackage extends Command
         // from v0.2.3
         if ($typhoonVersionNumber == '0.2.3')
         {
-            $this->info('Update from TyphoonCMS v0.2.3 needs to remove following elements :');
-            $this->info('- directory app/Filament/Resources/ConfigurationResource');
-            $this->info('- file app/Filament/Resources/ConfigurationResource.php');
-            $this->info('- directory content/configurations');
-            if ($this->confirm('Do you wish to continue?')) {
-                //
-                $this->removeConfigurationFiles();
-            } else {
-                $this->info('Configurations elements still on your installation');
 
-            }
-
-
-            $this->v023Tov030AddSettingModel();
-
-            $this->v023To030InstallDemoForSettingModel();
-
-            $this->creatingResources();
+            $this->upgradingFromv023Tov03x();
+            $this->upgradingFromv03xTov04x();
+            $this->upgradingFromv04xTov05x();
         }
 
         // from v0.3.0 to 0.3.999
         if($typhoonVersionNumber == '0.3.x')
         {
-            $this->publishModels(true);
-            $this->publishViews(true);
-            $this->updateConfigFileMarkdown(true);
-            $this->creatingResources(true);
-            $this->v023To030InstallDemoForSettingModel();
+            $this->upgradingFromv03xTov04x();
+            $this->upgradingFromv04xTov05x();
         }
 
+        // from v0.4.0 to 0.4.999
+        if($typhoonVersionNumber == '0.4.x')
+        {
+            $this->upgradingFromv04xTov05x();
+        }
 
         $this->info('TyphoonCMS Package updated. 🚀');
         
         $this->askForSomeLove();
+    }
+
+    private function upgradingFromv023Tov03x()
+    {
+        $this->info('Update from TyphoonCMS v0.2.3 needs to remove following elements :');
+        $this->info('- directory app/Filament/Resources/ConfigurationResource');
+        $this->info('- file app/Filament/Resources/ConfigurationResource.php');
+        $this->info('- directory content/configurations');
+        if ($this->confirm('Do you wish to continue?')) {
+            //
+            $this->removeConfigurationFiles();
+        } else {
+            $this->info('Configurations elements still on your installation');
+
+        }
+
+
+        $this->v023Tov030AddSettingModel();
+
+        $this->v023To030InstallDemoForSettingModel();
+
+        $this->creatingResources();
+    }
+
+    private function upgradingFromv03xTov04x()
+    {
+        $this->publishModels(true);
+        $this->publishViews(true);
+        $this->updateConfigFileMarkdown(true);
+        $this->creatingResources(true);
+        $this->v023To030InstallDemoForSettingModel();
+    }
+
+    private function upgradingFromv04xTov05x()
+    {
+        $this->publishModels(true);
+        $this->creatingResources(true);
+        $this->publishRepositories(true);
+        $this->publishViews(true);
     }
 
     private function v023Tov030AddSettingModel()
@@ -176,7 +203,7 @@ class UpdateTyphoonPackage extends Command
          * @todo dissociates if a file or directory exists or not to the fact
          *       it is not possible to delete it. Return message may be 
          *       confusing
-         */        
+         */
         $this->info('Starting remove file Filament/Resources/ConfigurationResource.php');
         if (File::exists(app_path('Filament/Resources/ConfigurationResource.php')) && unlink(app_path('Filament/Resources/ConfigurationResource.php'))) {
             $this->info('File Filament/Resources/ConfigurationResource.php removed successfully');
@@ -197,27 +224,26 @@ class UpdateTyphoonPackage extends Command
         } else {
             $this->info('Directory content/configurations NOT removed successfully. Please check manually');
         }
-
     }
 
     /**
-     * 
+     *
      * provided by https://stackoverflow.com/questions/3349753/delete-directory-with-files-in-it
      *
      * @param [type] $dir
      * @return void
      */
     private function delTree($dir)
-    { 
-        $files = array_diff(scandir($dir), array('.', '..')); 
+    {
+        $files = array_diff(scandir($dir), array('.', '..'));
 
-        foreach ($files as $file) { 
-            (is_dir("$dir/$file")) ? $this->delTree("$dir/$file") : unlink("$dir/$file"); 
+        foreach ($files as $file) {
+            (is_dir("$dir/$file")) ? $this->delTree("$dir/$file") : unlink("$dir/$file");
         }
 
-        return rmdir($dir); 
+        return rmdir($dir);
     }
- 
+
     private function askActualTyphoonVersionNumber()
     {
         return $this->choice(
