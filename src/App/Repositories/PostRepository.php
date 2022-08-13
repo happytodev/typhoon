@@ -35,7 +35,8 @@ class PostRepository implements PostRepositoryInterface
 
     public function getFeaturedPosts(int $limit = 6): Collection
     {
-        return Post::where('featured', true)
+        return Post::where('status', 'published')
+            ->where('featured', true)
             ->orderBy('created_at', 'desc')
             ->limit($limit)
             ->get();
@@ -43,7 +44,8 @@ class PostRepository implements PostRepositoryInterface
 
     public function getLatestPosts(int $limit = 6): Collection
     {
-        return Post::orderBy('created_at', 'desc')
+        return Post::where('status', 'published')
+            ->orderBy('created_at', 'desc')
             ->limit($limit)
             ->get();
     }

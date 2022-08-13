@@ -114,6 +114,24 @@ updated_at: 2022-05-28T09:04:57+00:00
 ---
 ```
 
+# Crontabs
+
+Typhoon has the possibity to published or unpublished posts by setting date and hour of action.
+It needs you configure your crontab as explained in [laravel documentation](https://laravel.com/docs/9.x/scheduling#running-the-scheduler).
+
+The following must be adapted to your system, but on a classical Linux : 
+
+```bash
+crontab -e
+```
+
+Then adding this and take care to adapt path of your Typhoon installation
+
+```bash
+* * * * * cd /path-to-your-project && php artisan schedule:run >> /dev/null 2>&1
+```
+
+
 # Compile assets
 
 Only if you need to adapt assets and compile them

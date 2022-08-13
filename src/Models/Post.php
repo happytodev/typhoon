@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Orbit\Concerns\Orbital;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Schema\Blueprint;
 use BeyondCode\Comments\Traits\HasComments;
@@ -24,6 +25,9 @@ class Post extends Model
         $table->unsignedBigInteger('user_id');
         $table->unsignedBigInteger('category_id');
         $table->string('main_image')->nullable();
+        $table->string('status')->default('draft');
+        $table->dateTime('published_at')->nullable();
+        $table->dateTime('unpublished_at')->nullable();
     }
 
     /**
@@ -39,7 +43,10 @@ class Post extends Model
         'featured',
         'user_id',
         'category_id',
-        'main_image'
+        'main_image',
+        'status',
+        'published_at',
+        'unpublished_at'
     ];
 
     /**
@@ -57,8 +64,6 @@ class Post extends Model
      */
     protected $casts = [
     ];
-
-    // gitflow.path.hooks=/Users/happytodev/Packages/flat-cms/.git/hooks
 
 
     /**
@@ -88,4 +93,40 @@ class Post extends Model
         return $this->belongsToMany(Tag::class)->withPivot('id')->using(PostTag::class);
     }
 
+    // Get the posts have to be published
+    public function scopeToBePublished($query)
+    {
+        return $query->where('status', 'scheduledtopublish')->where('published_at', '<=', now())->get();
+    }
+
+    // Get the posts have to be published
+    public function scopeToBeUnpublished($query)
+    {
+        return $query->where('status', 'scheduledtounpublish')->where('unpublished_at', '<=', now())->get();
+    }
+
+    // Procceed publishing for every posts catched by scopeToBePublished function
+    public static function updatePostToBePublished()
+    {
+        foreach (Post::toBePublished() as $post) {
+            $post->update([
+                'status' => 'published',
+                'published_at' => now()
+            ]);
+            Log::debug('The post with id : #' . $post->id . ' was updated with status PUBLISHED at ' . now());
+
+        }
+    }
+
+    // Procceed publishing for every posts catched by scopeToBePublished function
+    public static function updatePostToBeUnpublished()
+    {
+        foreach (Post::toBeUnpublished() as $post) {
+            $post->update([
+                'status' => 'unpublished',
+                'unpublished_at' => now()
+            ]);
+            Log::debug('The post with id : #' . $post->id . ' was updated with status UNPUBLISHED at ' . now());
+        }
+    }
 }

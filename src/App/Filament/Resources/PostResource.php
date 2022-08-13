@@ -12,6 +12,8 @@ use Filament\Resources\Resource;
 use Filament\Forms\Components\Card;
 use Filament\Tables\Filters\Filter;
 
+use Filament\Forms\Components\Group;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Toggle;
 use Filament\Tables\Actions\LinkAction;
 use Filament\Tables\Columns\TextColumn;
@@ -37,7 +39,7 @@ class PostResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('title'),
-                Tables\Columns\TextColumn::make('tldr'),
+                Tables\Columns\TextColumn::make('status'),
                 Tables\Columns\TextColumn::make('user_id'),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime(),
@@ -68,18 +70,44 @@ class PostResource extends Resource
                     MarkdownEditor::make('content')
                         ->columnSpan(2)
                         ->nullable(),
-                    BelongsToSelect::make('user_id')
+                    Select::make('user_id')
                         ->relationship('user', 'name')
                         ->required(),
-                    BelongsToSelect::make('category_id')
+                    Select::make('category_id')
                         ->relationship('category', 'name')
                         ->required(),
                     Toggle::make('featured')
                         ->label('Featured')
-                        ->default(false),
-                    // DatePicker::make('published_at')
-                    //     ->nullable()
-                    //     ->helperText('If in the past, the post will go live immediately.'),
+                        ->default(false)
+                        ->columnSpan('full'),
+                    Select::make('status')
+                        ->options([
+                            'draft' => 'Draft',
+                            'review' => 'In review',
+                            'published' => 'Published',
+                            'scheduledtopublish' => 'Scheduled to publish',
+                            'scheduledtounpublish' => 'Scheduled to unpublish',
+                            'unpublished' => 'Unpublished',
+                        ])
+                        ->reactive(),
+
+                    Group::make()
+                    ->schema(function ($get) {
+                        $status = $get('status');
+                        return match ($status) {
+                            'scheduledtopublish' => [
+                                DateTimePicker::make('published_at')
+                                ->withoutSeconds()
+                                ->nullable(),
+                            ],
+                            'scheduledtounpublish' => [
+                                DateTimePicker::make('unpublished_at')
+                                ->withoutSeconds()
+                                ->nullable(),
+                            ],
+                            default => [],
+                        };
+                    })
                 ])
                 ->columns(2),
                 Card::make([

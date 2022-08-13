@@ -44,7 +44,18 @@ return [
     | Possibles values are the main colours of tailwindcss.
     |
     */
-    'version' => 'v0.4.1',
+    'version' => 'v0.5.0',
 
+    /*
+    |--------------------------------------------------------------------------
+    | Typhoon plugins
+    |--------------------------------------------------------------------------
+    |
+    | This array will be surcharged by config files of others plugins
+    | dynamically.
+    |
+    */
+    'plugins' => [
+    ],
 
 ];
