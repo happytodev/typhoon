@@ -48,11 +48,11 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Typhoon version number
+    | Typhoon plugins
     |--------------------------------------------------------------------------
     |
-    | This value is the colour you want for your theme.
-    | Possibles values are the main colours of tailwindcss.
+    | This array will be surcharged by config files of others plugins
+    | dynamically.
     |
     */
     'plugins' => [
