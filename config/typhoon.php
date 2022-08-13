@@ -46,5 +46,16 @@ return [
     */
     'version' => 'v0.4.1',
 
+    /*
+    |--------------------------------------------------------------------------
+    | Typhoon version number
+    |--------------------------------------------------------------------------
+    |
+    | This value is the colour you want for your theme.
+    | Possibles values are the main colours of tailwindcss.
+    |
+    */
+    'plugins' => [
+    ],
 
 ];
