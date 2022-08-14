@@ -2,6 +2,9 @@
 
 All notable changes to `typhoon` will be documented in this file.
 
+## v0.5.2 - 2022-08-14
+- Typo on version number on UpdateTyphoonPackage.php
+
 ## v0.5.1 - 2022-08-14
 - Missing flash component
 

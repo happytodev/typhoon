@@ -111,7 +111,7 @@ class UpdateTyphoonPackage extends Command
         }
 
         // from v0.4.0 to 0.4.999
-        if($typhoonVersionNumber == '0.4.x')
+        if($typhoonVersionNumber == '0.4.0')
         {
             $this->upgradingFromv04xTov05x();
         }
