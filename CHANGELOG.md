@@ -2,6 +2,11 @@
 
 All notable changes to `typhoon` will be documented in this file.
 
+## v0.5.5 - 2022-08-15
+### Try to optimize SEO score by lazy loading images
+
+- Add lazysizes library, 'lazyload' class to all img call and replace 'src' by 'data-src'
+
 ## v0.5.4 - 2022-08-14
 - Fix pill background error
 
