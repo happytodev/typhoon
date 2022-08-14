@@ -6,8 +6,8 @@
             <div class="w-11/12 lg:w-4/6 mx-auto">
                 @if ($post->main_image)
                 <div class="rounded-lg h-full overflow-hidden">
-                    <img alt="content" class="object-cover object-center h-full w-full"
-                    src="{{ Storage::url($post->main_image) }}">
+                    <img alt="content" class="object-cover object-center h-full w-full lazyload"
+                    data-src="{{ Storage::url($post->main_image) }}">
                 </div>
                 @endif
                 <div class="flex flex-col">
@@ -93,8 +93,8 @@
                                     <div
                                         class="w-32 h-32 md:w-48 md:h-48 bg-indigo-100 mx-auto rounded-full shadow-2xl absolute inset-x-0 top-0 -mt-24 flex items-center justify-center text-indigo-500">
                                         @if ($post->user->picture)
-                                        <img src="{{ Storage::url($post->user->picture) }}" alt="{{ $post->user->name }} picture"
-                                            class="rounded-full w-32 h-32 md:w-48 md:h-48">
+                                        <img data-src="{{ Storage::url($post->user->picture) }}" alt="{{ $post->user->name }} picture"
+                                            class="rounded-full w-32 h-32 md:w-48 md:h-48 lazyload">
                                         @else
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-24 w-24" viewBox="0 0 20 20"
                                             fill="currentColor">
