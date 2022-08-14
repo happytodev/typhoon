@@ -2,6 +2,9 @@
 
 All notable changes to `typhoon` will be documented in this file.
 
+## v0.5.4 - 2022-08-14
+- Fix pill background error
+
 ## v0.5.3 - 2022-08-14
 - Fix javascript error and add new generated css file
 
