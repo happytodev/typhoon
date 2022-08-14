@@ -2,8 +2,8 @@
     class="p-4 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300">
     <div class="{{ $post->category->bg_color }} rounded-3xl">
         <a href="/posts/{{ $post->slug }}">
-            <img class="h-64 object-cover w-full rounded-t-3xl object-center mb-6"
-                src="{{ $post->main_image ? Storage::url($post->main_image) : 'https://dummyimage.com/720x400?dummy' }}"
+            <img class="h-64 object-cover w-full rounded-t-3xl object-center mb-6 lazyload"
+                data-src="{{ $post->main_image ? Storage::url($post->main_image) : 'https://dummyimage.com/720x400?dummy' }}"
                 alt="content">
         </a>
         <div class="px-6 pb-6 prose">

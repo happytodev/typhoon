@@ -15,18 +15,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/index.min.css" />
-    {{-- <script src="https://cdn.tailwindcss.com"></script> --}}
-    {{-- <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    },
-                }
-            }
-        }
-    </script> --}}
+
     {{-- Tailwind-Elements PART 1 --> END --}}
     
     <!-- Styles -->
@@ -36,6 +25,7 @@
 
     {{-- AlpineJS --}}
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="/js/lazysizes.min.js" async=""></script>
     
 </head>
 
