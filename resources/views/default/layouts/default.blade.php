@@ -9,14 +9,6 @@
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-
-    {{-- Tailwind-Elements PART 1 --}}
-    {{-- https://tailwind-elements.com/quick-start/ --}}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/index.min.css" />
-
-    {{-- Tailwind-Elements PART 1 --> END --}}
     
     <!-- Styles -->
     <link rel="stylesheet" href="/css/app.css">
@@ -43,10 +35,6 @@
 
     @include('typhoon::' . config('typhoon.template') . '.partials.footer')
     
-    {{-- Tailwind-Elements PART 2 --}}
-    <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
-    {{-- Tailwind-Elements PART 2 --> END --}}
-
     <script src="/js/prism.js"></script>
 
     {{-- Tips from https://css-tricks.com/fluid-width-video/ --}}
@@ -87,7 +75,9 @@
         })(window, document);
     </script>
 
+
     @livewireScripts
+
 </body>
 
 </html>
