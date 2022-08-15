@@ -61,7 +61,7 @@ class TyphoonServiceProvider extends PackageServiceProvider
 
             // publish prism js
             $this->publishes([
-                __DIR__ . '/../public/js/prism.js' => public_path('js/prism.js'),
+                __DIR__ . '/../public/js/' => public_path('js/'),
             ], 'typhoon-js');
 
             // Install typhoon command
