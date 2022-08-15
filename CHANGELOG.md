@@ -2,6 +2,12 @@
 
 All notable changes to `typhoon` will be documented in this file.
 
+## v0.5.6 - 2022-08-15
+- remove tw-elements
+- add a new menu responsive with accessible navigation adapted from [this article](https://caffeinecreations.ca/blog/accessible-dropdown-navigation-with-tailwind-css-and-alpine-js/)
+- now a menu can have 2 sub-levels
+- some cleaning in the code
+
 ## v0.5.5 - 2022-08-15
 ### Try to optimize SEO score by lazy loading images
 

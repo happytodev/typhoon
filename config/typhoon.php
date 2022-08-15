@@ -44,7 +44,7 @@ return [
     | Possibles values are the main colours of tailwindcss.
     |
     */
-    'version' => 'v0.5.5',
+    'version' => 'v0.5.6',
 
     /*
     |--------------------------------------------------------------------------
