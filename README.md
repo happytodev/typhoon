@@ -76,6 +76,23 @@ Give a name to your website by adding the following key to your .env file
 TYPHOONCMS_NAME="MyWebsite"
 ```
 
+Always in your `.env` file replace following :
+
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=
+DB_USERNAME=
+DB_PASSWORD=
+```
+
+by
+
+```env
+DB_CONNECTION=orbit
+```
+
 You can now run the install script of Typhoon via Artisan :
 
 ```bash
