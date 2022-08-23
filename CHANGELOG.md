@@ -8,6 +8,10 @@ All notable changes to `typhoon` will be documented in this file.
 - now a menu can have 2 sub-levels
 - some cleaning in the code
 
+## v0.5.7 - 2022-08-23
+
+- Update demo content
+
 ## v0.5.5 - 2022-08-15
 ### Try to optimize SEO score by lazy loading images
 
