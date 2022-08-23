@@ -113,6 +113,10 @@ class InstallTyphoonPackage extends Command
         $this->installDemoDatas(true);
         $this->info('>>> Install demo datas : done');
 
+        // Remove orbit cache
+        $this->info('>>> Remove orbit cache...');
+        $this->removeOrbitCache();
+
         // Installation done with success
         $this->info('TyphoonCMS Package installed successfully. 🚀');
         $this->askForSomeLove();
@@ -226,6 +230,12 @@ class InstallTyphoonPackage extends Command
     {
         $this->call('make:filament-user');
         $this->info('First user created successfully.');
+    }
+
+    private function removeOrbitCache()
+    {
+        $this->call('orbit:clear');
+        $this->info('Orbit cache cleared successfully.');
     }
 
     private function configExists($fileName)
