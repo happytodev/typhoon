@@ -37,13 +37,55 @@ class Hero extends Component
 
     public $heroImagePosition;
 
+    /**
+     * Position of the illustration image - not implemented yet
+     *
+     * @var string
+     */
+
+    public $titleTextColor;
+
+    /**
+     * Position of the illustration image - not implemented yet
+     *
+     * @var string
+     */
+
+    public $subtitleTextColor;
+
+    /**
+     * Position of the illustration image - not implemented yet
+     *
+     * @var string
+     */
+
+    public $descriptionTextColor;
+
+    /**
+     * Position of the illustration image - not implemented yet
+     *
+     * @var string
+     */
+
+    public $backgroundColor;
+
 
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($heroTitle, $heroSubtitle, $heroText, $heroImage, $heroImagePosition)
+    public function __construct(
+        $heroTitle,
+        $heroSubtitle,
+        $heroText,
+        $heroImage,
+        $heroImagePosition,
+        $titleTextColor,
+        $subtitleTextColor,
+        $descriptionTextColor,
+        $backgroundColor
+    )
     {
         //
         $this->heroTitle = $heroTitle;
@@ -55,6 +97,14 @@ class Hero extends Component
         $this->heroImage = $heroImage;
 
         $this->heroImagePosition = $heroImagePosition;
+
+        $this->titleTextColor = $titleTextColor;
+
+        $this->subtitleTextColor = $subtitleTextColor;
+
+        $this->descriptionTextColor = $descriptionTextColor;
+
+        $this->backgroundColor = $backgroundColor;
     }
 
     /**

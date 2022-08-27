@@ -22,13 +22,23 @@
                 @switch($content['type'])
                     @case('heading')
                     @if($content['data']['visible'])
-                        <x-typhoon.page.header :type="$content['data']['level']" :content="$content['data']['content']" :width="$content['data']['width']" />
+                        <x-typhoon.page.header :level="$content['data']['level']" :content="$content['data']['content']" :width="$content['data']['width']" />
                     @endif
                     @break
 
                     @case('hero')
                     @if($content['data']['visible'])
-                        <x-typhoon.page.hero :heroTitle="$content['data']['heroTitle']" :heroSubtitle="$content['data']['heroSubtitle']" :heroText="$content['data']['heroText']" :heroImage="$content['data']['heroImage']" :heroImagePosition="$content['data']['heroImagePosition']" />
+                        <x-typhoon.page.hero 
+                            :heroTitle="$content['data']['heroTitle']" 
+                            :heroSubtitle="$content['data']['heroSubtitle']" 
+                            :heroText="$content['data']['heroText']" 
+                            :heroImage="$content['data']['heroImage']" 
+                            :heroImagePosition="$content['data']['heroImagePosition']" 
+                            :titleTextColor="$content['data']['titleTextColor']" 
+                            :subtitleTextColor="$content['data']['subtitleTextColor']" 
+                            :descriptionTextColor="$content['data']['descriptionTextColor']" 
+                            :backgroundColor="$content['data']['backgroundColor']" 
+                        />
                     @endif
                     @break
 
