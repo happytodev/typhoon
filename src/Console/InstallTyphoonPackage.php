@@ -149,7 +149,7 @@ class InstallTyphoonPackage extends Command
     private function installPluginTailwindColorPicker()
     {
         $params = [
-            '--tag' => "filament-tailwind-color-picker-views",
+            '--tag' => ["filament-tailwind-color-picker-views", "filament-tailwind-color-picker-assets"] ,
             '--force' => true
         ];
 
