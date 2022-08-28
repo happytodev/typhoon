@@ -107,6 +107,11 @@ class InstallTyphoonPackage extends Command
         $this->info('>>> Replacing initial Laravel routes/web.php...');
         $this->replaceInitialRouteWeb(true);
         $this->info('>>> Replacing initial Laravel routes/web.php : done');
+        
+        // Install plugins
+        $this->info('>>> Deploying Tailwind color picker view...');
+        $this->installPluginTailwindColorPicker();
+        $this->info('>>> Deploying Tailwind color picker view : done');
 
         // Install demo
         $this->info('>>> Install demo datas...');
@@ -123,6 +128,8 @@ class InstallTyphoonPackage extends Command
         $this->info('You can now edit `content/users/1.md`');
         $this->info('And change `is_admin: 0` to `is_admin: 1`');
         $this->info('to be authorized to access the admin panel.');
+
+        $this->info('You can now connect to your {site url}/admin and use credentials set during installation');
     }
 
     private function installDemoDatas($forcePublish = false)
@@ -135,6 +142,16 @@ class InstallTyphoonPackage extends Command
         if ($forcePublish === true) {
             $params['--force'] = true;
         }
+
+        $this->call('vendor:publish', $params);
+    }
+
+    private function installPluginTailwindColorPicker()
+    {
+        $params = [
+            '--tag' => "filament-tailwind-color-picker-views",
+            '--force' => true
+        ];
 
         $this->call('vendor:publish', $params);
     }
@@ -234,8 +251,11 @@ class InstallTyphoonPackage extends Command
 
     private function removeOrbitCache()
     {
-        $this->call('orbit:clear');
-        $this->info('Orbit cache cleared successfully.');
+        $result = $this->call('orbit:clear');
+        if ($result) {
+            $this->info('Orbit cache cleared successfully.');
+        }
+        $this->info('Orbit cache was not cleared.');
     }
 
     private function configExists($fileName)
