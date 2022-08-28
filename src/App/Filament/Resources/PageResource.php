@@ -10,6 +10,7 @@ use Filament\Resources\Form;
 use Filament\Resources\Table;
 use Filament\Resources\Resource;
 use Filament\Forms\Components\Card;
+use Filament\Forms\Components\Tabs;
 use Illuminate\Support\Facades\Log;
 use Filament\Forms\Components\Group;
 use Filament\Forms\Components\Select;
@@ -20,6 +21,7 @@ use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\MarkdownEditor;
 use App\Filament\Resources\PageResource\Pages;
 use App\Filament\Resources\PageResource\RelationManagers;
+use HappyToDev\FilamentTailwindColorPicker\Forms\Components\TailwindColorPicker;
 
 class PageResource extends Resource
 {
@@ -241,7 +243,34 @@ class PageResource extends Resource
                                     ->default('bg-white'),
                                 Toggle::make('visible')
                                         ->label('Visible')
-                                        ->default(true)
+                                        ->default(true),
+                                Tabs::make('TabColors')
+                                ->tabs([
+                                    Tabs\Tab::make('Title text color')
+                                        ->schema([
+                                            // ...
+                                            TailwindColorPicker::make('titleTextColor')
+                                            ->textScope(),
+                                        ]),
+                                    Tabs\Tab::make('Subtitle text color')
+                                        ->schema([
+                                            // ...
+                                            TailwindColorPicker::make('subtitleTextColor')
+                                            ->textScope(),
+                                        ]),
+                                    Tabs\Tab::make('Description text color')
+                                        ->schema([
+                                            // ...
+                                            TailwindColorPicker::make('descriptionTextColor')
+                                            ->textScope(),
+                                        ]),
+                                    Tabs\Tab::make('Background color')
+                                        ->schema([
+                                            // ...
+                                            TailwindColorPicker::make('backgroundColor')
+                                            ->bgScope(),
+                                        ]),
+                                ])
                             ]),
                     ])
                 ])->columns(1)
@@ -254,7 +283,6 @@ class PageResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('name'),
                 Tables\Columns\TextColumn::make('description'),
-                // Tables\Columns\TextColumn::make('content'),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime(),
                 Tables\Columns\TextColumn::make('updated_at')
