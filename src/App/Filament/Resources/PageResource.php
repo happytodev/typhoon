@@ -179,6 +179,9 @@ class PageResource extends Resource
                             ->schema(function () {
                                 // get the list of installed plugins
                                 $listPlugins = config('typhoon.plugins');
+                                if (count($listPlugins) == 0) {
+                                    $listPlugins = ['No plugins available for now. Tu use this block, please install a plugin.'];
+                                }
                                 return [
                                     // display the list of available plugins
                                     Select::make('type')
