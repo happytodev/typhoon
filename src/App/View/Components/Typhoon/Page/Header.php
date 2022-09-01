@@ -22,6 +22,13 @@ class Header extends Component
     public $width;
 
     /**
+     * Title text color
+     *
+     * @var string
+     */
+    public $titleColor;
+
+    /**
      * Create a new component instance.
      *
      * @param string $content
@@ -29,10 +36,12 @@ class Header extends Component
      * 
      * @return void
      */
-    public function __construct(string $content, string $level, string $width)
+    public function __construct(string $content, string $level, string $width, string $titleColor)
     {
         //
         $this->content = $content;
+
+        $this->titleColor = $titleColor;
 
         switch ($level) {
             case 'h1':

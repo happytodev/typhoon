@@ -22,7 +22,7 @@
                 @switch($content['type'])
                     @case('heading')
                     @if($content['data']['visible'])
-                        <x-typhoon.page.header :level="$content['data']['level']" :content="$content['data']['content']" :width="$content['data']['width']" />
+                        <x-typhoon.page.header :level="$content['data']['level']" :content="$content['data']['content']" :titleColor="$content['data']['titleColor']" :width="$content['data']['width']" />
                     @endif
                     @break
 
