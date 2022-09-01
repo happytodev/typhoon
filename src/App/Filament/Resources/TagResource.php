@@ -9,10 +9,10 @@ use Illuminate\Support\Str;
 use Filament\Resources\Form;
 use Filament\Resources\Table;
 use Filament\Resources\Resource;
+use Filament\Forms\Components\TextInput;
 use App\Filament\Resources\TagResource\Pages;
 use App\Filament\Resources\TagResource\RelationManagers;
 use Filament\Resources\RelationManagers\RelationManager;
-use MartinRo\FilamentCharcountField\Components\CharcountedTextInput;
 
 class TagResource extends Resource
 {
@@ -24,22 +24,18 @@ class TagResource extends Resource
     {
         return $form
             ->schema([
-                CharcountedTextInput::make('name')
+                TextInput::make('name')
                     ->reactive()
                     ->required()
                     ->minLength(3)
                     ->maxLength(30)
-                    ->minCharacters(3)
-                    ->maxCharacters(30)
                     ->afterStateUpdated(function ($set, ?string $state) {
                         $set('slug', Str::slug($state));
                     }),
                 Forms\Components\TextInput::make('slug'),
-                CharcountedTextInput::make('description')
+                TextInput::make('description')
                     ->minLength(3)
-                    ->maxLength(255)
-                    ->minCharacters(3)
-                    ->maxCharacters(255),
+                    ->maxLength(255),
             ]);
     }
 

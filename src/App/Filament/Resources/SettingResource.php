@@ -13,10 +13,10 @@ use Filament\Forms\Components\Group;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Toggle;
 use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\RichEditor;
 use App\Filament\Resources\SettingResource\Pages;
-use MartinRo\FilamentCharcountField\Components\CharcountedTextInput;
 
 class SettingResource extends Resource
 {
@@ -29,12 +29,10 @@ class SettingResource extends Resource
         return $form
             ->schema([
                 Card::make([
-                    CharcountedTextInput::make('key')
+                    TextInput::make('key')
                         ->required()
                         ->maxLength(100)
-                        ->minLength(3)
-                        ->minCharacters(3)
-                        ->maxCharacters(100),
+                        ->minLength(3),
                     Select::make('type')
                         ->options([
                             'image' => 'Image',
@@ -59,12 +57,10 @@ class SettingResource extends Resource
                             'image' => [FileUpload::make('value')->required()],
                             'richeditor' => [RichEditor::make('value')->required()],
                             'string' => [
-                                CharcountedTextInput::make('value')
+                                TextInput::make('value')
                                     ->required()
                                     ->maxLength(255)
-                                    ->minLength(1)
-                                    ->minCharacters(1)
-                                    ->maxCharacters(255),
+                                    ->minLength(1),
                             ],
                             'textarea' => [Textarea::make('value')->required()],
                             'toggle' => [
