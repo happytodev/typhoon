@@ -12,11 +12,19 @@ use HappyToDev\Typhoon\Commands\TyphoonCommand;
 use HappyToDev\Typhoon\Console\UpdateTyphoonPackage;
 use HappyToDev\Typhoon\Console\InstallTyphoonPackage;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
+use Filament\Facades\Filament;
 
 class TyphoonServiceProvider extends PackageServiceProvider
 {
     public function boot()
     {
+        Filament::serving(function () {
+            // Using Laravel Mix
+            Filament::registerTheme(
+                mix('css/filament.css'),
+            );
+        });
+
         if ($this->app->runningInConsole()) {
             // Create the user model and if necessary overwrite it
             // @todo Find a better way to do this
@@ -30,6 +38,10 @@ class TyphoonServiceProvider extends PackageServiceProvider
                 __DIR__ . '/Models/Tag.php' => 'app/Models/Tag.php',
                 __DIR__ . '/Models/User.php' => 'app/Models/User.php',
             ], 'typhoon-models');
+
+            $this->publishes([
+                __DIR__ . '/../webpack.mix.js' => base_path('webpack.mix.js'),
+            ], 'typhoon-webpack');
 
             $this->publishes([
                 __DIR__ . '/Models/Setting.php' => 'app/Models/Setting.php',
@@ -55,6 +67,8 @@ class TyphoonServiceProvider extends PackageServiceProvider
             $this->publishes([
                 __DIR__ . '/../public/css/app.css' => public_path('css/app.css'),
                 __DIR__ . '/../public/css/prism.css' => public_path('css/prism.css'),
+                __DIR__ . '/../public/css/filament.css' => public_path('css/filament.css'),
+                __DIR__ . '/../public/mix-manifest.json' => public_path('mix-manifest.json'),
                 __DIR__ . '/../resources/css' => resource_path('css'),
                 __DIR__ . '/../tailwind.config.js' => base_path('tailwind.config.js'),
             ], 'typhoon-css');
@@ -139,7 +153,6 @@ class TyphoonServiceProvider extends PackageServiceProvider
 
         // Load views and defining key to call them (typhoon)
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'typhoon');
-
     }
 
 
