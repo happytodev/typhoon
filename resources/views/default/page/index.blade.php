@@ -7,16 +7,16 @@
             
             <div class="
                 md:grid-rows-1 
-                @if (isset($content['data']['width']) &&  $content['data']['width'] == 'full'))
+                @if ( (isset($content['data']['width']) &&  $content['data']['width'] == 'full') || $content['type'] == 'hero')
                     max-w-screen-7xl
                 @else
                     md:pt-8 
                     md:pb-8 
                     max-w-screen-2xl
+                    md:mx-24 xl:mx-auto
                 @endif
                 {{-- {{ $content['data']['width'] ?? 'max-w-screen-2xl' }}  --}}
-                grid grid-cols-12 
-                md:mx-24 xl:mx-auto">
+                grid grid-cols-12">
             
             
                 @switch($content['type'])
@@ -30,6 +30,7 @@
                     @if($content['data']['visible'])
                         <x-typhoon.page.hero 
                             :heroTitle="$content['data']['heroTitle']" 
+                            :heroTitleTextSize="$content['data']['heroTitleTextSize']" 
                             :heroSubtitle="$content['data']['heroSubtitle']" 
                             :heroText="$content['data']['heroText']" 
                             :heroImage="$content['data']['heroImage']" 
@@ -38,6 +39,25 @@
                             :subtitleTextColor="$content['data']['subtitleTextColor']" 
                             :descriptionTextColor="$content['data']['descriptionTextColor']" 
                             :backgroundColor="$content['data']['backgroundColor']" 
+                            :heroHeight="$content['data']['heroHeight']" 
+                            :heroArtIcon="$content['data']['heroArtIcon']"
+                            :heroArtIconHeight="$content['data']['heroArtIconHeight']"
+                            :heroArtIconWidth="$content['data']['heroArtIconWidth']"
+                            :heroArtIconOffsetX="$content['data']['heroArtIconOffsetX']" 
+                            :heroArtIconOffsetY="$content['data']['heroArtIconOffsetY']" 
+                            :heroArtIconVisible="$content['data']['heroArtIconVisible']" 
+                            :heroArtIconInvertColor="$content['data']['heroArtIconInvertColor']" 
+                            :heroArtIconOpacity="$content['data']['heroArtIconOpacity']" 
+                            :heroArtIconRotate="$content['data']['heroArtIconRotate']" 
+                            :heroArtIconRotateInverse="$content['data']['heroArtIconRotateInverse']" 
+                            :heroArtIconRotateAngle="$content['data']['heroArtIconRotateAngle']" 
+                            :heroCtaVisible="$content['data']['heroCtaVisible']" 
+                            :heroCtaButtonText="$content['data']['heroCtaButtonText']" 
+                            :heroCtaButtonBackgroundColor="$content['data']['heroCtaButtonBackgroundColor']" 
+                            :heroCtaButtonTextColor="$content['data']['heroCtaButtonTextColor']" 
+                            :heroCtaUrl="$content['data']['heroCtaUrl']" 
+                            :heroCtaUrlTarget="$content['data']['heroCtaUrlTarget']" 
+
                         />
                     @endif
                     @break

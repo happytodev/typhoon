@@ -21,6 +21,9 @@ use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\MarkdownEditor;
 use App\Filament\Resources\PageResource\Pages;
 use App\Filament\Resources\PageResource\RelationManagers;
+use Filament\Forms\Components\Fieldset;
+use Filament\Forms\Components\Hidden;
+use Filament\Forms\Components\Section;
 use HappyToDev\FilamentTailwindColorPicker\Forms\Components\TailwindColorPicker;
 
 class PageResource extends Resource
@@ -44,9 +47,11 @@ class PageResource extends Resource
                     TextInput::make('slug')
                     ->unique(ignorable: fn ($record) => $record),
                 ])->columns(2),
-                Card::make([
-                    Builder::make('content')
-                    ->blocks([
+                Section::make('Content')
+                    ->schema([
+                        Builder::make('content')
+                        ->blocks([
+                        // HEADING
                         Builder\Block::make('heading')
                             ->icon('heroicon-o-bookmark')
                             ->schema([
@@ -87,58 +92,327 @@ class PageResource extends Resource
                                 ])
                                 ->columns(2)
                             ]),
+                            // HERO
                             Builder\Block::make('hero')
                             ->icon('heroicon-o-star')
                             ->schema([
-                                TextInput::make('heroTitle')
-                                    ->label('Title')
-                                    ->required(),
-                                MarkdownEditor::make('heroSubtitle')
-                                    ->label('Sub Title')
-                                    ->required(),
-                                MarkdownEditor::make('heroText')
-                                    ->label('Description text'),
-                                FileUpload::make('heroImage')
-                                    ->label('Image')
-                                    ->image()
-                                    ->required(),
-                                Select::make('heroImagePosition')
-                                    ->options([
-                                        'left' => 'Left',
-                                        'right' => 'Right'
+                                Section::make('Hero block global settings')
+                                    ->collapsible()
+                                    ->columns(2)
+                                    ->schema([
+                                        Toggle::make('visible')
+                                            ->label('Visible')
+                                            ->columnSpan(1)
+                                            ->default(true),
+                                        Select::make('heroHeight')
+                                            ->columnSpan(1)
+                                            ->label('Define minimum height of Hero block (in % of the screen)')
+                                            ->options([
+                                                'content' => 'Content size',
+                                                'sm:min-h-screen-1/10' => 'min 10% of screen height',
+                                                'sm:min-h-screen-1/6' => 'min 1/6 of screen height',
+                                                'sm:min-h-screen-1/5' => 'min 20% of screen height',
+                                                'sm:min-h-screen-1/4' => 'min 25% of screen height',
+                                                'sm:min-h-screen-1/3' => 'min 30% of screen height',
+                                                'sm:min-h-screen-1/2' => 'min 50% of screen height',
+                                                'sm:max-h-screen-1/10' => 'max 10% of screen height',
+                                                'sm:max-h-screen-1/6' => 'max 1/6 of screen height',
+                                                'sm:max-h-screen-1/5' => 'max 20% of screen height',
+                                                'sm:max-h-screen-1/4' => 'max 25% of screen height',
+                                                'sm:max-h-screen-1/3' => 'max 30% of screen height',
+                                                'sm:max-h-screen-1/2' => 'max 50% of screen height'
+                                            ])
+                                            ->default('content')
+                                    ]),
+                                Section::make('Main content')
+                                    ->columns(2)
+                                    ->schema([
+                                        Grid::make(2)
+                                        ->schema([
+                                            TextInput::make('heroTitle')
+                                                ->label('Title')
+                                                ->required(),
+                                            Select::make('heroTitleTextSize')
+                                                ->options([
+                                                    '7' => 'text-7xl', // 'sm:text-7xl'  'sm:text-xl'
+                                                    '6' => 'text-6xl', // 'sm:text-6xl'
+                                                    '5' => 'text-5xl', // 'sm:text-5xl'
+                                                    '4' => 'text-4xl', // 'sm:text-4xl'
+                                                    '3' => 'text-3xl', // 'sm:text-3xl'
+                                                    '2' => 'text-2xl', // 'sm:text-2xl'
+                                                ])
+                                        ]),
+                                        Grid::make(2)
+                                            ->schema([
+                                                MarkdownEditor::make('heroSubtitle')
+                                                    ->label('Sub Title')
+                                                    ->required(),
+                                                MarkdownEditor::make('heroText')
+                                                    ->label('Description text')
+                                            ]),
+                                    ]),
+                                Section::make('Background image')
+                                    ->collapsed()
+                                    ->schema([
+                                        Grid::make()
+                                        ->columns(2)
+                                        ->schema([
+                                            // Grid::make(2)
+                                            // ->schema([
+                                            Fieldset::make('Image')
+                                                ->columns(1)
+                                                ->columnSpan(1)
+                                                ->schema([
+                                                    FileUpload::make('heroImage')
+                                                    // ->columnSpan(1)
+                                                    ->label('Image')
+                                                    ->image(),
+                                            ]),
+
+                                            Fieldset::make('Image details')
+                                                ->columns(1)
+                                                ->columnSpan(1)
+                                                ->schema([
+                                                    Select::make('heroImagePosition')
+                                                    ->options([
+                                                        'left' => 'Left',
+                                                        'right' => 'Right',
+                                                        'background' => 'Background'
+                                                    ])
+                                                    ->default('right'),
+                                                ])
+                                                // ->columns(2)
+                                                        ]),
+                                    ]),
+                                Section::make('CTA')
+                                    ->collapsed()
+                                    ->schema([
+                                        Grid::make(2)
+                                            ->schema([
+                                                Toggle::make('heroCtaVisible')
+                                                    ->label('Visible ?')
+                                                    ->inline(false)
+                                                    ->default(false)
+                                                    ->columnSpan(1),
+                                                TextInput::make('heroCtaButtonText')
+                                                    ->label('Teaser text for click to action')
+                                                    ->columnSpan(1),
+                                                TailwindColorPicker::make('heroCtaButtonBackgroundColor')
+                                                    ->label('Background color of CTA button')
+                                                    ->bgScope()
+                                                    ->columnSpan(1),
+                                                TailwindColorPicker::make('heroCtaButtonTextColor')
+                                                    ->label('Text color of CTA button')
+                                                    ->textScope()
+                                                    ->columnSpan(1),
+                                                TextInput::make('heroCtaUrl')
+                                                    ->label('Url for action')
+                                                    ->url()
+                                                    ->columnSpan(1),
+                                                Toggle::make('heroCtaUrlTarget')
+                                                    ->label('Open in new tab ?')
+                                                    ->inline(false)
+                                                    ->default(true)
+                                                    ->columnSpan(1),
+                                            ])
+                                ]),
+                                Section::make('Flying icon')
+                                    ->collapsed()
+                                    ->schema([
+                                        Grid::make(2)
+                                        ->schema([
+                                            Grid::make(2)
+                                            ->schema([
+                                                Toggle::make('heroArtIconVisible')
+                                                ->label('Visible')
+                                                ->default(true),
+                                                Toggle::make('heroArtIconInvertColor')
+                                                ->label('Invert color ?')
+                                                ->default(false)
+                                            ]),
+                                            FileUpload::make('heroArtIcon')
+                                            ->label('Art icon')
+                                            ->columnSpan(1)
+                                            ->image(),
+
+                                            Fieldset::make('Icon details')
+                                                ->columns(1)
+                                                ->columnSpan(1)
+                                                ->schema([
+
+                                                    Select::make('heroArtIconHeight')
+                                                        ->options([
+                                                            'h-[1rem] lg:h-[1.3rem]' => 'Extra small',
+                                                            'h-[2rem] lg:h-[2.6rem]' => 'Small',
+                                                            'h-[4rem] lg:h-[5.2rem]' => 'Medium',
+                                                            'h-[8rem] lg:h-[10.4rem]' => 'Large',
+                                                            'h-[16rem] lg:h-[20.8rem]' => 'Extra large',
+                                                            'h-[24rem] lg:h-[31.2rem]' => 'Extra extra large'
+                                                        ])
+                                                        ->default('h-[4rem] lg:h-[5.2rem]'),
+                                                    Select::make('heroArtIconOffsetX')
+                                                        ->options([
+                                                            'left-0 top-0' => "Top Left",
+                                                            'left-8 top-8' => "Top Left - offset 8",
+                                                            'left-8 top-16' => "Top Left - offset 8-16",
+                                                            'left-8 top-32' => "Top Left - offset 8-32",
+                                                            'left-8 top-64' => "Top Left - offset 8-64",
+                                                            'left-16 top-8' => "Top Left - offset 16-8",
+                                                            'left-16 top-16' => "Top Left - offset 16",
+                                                            'left-16 top-32' => "Top Left - offset 16-32",
+                                                            'left-16 top-64' => "Top Left - offset 16-64",
+                                                            'left-32 top-8' => "Top Left - offset 32-8",
+                                                            'left-32 top-16' => "Top Left - offset 32-16",
+                                                            'left-32 top-32' => "Top Left - offset 32",
+                                                            'left-32 top-64' => "Top Left - offset 32-64",
+                                                            'left-64 top-8' => "Top Left - offset 64-8",
+                                                            'left-64 top-16' => "Top Left - offset 64-16",
+                                                            'left-64 top-32' => "Top Left - offset 64-32",
+                                                            'left-64 top-64' => "Top Left - offset 64",
+            
+                                                            'right-0 top-0' => "Top right",
+                                                            'right-8 top-8' => "Top right - offset 8",
+                                                            'right-8 top-16' => "Top right - offset 8-16",
+                                                            'right-8 top-32' => "Top right - offset 8-32",
+                                                            'right-8 top-64' => "Top right - offset 8-64",
+                                                            'right-16 top-8' => "Top right - offset 16-8",
+                                                            'right-16 top-16' => "Top right - offset 16",
+                                                            'right-16 top-32' => "Top right - offset 16-32",
+                                                            'right-16 top-64' => "Top right - offset 16-64",
+                                                            'right-32 top-8' => "Top right - offset 32-8",
+                                                            'right-32 top-16' => "Top right - offset 32-16",
+                                                            'right-32 top-32' => "Top right - offset 32",
+                                                            'right-32 top-64' => "Top right - offset 32-64",
+                                                            'right-64 top-8' => "Top right - offset 64-8",
+                                                            'right-64 top-16' => "Top right - offset 64-16",
+                                                            'right-64 top-32' => "Top right - offset 64-32",
+                                                            'right-64 top-64' => "Top right - offset 64",
+            
+                                                            'left-0 bottom-0' => "bottom Left",
+                                                            'left-8 bottom-8' => "bottom Left - offset 8",
+                                                            'left-8 bottom-16' => "bottom Left - offset 8-16",
+                                                            'left-8 bottom-32' => "bottom Left - offset 8-32",
+                                                            'left-8 bottom-64' => "bottom Left - offset 8-64",
+                                                            'left-16 bottom-8' => "bottom Left - offset 16-8",
+                                                            'left-16 bottom-16' => "bottom Left - offset 16",
+                                                            'left-16 bottom-32' => "bottom Left - offset 16-32",
+                                                            'left-16 bottom-64' => "bottom Left - offset 16-64",
+                                                            'left-32 bottom-8' => "bottom Left - offset 32-8",
+                                                            'left-32 bottom-16' => "bottom Left - offset 32-16",
+                                                            'left-32 bottom-32' => "bottom Left - offset 32",
+                                                            'left-32 bottom-64' => "bottom Left - offset 32-64",
+                                                            'left-64 bottom-8' => "bottom Left - offset 64-8",
+                                                            'left-64 bottom-16' => "bottom Left - offset 64-16",
+                                                            'left-64 bottom-32' => "bottom Left - offset 64-32",
+                                                            'left-64 bottom-64' => "bottom Left - offset 64",
+            
+                                                            'right-0 bottom-0' => "bottom right",
+                                                            'right-8 bottom-8' => "bottom right - offset 8",
+                                                            'right-8 bottom-16' => "bottom right - offset 8-16",
+                                                            'right-8 bottom-32' => "bottom right - offset 8-32",
+                                                            'right-8 bottom-64' => "bottom right - offset 8-64",
+                                                            'right-16 bottom-8' => "bottom right - offset 16-8",
+                                                            'right-16 bottom-16' => "bottom right - offset 16",
+                                                            'right-16 bottom-32' => "bottom right - offset 16-32",
+                                                            'right-16 bottom-64' => "bottom right - offset 16-64",
+                                                            'right-32 bottom-8' => "bottom right - offset 32-8",
+                                                            'right-32 bottom-16' => "bottom right - offset 32-16",
+                                                            'right-32 bottom-32' => "bottom right - offset 32-32",
+                                                            'right-32 bottom-64' => "bottom right - offset 32-64",
+                                                            'right-64 bottom-8' => "bottom right - offset 64-8",
+                                                            'right-64 bottom-16' => "bottom right - offset 64-16",
+                                                            'right-64 bottom-32' => "bottom right - offset 64-32",
+                                                            'right-64 bottom-64' => "bottom right - offset 64-64",
+            
+            
+                                                        ])
+                                                        ->default('left-0 top-0'),
+                                                    // TailwindColorPicker::make('heroArtIconColor')
+                                                    //     ->textScope()
+                                                    Select::make('heroArtIconOpacity')
+                                                        ->options([
+                                                            'opacity-0' => '0%',
+                                                            'opacity-5' => '5%',
+                                                            'opacity-10' => '10%',
+                                                            'opacity-25' => '25%',
+                                                            'opacity-50' => '50%',
+                                                            'opacity-75' => '75%',
+                                                            'opacity-100' => '100%',
+                                                        ])
+                                                        ->default('opacity-100')
+                                                    ]),
+                                            Grid::make(3)
+                                                    ->schema([
+    
+                                                        Toggle::make('heroArtIconRotate')
+                                                            ->label('Rotate')
+                                                            ->inline(false)
+                                                            ->default(false),
+                                                        Toggle::make('heroArtIconRotateInverse')
+                                                            ->label('Inverse rotation ?')
+                                                            ->inline(false)
+                                                            ->default(false),
+                                                            // DON'T DELETE THIS COMMENT IT IS MANDATORY FOR
+                                                            // CSS GENERATION OF NEGATIVE ROTATION WITH TAILWIND
+                                                            // -rotate-1
+                                                            // -rotate-2
+                                                            // -rotate-3
+                                                            // -rotate-6
+                                                            // -rotate-12
+                                                            // -rotate-45
+                                                            // -rotate-90
+                                                            // -rotate-180
+                                                        Select::make('heroArtIconRotateAngle')
+                                                            ->label('Rotation angle')
+                                                            ->options([
+                                                                'rotate-0' => 'Rotate 0',
+                                                                'rotate-1' => 'Rotate 1',
+                                                                'rotate-2' => 'Rotate 2',
+                                                                'rotate-3' => 'Rotate 3',
+                                                                'rotate-6' => 'Rotate 6',
+                                                                'rotate-12' => 'Rotate 12',
+                                                                'rotate-45' => 'Rotate 45',
+                                                                'rotate-90' => 'Rotate 90',
+                                                                'rotate-180' => 'Rotate 180'
+                                                            ])
+                                                            ->default('rotate-0'),
+                                                    ])
+                                        ]),
+                                    ]),
+
+                                Section::make('Colors')
+                                    ->collapsed()
+                                    ->schema([
+                                        Tabs::make('TabColors')
+                                        ->tabs([
+                                            Tabs\Tab::make('Title text color')
+                                                ->schema([
+                                                    // ...
+                                                    TailwindColorPicker::make('titleTextColor')
+                                                    ->textScope(),
+                                                ]),
+                                            Tabs\Tab::make('Subtitle text color')
+                                                ->schema([
+                                                    // ...
+                                                    TailwindColorPicker::make('subtitleTextColor')
+                                                    ->textScope(),
+                                                ]),
+                                            Tabs\Tab::make('Description text color')
+                                                ->schema([
+                                                    // ...
+                                                    TailwindColorPicker::make('descriptionTextColor')
+                                                    ->textScope(),
+                                                ]),
+                                            Tabs\Tab::make('Background color')
+                                                ->schema([
+                                                    // ...
+                                                    TailwindColorPicker::make('backgroundColor')
+                                                    ->bgScope(),
+                                                ])
+                                        ])
                                     ])
-                                    ->default('right'),
-                                Toggle::make('visible')
-                                        ->label('Visible')
-                                        ->default(true),
-                                Tabs::make('TabColors')
-                                ->tabs([
-                                    Tabs\Tab::make('Title text color')
-                                        ->schema([
-                                            // ...
-                                            TailwindColorPicker::make('titleTextColor')
-                                            ->textScope(),
-                                        ]),
-                                    Tabs\Tab::make('Subtitle text color')
-                                        ->schema([
-                                            // ...
-                                            TailwindColorPicker::make('subtitleTextColor')
-                                            ->textScope(),
-                                        ]),
-                                    Tabs\Tab::make('Description text color')
-                                        ->schema([
-                                            // ...
-                                            TailwindColorPicker::make('descriptionTextColor')
-                                            ->textScope(),
-                                        ]),
-                                    Tabs\Tab::make('Background color')
-                                        ->schema([
-                                            // ...
-                                            TailwindColorPicker::make('backgroundColor')
-                                            ->bgScope(),
-                                        ]),
-                                ])
                             ]),
+                            // IMAGE
                             Builder\Block::make('image')
                             ->icon('heroicon-o-photograph')
                             ->schema([
@@ -236,8 +510,11 @@ class PageResource extends Resource
                                 ->label('Description of featured block')
                                 ->required(),
                             TextInput::make('featuredPostsNumber')
-                                ->label('Featured Post limit to display'),
-                                TailwindColorPicker::make('backgroundColor')
+                                ->label('Featured Post limit to display')
+                                ->numeric()
+                                ->minValue(1)
+                                ->maxValue(99),
+                            TailwindColorPicker::make('backgroundColor')
                                 ->bgScope(),
                             Toggle::make('visible')
                                 ->label('Visible')
@@ -253,8 +530,11 @@ class PageResource extends Resource
                                     ->label('Description of latest block')
                                     ->required(),
                                 TextInput::make('latestPostsNumber')
-                                    ->label('Latest Post limit to display'),
-                                    TailwindColorPicker::make('backgroundColor')
+                                    ->label('Latest Post limit to display')
+                                    ->numeric()
+                                    ->minValue(1)
+                                    ->maxValue(99),
+                                TailwindColorPicker::make('backgroundColor')
                                         ->bgScope(),
                                 Toggle::make('visible')
                                         ->label('Visible')
@@ -266,6 +546,7 @@ class PageResource extends Resource
                     ->columns(1)
             ]);
     }
+
 
     public static function table(Table $table): Table
     {

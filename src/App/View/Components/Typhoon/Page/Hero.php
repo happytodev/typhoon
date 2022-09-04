@@ -12,6 +12,8 @@ class Hero extends Component
      */
     public $heroTitle;
 
+    public $heroTitleTextSize;
+
     /**
      * Type of header : h1, h2, h3, etc.
      */
@@ -68,6 +70,42 @@ class Hero extends Component
      */
 
     public $backgroundColor;
+    
+    public $heroHeight;
+    
+    public $heroArtIcon;
+    
+    public $heroArtIconOffsetX;
+    
+    public $heroArtIconOffsetY;
+    
+    public $heroArtIconHeight;
+
+    public $heroArtIconWidth;
+
+    public $heroArtIconVisible;
+
+    public $heroArtIconInvertColor;
+    
+    public $heroArtIconOpacity;
+
+    public $heroArtIconRotate;
+
+    public $heroArtIconRotateInverse;
+
+    public $heroArtIconRotateAngle;
+
+    public $heroCtaVisible;
+
+    public $heroCtaButtonText;
+
+    public $heroCtaButtonBackgroundColor;
+
+    public $heroCtaButtonTextColor;
+
+    public $heroCtaUrl;
+
+    public $heroCtaUrlTarget;
 
 
     /**
@@ -77,6 +115,7 @@ class Hero extends Component
      */
     public function __construct(
         $heroTitle,
+        $heroTitleTextSize,
         $heroSubtitle,
         $heroText,
         $heroImage,
@@ -84,14 +123,33 @@ class Hero extends Component
         $titleTextColor,
         $subtitleTextColor,
         $descriptionTextColor,
-        $backgroundColor
-    )
-    {
+        $backgroundColor,
+        $heroHeight,
+        $heroArtIcon,
+        $heroArtIconOffsetX,
+        $heroArtIconOffsetY,
+        $heroArtIconHeight,
+        $heroArtIconWidth,
+        $heroArtIconVisible,
+        $heroArtIconInvertColor,
+        $heroArtIconOpacity,
+        $heroArtIconRotate,
+        $heroArtIconRotateInverse,
+        $heroArtIconRotateAngle,
+        $heroCtaVisible,
+        $heroCtaButtonText,
+        $heroCtaButtonBackgroundColor,
+        $heroCtaButtonTextColor,
+        $heroCtaUrl,
+        $heroCtaUrlTarget
+    ) {
         //
         $this->heroTitle = $heroTitle;
 
+        $this->heroTitleTextSize = $heroTitleTextSize;
+
         $this->heroSubtitle = $heroSubtitle;
-        
+
         $this->heroText = $heroText;
 
         $this->heroImage = $heroImage;
@@ -105,6 +163,42 @@ class Hero extends Component
         $this->descriptionTextColor = $descriptionTextColor;
 
         $this->backgroundColor = $backgroundColor;
+
+        $this->heroHeight = $heroHeight;
+
+        $this->heroArtIcon = $heroArtIcon;
+
+        $this->heroArtIconHeight = $heroArtIconHeight;
+
+        $this->heroArtIconWidth = $heroArtIconWidth;
+
+        $this->heroArtIconVisible = $heroArtIconVisible;
+
+        $this->heroArtIconOffsetX = $heroArtIconOffsetX;
+
+        $this->heroArtIconOffsetY = $heroArtIconOffsetY;
+
+        $this->heroArtIconInvertColor = $heroArtIconInvertColor;
+
+        $this->heroArtIconOpacity = $heroArtIconOpacity;
+
+        $this->heroArtIconRotate = $heroArtIconRotate;
+
+        $this->heroArtIconRotateInverse = $heroArtIconRotateInverse;
+
+        $this->heroArtIconRotateAngle = $heroArtIconRotateAngle;
+
+        $this->heroCtaVisible = $heroCtaVisible;
+
+        $this->heroCtaButtonText = $heroCtaButtonText;
+
+        $this->heroCtaButtonBackgroundColor = $heroCtaButtonBackgroundColor;
+
+        $this->heroCtaButtonTextColor = $heroCtaButtonTextColor;
+
+        $this->heroCtaUrl = $heroCtaUrl;
+
+        $this->heroCtaUrlTarget = $heroCtaUrlTarget;
     }
 
     /**
