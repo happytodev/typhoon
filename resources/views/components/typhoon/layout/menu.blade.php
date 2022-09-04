@@ -1,4 +1,4 @@
-<nav class="{{ setting('menu.bgColor') ?? 'bg-white' }} border-b border-gray-200">
+<nav class="{{ setting('menu.bgColor') ?? 'bg-white' }} border-b border-gray-200 {{ setting('menu.sticky') ? 'sticky top-0 z-50 opacity-95' : '' }}">
     {{-- <div class="w-full text-gray-700 max-w-screen container"> --}}
     <div class="w-full text-gray-700 {{ setting('menu.fullwidth') ? 'max-w-screen' : 'mx-auto' }} container">
         <div x-data="{ open: false }" class="flex flex-col mx-auto {{ setting('menu.logoOnTheRight') ? 'lg:flex-row-reverse' : 'lg:flex-row' }}">
