@@ -95,29 +95,30 @@ class UpdateTyphoonPackage extends Command
         // Installation done with success
 
         // from v0.2.3
-        if ($typhoonVersionNumber == '0.2.3')
-        {
-
+        if ($typhoonVersionNumber == '0.2.3') {
             $this->upgradingFromv023Tov03x();
             $this->upgradingFromv03xTov04x();
             $this->upgradingFromv04xTov05x();
         }
 
         // from v0.3.0 to 0.3.999
-        if($typhoonVersionNumber == '0.3.x')
-        {
+        if ($typhoonVersionNumber == '0.3.x') {
             $this->upgradingFromv03xTov04x();
             $this->upgradingFromv04xTov05x();
         }
 
         // from v0.4.0 to 0.4.999
-        if($typhoonVersionNumber == '0.4.0')
-        {
+        if ($typhoonVersionNumber == '0.4.0') {
             $this->upgradingFromv04xTov05x();
         }
 
+        // from v0.5.0 to 0.5.999
+        if ($typhoonVersionNumber == '0.5.0') {
+            $this->upgradingFromv05xTov06x();
+        }
+
         $this->info('TyphoonCMS Package updated. 🚀');
-        
+
         $this->askForSomeLove();
     }
 
@@ -160,6 +161,30 @@ class UpdateTyphoonPackage extends Command
         $this->publishViews(true);
     }
 
+    private function upgradingFromv05xTov06x()
+    {
+        $this->updateConfigFile();
+        // $this->publishModels(true);
+        $this->creatingResources(true);
+        // $this->publishRepositories(true);
+        $this->publishViews(true);
+        // color picker
+
+        $this->v05xTov06xPublishTailwindColorPickerView();
+        $this->call('optimize:clear');
+    }
+
+    private function v05xTov06xPublishTailwindColorPickerView()
+    {
+        $this->info('Publishing Tailwind color picker views...');
+
+        $params = [
+            '--tag' => "filament-tailwind-color-picker-views",
+            '--force' => true
+        ];
+
+        $this->call('vendor:publish', $params);
+    }
     private function v023Tov030AddSettingModel()
     {
         $this->info('Adding Setting model...');
@@ -254,7 +279,8 @@ class UpdateTyphoonPackage extends Command
                 '0.2.2',
                 '0.2.3',
                 '0.3.x',
-                '0.4.0'
+                '0.4.0',
+                '0.5.0'
             ]
         );
     }
@@ -328,7 +354,8 @@ class UpdateTyphoonPackage extends Command
     {
         $params = [
             '--provider' => "HappyToDev\Typhoon\TyphoonServiceProvider",
-            '--tag' => "typhoon-filament-config"
+            '--tag' => "typhoon-filament-config",
+            '--force' => true
         ];
 
         $this->call('vendor:publish', $params);
