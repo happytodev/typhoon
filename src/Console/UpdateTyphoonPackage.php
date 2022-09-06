@@ -164,12 +164,8 @@ class UpdateTyphoonPackage extends Command
     private function upgradingFromv05xTov06x()
     {
         $this->updateConfigFile();
-        // $this->publishModels(true);
         $this->creatingResources(true);
-        // $this->publishRepositories(true);
         $this->publishViews(true);
-        // color picker
-
         $this->v05xTov06xPublishTailwindColorPickerView();
         $this->call('optimize:clear');
     }
@@ -327,7 +323,6 @@ class UpdateTyphoonPackage extends Command
     private function filamentSocialNetworksOrbit()
     {
         $params = [
-            // '--provider' => "HappyToDev\FilamentSocialNetworks\FilamentSocialNetworksProvider",
             '--tag' => "filament-social-networks-model-with-orbit"
         ];
 
