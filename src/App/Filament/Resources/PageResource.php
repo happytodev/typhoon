@@ -109,6 +109,12 @@ class PageResource extends Resource
                                             ->label('Define minimum height of Hero block (in % of the screen)')
                                             ->options([
                                                 'content' => 'Content size',
+                                                'sm:h-screen-1/10' => '10% of screen height',
+                                                'sm:h-screen-1/6' => '1/6 of screen height',
+                                                'sm:h-screen-1/5' => '20% of screen height',
+                                                'sm:h-screen-1/4' => '25% of screen height',
+                                                'sm:h-screen-1/3' => '30% of screen height',
+                                                'sm:h-screen-1/2' => '50% of screen height',
                                                 'sm:min-h-screen-1/10' => 'min 10% of screen height',
                                                 'sm:min-h-screen-1/6' => 'min 1/6 of screen height',
                                                 'sm:min-h-screen-1/5' => 'min 20% of screen height',

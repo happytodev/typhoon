@@ -42,9 +42,9 @@
                             :heroHeight="$content['data']['heroHeight']" 
                             :heroArtIcon="$content['data']['heroArtIcon']"
                             :heroArtIconHeight="$content['data']['heroArtIconHeight']"
-                            :heroArtIconWidth="$content['data']['heroArtIconWidth']"
+                            {{-- :heroArtIconWidth="$content['data']['heroArtIconWidth']" --}}
                             :heroArtIconOffsetX="$content['data']['heroArtIconOffsetX']" 
-                            :heroArtIconOffsetY="$content['data']['heroArtIconOffsetY']" 
+                            {{-- :heroArtIconOffsetY="$content['data']['heroArtIconOffsetY']"  --}}
                             :heroArtIconVisible="$content['data']['heroArtIconVisible']" 
                             :heroArtIconInvertColor="$content['data']['heroArtIconInvertColor']" 
                             :heroArtIconOpacity="$content['data']['heroArtIconOpacity']" 

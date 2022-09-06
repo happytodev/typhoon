@@ -77,11 +77,11 @@ class Hero extends Component
     
     public $heroArtIconOffsetX;
     
-    public $heroArtIconOffsetY;
+    // public $heroArtIconOffsetY;
     
     public $heroArtIconHeight;
 
-    public $heroArtIconWidth;
+    // public $heroArtIconWidth;
 
     public $heroArtIconVisible;
 
@@ -127,9 +127,9 @@ class Hero extends Component
         $heroHeight,
         $heroArtIcon,
         $heroArtIconOffsetX,
-        $heroArtIconOffsetY,
+        // $heroArtIconOffsetY,
         $heroArtIconHeight,
-        $heroArtIconWidth,
+        // $heroArtIconWidth,
         $heroArtIconVisible,
         $heroArtIconInvertColor,
         $heroArtIconOpacity,
@@ -170,13 +170,13 @@ class Hero extends Component
 
         $this->heroArtIconHeight = $heroArtIconHeight;
 
-        $this->heroArtIconWidth = $heroArtIconWidth;
+        // $this->heroArtIconWidth = $heroArtIconWidth;
 
         $this->heroArtIconVisible = $heroArtIconVisible;
 
         $this->heroArtIconOffsetX = $heroArtIconOffsetX;
 
-        $this->heroArtIconOffsetY = $heroArtIconOffsetY;
+        // $this->heroArtIconOffsetY = $heroArtIconOffsetY;
 
         $this->heroArtIconInvertColor = $heroArtIconInvertColor;
 
