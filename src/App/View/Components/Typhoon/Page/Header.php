@@ -36,7 +36,7 @@ class Header extends Component
      * 
      * @return void
      */
-    public function __construct(string $content, string $level, string $width, string $titleColor)
+    public function __construct(string $content, string $level, string $width, string|null $titleColor = "")
     {
         //
         $this->content = $content;
