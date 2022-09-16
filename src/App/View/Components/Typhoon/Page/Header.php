@@ -32,11 +32,10 @@ class Header extends Component
      * Create a new component instance.
      *
      * @param string $content
-     * @param string $type
      * 
      * @return void
      */
-    public function __construct(string $content, string $level, string $width, string|null $titleColor = "")
+    public function __construct(string $content, string $level, string $width, string|null $titleColor)
     {
         //
         $this->content = $content;
