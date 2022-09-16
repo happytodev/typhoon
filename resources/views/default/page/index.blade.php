@@ -3,11 +3,11 @@
 
 @section('content')
     @foreach ($page->content as $content)
-        <section class="text-gray-600 body-font {{ $content['data']['backgroundColor'] ?? 'bg-white' }}">
+        <section class="text-gray-600 body-font {{ $content['data']['backgroundColor'] ?? 'bg-transparent' }}">
             
             <div class="
                 md:grid-rows-1 
-                @if ( (isset($content['data']['width']) &&  $content['data']['width'] == 'full') || $content['type'] == 'hero')
+                @if ( (isset($content['data']['width']) &&  $content['data']['width'] == 'full') || $content['type'] == 'hero' || $content['type'] == 'separator')
                     max-w-screen-7xl
                 @else
                     md:pt-8 
@@ -18,19 +18,20 @@
                 {{-- {{ $content['data']['width'] ?? 'max-w-screen-2xl' }}  --}}
                 grid grid-cols-12">
             
-            
                 @switch($content['type'])
                     @case('heading')
+                    {{-- @dd($content) --}}
                     @if($content['data']['visible'])
                         <x-typhoon.page.header :level="$content['data']['level']" :content="$content['data']['content']" :titleColor="$content['data']['titleColor']" :width="$content['data']['width']" />
                     @endif
                     @break
 
                     @case('hero')
+                    {{-- @dd($content['data']) --}}
                     @if($content['data']['visible'])
                         <x-typhoon.page.hero 
                             :heroTitle="$content['data']['heroTitle']" 
-                            :heroTitleTextSize="$content['data']['heroTitleTextSize']" 
+                            :heroTitleTextSize="$content['data']['heroTitleTextSize'] ?? ''" 
                             :heroSubtitle="$content['data']['heroSubtitle']" 
                             :heroText="$content['data']['heroText']" 
                             :heroImage="$content['data']['heroImage']" 
@@ -42,9 +43,7 @@
                             :heroHeight="$content['data']['heroHeight']" 
                             :heroArtIcon="$content['data']['heroArtIcon']"
                             :heroArtIconHeight="$content['data']['heroArtIconHeight']"
-                            {{-- :heroArtIconWidth="$content['data']['heroArtIconWidth']" --}}
                             :heroArtIconOffsetX="$content['data']['heroArtIconOffsetX']" 
-                            {{-- :heroArtIconOffsetY="$content['data']['heroArtIconOffsetY']"  --}}
                             :heroArtIconVisible="$content['data']['heroArtIconVisible']" 
                             :heroArtIconInvertColor="$content['data']['heroArtIconInvertColor']" 
                             :heroArtIconOpacity="$content['data']['heroArtIconOpacity']" 
@@ -52,12 +51,19 @@
                             :heroArtIconRotateInverse="$content['data']['heroArtIconRotateInverse']" 
                             :heroArtIconRotateAngle="$content['data']['heroArtIconRotateAngle']" 
                             :heroCtaVisible="$content['data']['heroCtaVisible']" 
+                            :heroCtaButtonGlowing="$content['data']['heroCtaButtonGlowing']" 
                             :heroCtaButtonText="$content['data']['heroCtaButtonText']" 
                             :heroCtaButtonBackgroundColor="$content['data']['heroCtaButtonBackgroundColor']" 
                             :heroCtaButtonTextColor="$content['data']['heroCtaButtonTextColor']" 
                             :heroCtaUrl="$content['data']['heroCtaUrl']" 
                             :heroCtaUrlTarget="$content['data']['heroCtaUrlTarget']" 
-
+                            :heroBackgroundTextPosition="$content['data']['heroBackgroundTextPosition']" 
+                            :heroBackgroundBackdropBrightness="$content['data']['heroBackgroundBackdropBrightness']"
+                            :heroBackgroundBackdropOpacity="$content['data']['heroBackgroundBackdropOpacity']"
+                            :heroBackgroundBackdropInvert="$content['data']['heroBackgroundBackdropInvert']"
+                            :heroBackgroundBackdropColor="$content['data']['heroBackgroundBackdropColor']"
+                            :heroImageBackgroundSize="$content['data']['heroImageBackgroundSize']"
+                            :heroImageBackgroundPosition="$content['data']['heroImageBackgroundPosition']"
                         />
                     @endif
                     @break
@@ -65,6 +71,17 @@
                     @case('paragraph')
                     @if($content['data']['visible'])
                         <x-typhoon.page.paragraph :paragraphContent="$content['data']['content']" />
+                    @endif
+                    @break
+
+                    @case('separator')
+                    @if($content['data']['visible'])
+                        <x-typhoon.page.separator 
+                            :separatorType="$content['data']['separatorType']" 
+                            :backgroundColor="$content['data']['backgroundColor']"
+                            :fillColor1="$content['data']['fillColor1']"
+                            :fillColor2="$content['data']['fillColor2']"
+                        />
                     @endif
                     @break
     

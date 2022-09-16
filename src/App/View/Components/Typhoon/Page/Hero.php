@@ -97,6 +97,8 @@ class Hero extends Component
 
     public $heroCtaVisible;
 
+    public $heroCtaButtonGlowing;
+
     public $heroCtaButtonText;
 
     public $heroCtaButtonBackgroundColor;
@@ -106,6 +108,20 @@ class Hero extends Component
     public $heroCtaUrl;
 
     public $heroCtaUrlTarget;
+
+    public $heroBackgroundTextPosition;
+
+    public $heroBackgroundBackdropBrightness;
+
+    public $heroBackgroundBackdropOpacity;
+
+    public $heroBackgroundBackdropInvert;
+
+    public $heroBackgroundBackdropColor;
+
+    public $heroImageBackgroundSize;
+
+    public $heroImageBackgroundPosition;
 
 
     /**
@@ -137,11 +153,19 @@ class Hero extends Component
         $heroArtIconRotateInverse,
         $heroArtIconRotateAngle,
         $heroCtaVisible,
+        $heroCtaButtonGlowing,
         $heroCtaButtonText,
         $heroCtaButtonBackgroundColor,
         $heroCtaButtonTextColor,
         $heroCtaUrl,
-        $heroCtaUrlTarget
+        $heroCtaUrlTarget,
+        $heroBackgroundTextPosition,
+        $heroBackgroundBackdropBrightness,
+        $heroBackgroundBackdropOpacity,
+        $heroBackgroundBackdropInvert,
+        $heroBackgroundBackdropColor,
+        $heroImageBackgroundSize,
+        $heroImageBackgroundPosition
     ) {
         //
         $this->heroTitle = $heroTitle;
@@ -190,6 +214,8 @@ class Hero extends Component
 
         $this->heroCtaVisible = $heroCtaVisible;
 
+        $this->heroCtaButtonGlowing = $heroCtaButtonGlowing;
+
         $this->heroCtaButtonText = $heroCtaButtonText;
 
         $this->heroCtaButtonBackgroundColor = $heroCtaButtonBackgroundColor;
@@ -199,6 +225,20 @@ class Hero extends Component
         $this->heroCtaUrl = $heroCtaUrl;
 
         $this->heroCtaUrlTarget = $heroCtaUrlTarget;
+
+        $this->heroBackgroundTextPosition = $heroBackgroundTextPosition;
+
+        $this->heroBackgroundBackdropBrightness = $heroBackgroundBackdropBrightness;
+
+        $this->heroBackgroundBackdropOpacity = $heroBackgroundBackdropOpacity;
+
+        $this->heroBackgroundBackdropInvert = $heroBackgroundBackdropInvert;
+
+        $this->heroBackgroundBackdropColor = $heroBackgroundBackdropColor;
+
+        $this->heroImageBackgroundSize = $heroImageBackgroundSize;
+        
+        $this->heroImageBackgroundPosition = $heroImageBackgroundPosition;
     }
 
     /**
