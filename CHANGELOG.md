@@ -2,7 +2,7 @@
 
 All notable changes to `typhoon` will be documented in this file.
 
-## v0.6.0 - 2022-09-01
+## v0.6.0 - 2022-11-16
 - Add support of Filament Tailwind Color Picker
 - Big improvement on Hero component with many new possibilities for customization (background image, colors, text, art icon, etc.)
 - Add first version of block 'Separator' with 6 forms for beginning
