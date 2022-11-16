@@ -14,7 +14,7 @@ class Header extends Component
     /**
      * Type of header : h1, h2, h3, etc.
      */
-    public $type;
+    public $level;
 
     /**
      * Width of the header
@@ -22,39 +22,47 @@ class Header extends Component
     public $width;
 
     /**
+     * Title text color
+     *
+     * @var string
+     */
+    public $titleColor;
+
+    /**
      * Create a new component instance.
      *
      * @param string $content
-     * @param string $type
      * 
      * @return void
      */
-    public function __construct(string $content, string $type, string $width)
+    public function __construct(string $content, string $level, string $width, string|null $titleColor)
     {
         //
         $this->content = $content;
 
-        switch ($type) {
+        $this->titleColor = $titleColor;
+
+        switch ($level) {
             case 'h1':
-                $this->type = 'text-6xl';
+                $this->level = 'text-6xl';
                 break;
             case 'h2':
-                $this->type = 'text-5xl';
+                $this->level = 'text-5xl';
                 break;
             case 'h3':
-                $this->type = 'text-4xl';
+                $this->level = 'text-4xl';
                 break;
             case 'h4':
-                $this->type = 'text-3xl';
+                $this->level = 'text-3xl';
                 break;
             case 'h5':
-                $this->type = 'text-2xl';
+                $this->level = 'text-2xl';
                 break;
             case 'h6':
-                $this->type = 'text-xl';
+                $this->level = 'text-xl';
                 break;
             default:
-                $this->type = 'text-4xl';
+                $this->level = 'text-4xl';
                 break;
         }
 

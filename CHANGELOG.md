@@ -2,6 +2,17 @@
 
 All notable changes to `typhoon` will be documented in this file.
 
+## v0.6.0 - 2022-11-16
+- Add support of Filament Tailwind Color Picker
+- Big improvement on Hero component with many new possibilities for customization (background image, colors, text, art icon, etc.)
+- Add first version of block 'Separator' with 6 forms for beginning
+- Remove plugin martin-ro/charcounted-field due to backend display break (in relation with issue #3712 of FilamentPhp) => Waiting for fix from author
+- Add collapsible menu option
+- Page blocks are now collapsible
+- New gorgeous purple theme for the backend
+- Add heroicons to page builder elements and reorder them
+- Some cleaning in the code
+
 ## v0.5.6 - 2022-08-15
 - remove tw-elements
 - add a new menu responsive with accessible navigation adapted from [this article](https://caffeinecreations.ca/blog/accessible-dropdown-navigation-with-tailwind-css-and-alpine-js/)
@@ -9,7 +20,6 @@ All notable changes to `typhoon` will be documented in this file.
 - some cleaning in the code
 
 ## v0.5.7 - 2022-08-23
-
 - Update demo content
 
 ## v0.5.5 - 2022-08-15

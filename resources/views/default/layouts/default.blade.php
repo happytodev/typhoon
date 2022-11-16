@@ -13,6 +13,7 @@
     <!-- Styles -->
     <link rel="stylesheet" href="/css/app.css">
     <link rel="stylesheet" href="/css/prism.css" />
+    <link rel="stylesheet" href="/vendor/filament-tailwind-color-picker/ftcp.css" />
     @livewireStyles
 
     {{-- AlpineJS --}}
