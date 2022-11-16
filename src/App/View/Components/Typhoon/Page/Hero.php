@@ -19,12 +19,14 @@ class Hero extends Component
      */
     public $heroSubtitle;
 
+    public $heroSubtitleTextSize;
+
     /**
      * Description text for the hero block. Not mandatory.
      *
      * @var string
      */
-    public $heroText;
+    public $heroDescription;
 
     /**
      * Illustrzation image of hero block
@@ -105,6 +107,8 @@ class Hero extends Component
 
     public $heroCtaButtonTextColor;
 
+    public $heroCtaButtonPosition;
+
     public $heroCtaUrl;
 
     public $heroCtaUrlTarget;
@@ -123,6 +127,14 @@ class Hero extends Component
 
     public $heroImageBackgroundPosition;
 
+    public $fullwidth;
+
+    public $heroTitleTextPosition;
+
+    public $heroSubtitleTextPosition;
+
+    public $heroDescriptionTextPosition;
+
 
     /**
      * Create a new component instance.
@@ -133,7 +145,8 @@ class Hero extends Component
         $heroTitle,
         $heroTitleTextSize,
         $heroSubtitle,
-        $heroText,
+        $heroSubtitleTextSize,
+        $heroDescription,
         $heroImage,
         $heroImagePosition,
         $titleTextColor,
@@ -157,6 +170,7 @@ class Hero extends Component
         $heroCtaButtonText,
         $heroCtaButtonBackgroundColor,
         $heroCtaButtonTextColor,
+        $heroCtaButtonPosition,
         $heroCtaUrl,
         $heroCtaUrlTarget,
         $heroBackgroundTextPosition,
@@ -165,7 +179,11 @@ class Hero extends Component
         $heroBackgroundBackdropInvert,
         $heroBackgroundBackdropColor,
         $heroImageBackgroundSize,
-        $heroImageBackgroundPosition
+        $heroImageBackgroundPosition,
+        $fullwidth,
+        $heroTitleTextPosition,
+        $heroSubtitleTextPosition,
+        $heroDescriptionTextPosition
     ) {
         //
         $this->heroTitle = $heroTitle;
@@ -173,8 +191,10 @@ class Hero extends Component
         $this->heroTitleTextSize = $heroTitleTextSize;
 
         $this->heroSubtitle = $heroSubtitle;
+        
+        $this->heroSubtitleTextSize = $heroSubtitleTextSize;
 
-        $this->heroText = $heroText;
+        $this->heroDescription = $heroDescription;
 
         $this->heroImage = $heroImage;
 
@@ -221,6 +241,8 @@ class Hero extends Component
         $this->heroCtaButtonBackgroundColor = $heroCtaButtonBackgroundColor;
 
         $this->heroCtaButtonTextColor = $heroCtaButtonTextColor;
+        
+        $this->heroCtaButtonPosition = $heroCtaButtonPosition;
 
         $this->heroCtaUrl = $heroCtaUrl;
 
@@ -237,8 +259,16 @@ class Hero extends Component
         $this->heroBackgroundBackdropColor = $heroBackgroundBackdropColor;
 
         $this->heroImageBackgroundSize = $heroImageBackgroundSize;
-        
+
         $this->heroImageBackgroundPosition = $heroImageBackgroundPosition;
+
+        $this->fullwidth = $fullwidth;
+        
+        $this->heroTitleTextPosition = $heroTitleTextPosition;
+        
+        $this->heroSubtitleTextPosition = $heroSubtitleTextPosition;
+        
+        $this->heroDescriptionTextPosition = $heroDescriptionTextPosition;
     }
 
     /**
