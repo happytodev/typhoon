@@ -2,8 +2,12 @@
 
 All notable changes to `typhoon` will be documented in this file.
 
+## v0.6.2 - 2022-11-26
+- Remove the possibility to customize routes for blogs and pages (using `pages.route`and `posts.route`) via Settings which generates the #47 bug
+
 ## v0.6.1 - 2022-11-25
 - Add possibility to customize routes for blogs and pages (using `pages.route`and `posts.route`) via Settings
+
 ## v0.6.0 - 2022-11-16
 - Add support of Filament Tailwind Color Picker
 - Big improvement on Hero component with many new possibilities for customization (background image, colors, text, art icon, etc.)
