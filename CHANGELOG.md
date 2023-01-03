@@ -2,6 +2,9 @@
 
 All notable changes to `typhoon` will be documented in this file.
 
+## v0.6.3 - 2023-01-03
+- Fix the little bug in code editor with duplicates content by changing the markdown editor to the Spatie Filament Markdown Editor
+
 ## v0.6.2 - 2022-11-26
 - Remove the possibility to customize routes for blogs and pages (using `pages.route`and `posts.route`) via Settings which generates the #47 bug
 
